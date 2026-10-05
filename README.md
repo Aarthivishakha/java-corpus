@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V11_ANTIVY_WAR_MICRO
+﻿# Testable Java corpus — JV_V11_ANTIVY_WAR_MONO
 
-Grid cell `ANT-WAR-S` of the 24-cell Java grid.
+Grid cell `ANT-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 11 |
 | Build system | Ant + Ivy |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ uses local `var`, private interface methods, `Set.of`, `Collectors.toUnmodifiabl
 compile under `--release 8` in sixteen places — the version differentiation is real, not
 declared.
 
-Produces: `jv-048.war`
+Produces: `jv-047.war`
 
 ## Run
 
@@ -90,10 +90,7 @@ ant test
 
 ## Workspace projects
 
-- `jv-048-domain/`
-- `jv-048-pricing/`
-- `jv-048-risk/`
-- `jv-048-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders

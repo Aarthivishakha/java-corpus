@@ -1,6 +1,6 @@
 {
-  "branch": "JV-048",
-  "combo": "ANT-WAR-S",
+  "branch": "JV-047",
+  "combo": "ANT-WAR-M",
   "repository": "java-j11-045-048",
   "language": "java",
   "javaVersion": "11",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-048-domain",
-    "jv-048-pricing",
-    "jv-048-risk",
-    "jv-048-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "11",
   "testCompilerRelease": "11",
