@@ -4,7 +4,7 @@ metrics: 1
 kind: standalone
 java_version: "13"
 host_jdk: "17"
-build_system: "Ant + Ivy"
+build_system: "Gradle / Groovy DSL"
 command: ./tools/spoon/run.sh
 exit_codes:
   0: ran
