@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V12_GRADLEKOTLINDSL_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V12_GRADLEKOTLINDSL_THINJAR_MICRO
 
-Grid cell `GRK-SHADE-M` of the 24-cell Java grid.
+Grid cell `GRK-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 12 |
 | Host JDK | 17 |
 | Build system | Gradle / Kotlin DSL |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -94,7 +94,7 @@ Java 12 is **not an LTS release**. It shipped March 2019 and reached end of life
 September 2019, six months later. It is in this corpus to complete the version axis, not
 as a recommendation.
 
-Produces: `jv-177-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-176.jar or target/jv-176-1.0.0.jar`
 
 ## Run
 
@@ -110,7 +110,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-176-domain/`
+- `jv-176-pricing/`
+- `jv-176-risk/`
+- `jv-176-catalog/`
 
 
 ## Tool test-data folders
