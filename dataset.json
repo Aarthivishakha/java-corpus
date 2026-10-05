@@ -1,6 +1,6 @@
 {
-  "branch": "JV-186",
-  "combo": "GRG-WAR-S",
+  "branch": "JV-185",
+  "combo": "GRG-WAR-M",
   "repository": "java-j12-184-188",
   "language": "java",
   "javaVersion": "12",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-186-domain",
-    "jv-186-pricing",
-    "jv-186-risk",
-    "jv-186-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "12",
   "testCompilerRelease": "12",
