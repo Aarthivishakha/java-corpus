@@ -1,6 +1,6 @@
 {
-  "branch": "JV-214",
-  "combo": "ANT-SHADE-S",
+  "branch": "JV-213",
+  "combo": "ANT-SHADE-M",
   "repository": "java-j13-213-216",
   "language": "java",
   "javaVersion": "13",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-214-domain",
-    "jv-214-pricing",
-    "jv-214-risk",
-    "jv-214-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "13",
   "testCompilerRelease": "13",
