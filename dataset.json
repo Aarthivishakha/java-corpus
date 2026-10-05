@@ -1,7 +1,7 @@
 {
-  "branch": "JV-150",
-  "combo": "MVN-WAR-S",
-  "repository": "java-j10-150-154",
+  "branch": "JV-149",
+  "combo": "MVN-WAR-M",
+  "repository": "java-j10-145-149",
   "language": "java",
   "javaVersion": "10",
   "hostJdk": "11",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-150-domain",
-    "jv-150-pricing",
-    "jv-150-risk",
-    "jv-150-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "10",
   "testCompilerRelease": "10",

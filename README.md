@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V10_MAVEN_WAR_MICRO
+﻿# Testable Java corpus — JV_V10_MAVEN_WAR_MONO
 
-Grid cell `MVN-WAR-S` of the 24-cell Java grid.
+Grid cell `MVN-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 11 |
 | Build system | Maven |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ no-argument `Optional.orElseThrow`, so it fails to compile under `--release 9` i
 places — the version differentiation is real, not
 declared.
 
-Produces: `jv-150.war`
+Produces: `jv-149.war`
 
 ## Run
 
@@ -90,10 +90,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-150-domain/`
-- `jv-150-pricing/`
-- `jv-150-risk/`
-- `jv-150-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
