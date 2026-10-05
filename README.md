@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V10_ANTIVY_WAR_MONO
+﻿# Testable Java corpus — JV_V10_GRADLEGROOVYDSL_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `ANT-WAR-M` of the 24-cell Java grid.
+Grid cell `GRG-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -19,9 +19,9 @@ only. See `dataset.json` for the machine-readable description of this branch.
 |---|---|
 | Java version | 10 |
 | Host JDK | 11 |
-| Build system | Ant + Ivy |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Gradle / Groovy DSL |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -65,7 +65,7 @@ when a tool can't run on this family.
 ## Build
 
 ```
-ant clean package
+./gradlew build
 ```
 
 Main and test sources both compile at Java 10 (bytecode major version 54). The code
@@ -74,7 +74,7 @@ no-argument `Optional.orElseThrow`, so it fails to compile under `--release 9` i
 places — the version differentiation is real, not
 declared.
 
-Produces: `jv-167.war`
+Produces: `jv-160-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -85,12 +85,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-ant test
+./gradlew test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-160-domain/`
+- `jv-160-pricing/`
+- `jv-160-risk/`
+- `jv-160-catalog/`
 
 
 ## Tool test-data folders

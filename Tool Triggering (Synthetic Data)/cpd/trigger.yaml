@@ -4,7 +4,7 @@ metrics: 7
 kind: plugin
 java_version: "10"
 host_jdk: "11"
-build_system: "Ant + Ivy"
+build_system: "Gradle / Groovy DSL"
 command: ./tools/cpd/run.sh
 exit_codes:
   0: ran
