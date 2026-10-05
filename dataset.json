@@ -1,35 +1,51 @@
 {
-  "branch": "JV-173",
-  "combo": "MVN-WAR-M",
-  "repository": "java-j12-169-173",
+  "branch": "JV-214",
+  "combo": "ANT-SHADE-S",
+  "repository": "java-j13-213-216",
   "language": "java",
-  "javaVersion": "12",
+  "javaVersion": "13",
   "hostJdk": "17",
-  "buildSystem": "Maven",
-  "buildSystemId": "MVN",
-  "packaging": "WAR",
-  "packagingId": "WAR",
-  "architecture": "Monolith",
-  "architectureId": "M",
+  "buildSystem": "Ant + Ivy",
+  "buildSystemId": "ANT",
+  "packaging": "Shaded uber-jar (relocated)",
+  "packagingId": "SHADE",
+  "architecture": "Microservices",
+  "architectureId": "S",
   "modules": [
-    "(single module)"
+    "jv-214-domain",
+    "jv-214-pricing",
+    "jv-214-risk",
+    "jv-214-catalog"
   ],
-  "mainCompilerRelease": "12",
-  "testCompilerRelease": "12",
-  "bytecodeMajorVersion": 56,
+  "mainCompilerRelease": "13",
+  "testCompilerRelease": "13",
+  "bytecodeMajorVersion": 57,
   "testFramework": "JUnit 4.13.2",
   "versionExclusiveFeatures": [
-    "Collectors.teeing",
-    "String.transform",
-    "String.indent",
-    "NumberFormat.getCompactNumberInstance",
-    "CompactNumberFormat"
+    "ByteBuffer.get(int,byte[])",
+    "ByteBuffer.put(int,byte[])",
+    "CharBuffer.get(int,char[])",
+    "FileSystems.newFileSystem(Path,Map)"
   ],
   "versionLockKind": "api-only",
-  "versionLockNote": "Java 12's switch expressions were a preview feature and did not become final until Java 14; with preview features off there is no Java-12-final syntax, so the lock is carried entirely by Java 12 APIs.",
+  "versionLockNote": "Java 13's text blocks and switch expressions were both preview features (final in 15 and 14 respectively); with preview features off there is no Java-13-final syntax, so the lock is carried entirely by Java 13 APIs.",
+  "rejectedLocks": [
+    {
+      "api": "String.formatted / stripIndent / translateEscapes",
+      "reason": "not monotonic - present at --release 13, absent at 14, present again from 15. Shipped in JDK 13 as deprecated-for-removal alongside preview text blocks, removed in JDK 14, re-added final in JDK 15. A cumulative version ladder cannot use a lock that disappears one release later."
+    }
+  ],
+  "inheritedLocks": {
+    "12": [
+      "Collectors.teeing",
+      "String.transform",
+      "String.indent",
+      "NumberFormat.getCompactNumberInstance"
+    ]
+  },
   "lts": false,
   "hostJdkDiffersFromLanguageLevel": true,
-  "failsToCompileUnder": "11",
+  "failsToCompileUnder": "12",
   "toolPins": {
     "junit": "4.13.2",
     "jacoco": "0.8.14",
@@ -73,7 +89,20 @@
       "version": "1.30"
     }
   ],
-  "relocations": [],
+  "relocations": [
+    {
+      "from": "org.apache.commons",
+      "to": "com.pramora.testable.shaded.commons"
+    },
+    {
+      "from": "com.fasterxml.jackson",
+      "to": "com.pramora.testable.shaded.jackson"
+    },
+    {
+      "from": "org.yaml.snakeyaml",
+      "to": "com.pramora.testable.shaded.snakeyaml"
+    }
+  ],
   "answerKey": {
     "duplicatePair": [
       "analysis/DuplicateProcessorA.java",
@@ -82,7 +111,7 @@
     "highestCyclomaticComplexity": "service/PricingService.java#priceCents",
     "highestCognitiveComplexity": "analysis/RiskScorer.java#score",
     "taintSource": "util/InputSanitizer.java#sanitize",
-    "testCount": 41
+    "testCount": 63
   },
   "exitCodeContract": {
     "0": "ran",

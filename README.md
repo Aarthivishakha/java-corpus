@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V12_MAVEN_WAR_MONO
+﻿# Testable Java corpus — JV_V13_ANTIVY_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `MVN-WAR-M` of the 24-cell Java grid.
+Grid cell `ANT-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -17,16 +17,16 @@ only. See `dataset.json` for the machine-readable description of this branch.
 
 | Variable | Value |
 |---|---|
-| Java version | 12 |
+| Java version | 13 |
 | Host JDK | 17 |
-| Build system | Maven |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Ant + Ivy |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
 19 tools are wired on this branch (one `Tool Triggering (Synthetic Data)/<dir>/` folder
-each). **14 of them run on JDK 12 (host JDK 17); 5 do not.**
+each). **14 of them run on JDK 13 (host JDK 17); 5 do not.**
 
 That is the measurement, not a defect. A tool that cannot run exits **3**,
 not 0 -- a skip that looks like a pass is the failure mode this corpus
@@ -65,36 +65,63 @@ when a tool can't run on this family.
 ## Build
 
 ```
-mvn -B clean package
+ant clean package
 ```
 
-Main and test sources both compile at Java 12 (bytecode major version 56), built by
-`javac 17` with `--release 12`.
+Main and test sources both compile at Java 13 (bytecode major version 57), built by
+`javac 17` with `--release 13`.
 
-**The Java 12 lock is an API lock, not a syntax lock.** Java 12's headline language change
-was switch expressions, and they were a *preview* feature in 12 — they did not become final
-until Java 14. The corpus rule is that preview features stay off, so there is no
-Java-12-final syntax to lock against. `analysis/OrderDigest.java` carries the lock through
-four APIs that first shipped in Java 12 instead:
+**The Java 13 lock is an API lock, not a syntax lock — the second family in a row.** Java
+13's two headline language changes were both *preview*: text blocks (JEP 355, preview in
+13, final in 15) and switch expressions (still preview in 13, final in 14). Under the
+corpus rule that preview features stay off, Java 13 contributes **no final syntax at all**.
+`javac 17 --release 13` says so directly: *"text blocks are not supported in -source 13"*.
 
-| API | Added |
-|---|---|
-| `Collectors.teeing` | Java 12 |
-| `String.transform` | Java 12 |
-| `String.indent` | Java 12 |
-| `NumberFormat.getCompactNumberInstance` / `CompactNumberFormat` | Java 12 |
+The lock is carried by three APIs that shipped final in Java 13, across two files:
 
-The file fails to compile under `--release 11` in five places, and the Java 17 family's own
-lock files still fail under `--release 12` (`sealed classes are not supported in
--source 12`, `text blocks are not supported in -source 12`, `switch expressions are not
-supported in -source 12`). The differentiation holds in both directions — it is real, not
-declared.
+| API | Where | JDK issue |
+|---|---|---|
+| `ByteBuffer.get(int, byte[])` / `put(int, byte[])` | `util/OrderCodec.java` | JDK-5029431 |
+| `CharBuffer.get(int, char[])` | `util/OrderCodec.java` | JDK-5029431 |
+| `FileSystems.newFileSystem(Path, Map)` | `util/PriceListArchive.java` | JDK-8218875 |
 
-Java 12 is **not an LTS release**. It shipped March 2019 and reached end of life in
-September 2019, six months later. It is in this corpus to complete the version axis, not
-as a recommendation.
+The absolute bulk transfers are a real API, not a curiosity: before Java 13, a bulk read at
+a known offset meant mutating the buffer's position, which is why the absolute forms were
+added. `OrderCodec.peekSku` reads the same record twice and still decodes it, which is only
+safe because of them.
 
-Produces: `jv-173.war`
+The branch fails to compile under `--release 12` in exactly five places, and the Java 17
+family's own lock files still fail under `--release 13` (*sealed classes*, *text
+blocks*, *pattern matching in instanceof*, *switch expressions* — all "not supported in
+-source 13"). The differentiation holds in both directions.
+
+### A rejected lock worth recording: `String.formatted` is not monotonic
+
+`String.formatted`, `String.stripIndent` and `String.translateEscapes` look like ideal Java
+13 locks — they compile at `--release 13` and fail at `--release 12`. They are **not used
+here**, because they do not survive the next release. Measured with `javac 17`/`javac 25`:
+
+| `--release` | 12 | 13 | 14 | 15 | 17 | 21 | 25 |
+|---|---|---|---|---|---|---|---|
+| `String.formatted` | absent | **present** | **absent** | present | present | present | present |
+
+They shipped in JDK 13 alongside preview text blocks, carried
+`@Deprecated(forRemoval=true)`, were **removed in JDK 14**, and returned final in JDK 15.
+At `--release 13` javac accepts them but warns *"has been deprecated and marked for
+removal"*.
+
+This corpus's ladder is cumulative — each family keeps the one below it and adds to it — so
+a lock that vanishes one release later would break that property and make any future java14
+family inconsistent with java13. The three buffer and filesystem APIs above are monotonic
+from 13 through 25 and were chosen for that reason. **A version lock has to be checked
+forward as well as backward**, and this is the first case in the corpus where an API that
+passes the backward check fails the forward one.
+
+Java 13 is **not an LTS release**. It shipped September 2019 and reached end of life in
+March 2020, six months later. It is in this corpus to complete the version axis, not as a
+recommendation.
+
+Produces: `jv-214-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -105,12 +132,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-mvn -B test
+ant test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-214-domain/`
+- `jv-214-pricing/`
+- `jv-214-risk/`
+- `jv-214-catalog/`
 
 
 ## Tool test-data folders
