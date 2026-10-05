@@ -1,6 +1,6 @@
 {
-  "branch": "JV-200",
-  "combo": "GRK-THIN-S",
+  "branch": "JV-199",
+  "combo": "GRK-THIN-M",
   "repository": "java-j13-198-202",
   "language": "java",
   "javaVersion": "13",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-200-domain",
-    "jv-200-pricing",
-    "jv-200-risk",
-    "jv-200-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "13",
   "testCompilerRelease": "13",
