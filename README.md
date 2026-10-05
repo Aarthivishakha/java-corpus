@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V10_ANTIVY_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V10_ANTIVY_THINJAR_MICRO
 
-Grid cell `ANT-SHADE-M` of the 24-cell Java grid.
+Grid cell `ANT-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 10 |
 | Host JDK | 11 |
 | Build system | Ant + Ivy |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ no-argument `Optional.orElseThrow`, so it fails to compile under `--release 9` i
 places — the version differentiation is real, not
 declared.
 
-Produces: `jv-165-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-164.jar or target/jv-164-1.0.0.jar`
 
 ## Run
 
@@ -90,7 +90,10 @@ ant test
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-164-domain/`
+- `jv-164-pricing/`
+- `jv-164-risk/`
+- `jv-164-catalog/`
 
 
 ## Tool test-data folders

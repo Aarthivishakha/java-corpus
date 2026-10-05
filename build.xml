@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="jv-165" default="package" basedir="."
+<project name="jv-164" default="package" basedir="."
          xmlns:ivy="antlib:org.apache.ivy.ant">
 
   <property name="java.source" value="10"/>
@@ -18,15 +18,17 @@
     <mkdir dir="${build.dir}/classes"/>
     <javac destdir="${build.dir}/classes" includeantruntime="false"
            source="${java.source}" target="${java.target}" debug="true" encoding="UTF-8">
-      <src path="src/main/java"/>
-
+      <src path="jv-164-domain/src/main/java"/>
+      <src path="jv-164-pricing/src/main/java"/>
+      <src path="jv-164-risk/src/main/java"/>
+      <src path="jv-164-catalog/src/main/java"/>
       <classpath><fileset dir="${lib.dir}" includes="**/*.jar"/></classpath>
     </javac>
   </target>
 
   <target name="compile-tests" depends="compile" description="compile test sources">
     <mkdir dir="${build.dir}/test-classes"/>
-    <javac srcdir="src/test/java" destdir="${build.dir}/test-classes" includeantruntime="false"
+    <javac srcdir="jv-164-domain/src/test/java" destdir="${build.dir}/test-classes" includeantruntime="false"
            source="${java.source}" target="${java.target}" debug="true" encoding="UTF-8">
       <classpath>
         <pathelement location="${build.dir}/classes"/>
@@ -45,24 +47,28 @@
       </classpath>
       <formatter type="xml"/>
       <batchtest todir="${report.dir}">
-        <fileset dir="src/test/java" includes="**/*Test.java"/>
+        <fileset dir="jv-164-domain/src/test/java" includes="**/*Test.java"/>
       </batchtest>
     </junit>
   </target>
 
-  <target name="package" depends="compile" description="shaded uber-jar with relocated packages">
-    <taskdef name="jarjar" classname="com.tonicsystems.jarjar.JarJarTask"
-             classpath="${lib.dir}/jarjar.jar"/>
-    <jarjar destfile="${dist.dir}/${ant.project.name}-all.jar">
-      <fileset dir="${build.dir}/classes"/>
-      <zipgroupfileset dir="${lib.dir}" includes="**/*.jar" excludes="jarjar.jar"/>
-      <rule pattern="org.apache.commons.**" result="com.pramora.testable.shaded.commons.@1"/>
-      <rule pattern="com.fasterxml.jackson.**" result="com.pramora.testable.shaded.jackson.@1"/>
-      <rule pattern="org.yaml.snakeyaml.**" result="com.pramora.testable.shaded.snakeyaml.@1"/>
+  <target name="package" depends="compile" description="thin jar; dependencies stay in lib/">
+    <mkdir dir="${dist.dir}/lib"/>
+    <copy todir="${dist.dir}/lib" flatten="true">
+      <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    </copy>
+    <pathconvert property="manifest.classpath" pathsep=" ">
+      <mapper><chainedmapper>
+        <flattenmapper/><globmapper from="*" to="lib/*"/>
+      </chainedmapper></mapper>
+      <path><fileset dir="${dist.dir}/lib" includes="*.jar"/></path>
+    </pathconvert>
+    <jar destfile="${dist.dir}/${ant.project.name}.jar" basedir="${build.dir}/classes">
       <manifest>
         <attribute name="Main-Class" value="com.pramora.testable.app.Main"/>
+        <attribute name="Class-Path" value="${manifest.classpath}"/>
       </manifest>
-    </jarjar>
+    </jar>
   </target>
 
   <target name="clean" description="remove build output">
