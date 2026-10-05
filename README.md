@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V12_ANTIVY_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V12_ANTIVY_THINJAR_MICRO
 
-Grid cell `ANT-SHADE-M` of the 24-cell Java grid.
+Grid cell `ANT-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 12 |
 | Host JDK | 17 |
 | Build system | Ant + Ivy |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -94,7 +94,7 @@ Java 12 is **not an LTS release**. It shipped March 2019 and reached end of life
 September 2019, six months later. It is in this corpus to complete the version axis, not
 as a recommendation.
 
-Produces: `jv-189-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-188.jar or target/jv-188-1.0.0.jar`
 
 ## Run
 
@@ -110,7 +110,10 @@ ant test
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-188-domain/`
+- `jv-188-pricing/`
+- `jv-188-risk/`
+- `jv-188-catalog/`
 
 
 ## Tool test-data folders
