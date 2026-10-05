@@ -1,6 +1,6 @@
 {
-  "branch": "JV-158",
-  "combo": "GRG-THIN-S",
+  "branch": "JV-157",
+  "combo": "GRG-THIN-M",
   "repository": "java-j10-155-159",
   "language": "java",
   "javaVersion": "10",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-158-domain",
-    "jv-158-pricing",
-    "jv-158-risk",
-    "jv-158-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "10",
   "testCompilerRelease": "10",

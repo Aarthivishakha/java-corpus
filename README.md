@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V10_GRADLEGROOVYDSL_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V10_GRADLEGROOVYDSL_THINJAR_MONO
 
-Grid cell `GRG-THIN-S` of the 24-cell Java grid.
+Grid cell `GRG-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 11 |
 | Build system | Gradle / Groovy DSL |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ no-argument `Optional.orElseThrow`, so it fails to compile under `--release 9` i
 places — the version differentiation is real, not
 declared.
 
-Produces: `dist/jv-158.jar or target/jv-158-1.0.0.jar`
+Produces: `dist/jv-157.jar or target/jv-157-1.0.0.jar`
 
 ## Run
 
@@ -90,10 +90,7 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `jv-158-domain/`
-- `jv-158-pricing/`
-- `jv-158-risk/`
-- `jv-158-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
