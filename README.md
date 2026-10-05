@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V13_GRADLEKOTLINDSL_THINJAR_MONO
+﻿# Testable Java corpus — JV_V13_GRADLEKOTLINDSL_WAR_MICRO
 
-Grid cell `GRK-THIN-M` of the 24-cell Java grid.
+Grid cell `GRK-WAR-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 13 |
 | Host JDK | 17 |
 | Build system | Gradle / Kotlin DSL |
-| Packaging | Thin jar |
-| Architecture | Monolith |
+| Packaging | WAR |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -121,7 +121,7 @@ Java 13 is **not an LTS release**. It shipped September 2019 and reached end of 
 March 2020, six months later. It is in this corpus to complete the version axis, not as a
 recommendation.
 
-Produces: `dist/jv-199.jar or target/jv-199-1.0.0.jar`
+Produces: `jv-204.war`
 
 ## Run
 
@@ -137,7 +137,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-204-domain/`
+- `jv-204-pricing/`
+- `jv-204-risk/`
+- `jv-204-catalog/`
 
 
 ## Tool test-data folders
