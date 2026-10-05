@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V12_ANTIVY_WAR_MICRO
+﻿# Testable Java corpus — JV_V12_ANTIVY_WAR_MONO
 
-Grid cell `ANT-WAR-S` of the 24-cell Java grid.
+Grid cell `ANT-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 17 |
 | Build system | Ant + Ivy |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -94,7 +94,7 @@ Java 12 is **not an LTS release**. It shipped March 2019 and reached end of life
 September 2019, six months later. It is in this corpus to complete the version axis, not
 as a recommendation.
 
-Produces: `jv-192.war`
+Produces: `jv-191.war`
 
 ## Run
 
@@ -110,10 +110,7 @@ ant test
 
 ## Workspace projects
 
-- `jv-192-domain/`
-- `jv-192-pricing/`
-- `jv-192-risk/`
-- `jv-192-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
