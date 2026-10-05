@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V10_GRADLEGROOVYDSL_WAR_MICRO
+﻿# Testable Java corpus — JV_V10_GRADLEGROOVYDSL_WAR_MONO
 
-Grid cell `GRG-WAR-S` of the 24-cell Java grid.
+Grid cell `GRG-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 11 |
 | Build system | Gradle / Groovy DSL |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ no-argument `Optional.orElseThrow`, so it fails to compile under `--release 9` i
 places — the version differentiation is real, not
 declared.
 
-Produces: `jv-162.war`
+Produces: `jv-161.war`
 
 ## Run
 
@@ -90,10 +90,7 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `jv-162-domain/`
-- `jv-162-pricing/`
-- `jv-162-risk/`
-- `jv-162-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
