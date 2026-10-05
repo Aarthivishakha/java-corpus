@@ -1,6 +1,6 @@
 {
-  "branch": "JV-176",
-  "combo": "GRK-THIN-S",
+  "branch": "JV-175",
+  "combo": "GRK-THIN-M",
   "repository": "java-j12-174-178",
   "language": "java",
   "javaVersion": "12",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-176-domain",
-    "jv-176-pricing",
-    "jv-176-risk",
-    "jv-176-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "12",
   "testCompilerRelease": "12",
