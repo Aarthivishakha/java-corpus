@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V11_GRADLEKOTLINDSL_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V11_GRADLEKOTLINDSL_THINJAR_MICRO
 
-Grid cell `GRK-SHADE-M` of the 24-cell Java grid.
+Grid cell `GRK-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 11 |
 | Host JDK | 11 |
 | Build system | Gradle / Kotlin DSL |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ uses local `var`, private interface methods, `Set.of`, `Collectors.toUnmodifiabl
 compile under `--release 8` in sixteen places — the version differentiation is real, not
 declared.
 
-Produces: `jv-033-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-032.jar or target/jv-032-1.0.0.jar`
 
 ## Run
 
@@ -90,7 +90,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-032-domain/`
+- `jv-032-pricing/`
+- `jv-032-risk/`
+- `jv-032-catalog/`
 
 
 ## Tool test-data folders
