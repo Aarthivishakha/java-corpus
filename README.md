@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V12_GRADLEGROOVYDSL_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V12_GRADLEGROOVYDSL_THINJAR_MONO
 
-Grid cell `GRG-THIN-S` of the 24-cell Java grid.
+Grid cell `GRG-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 17 |
 | Build system | Gradle / Groovy DSL |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -94,7 +94,7 @@ Java 12 is **not an LTS release**. It shipped March 2019 and reached end of life
 September 2019, six months later. It is in this corpus to complete the version axis, not
 as a recommendation.
 
-Produces: `dist/jv-182.jar or target/jv-182-1.0.0.jar`
+Produces: `dist/jv-181.jar or target/jv-181-1.0.0.jar`
 
 ## Run
 
@@ -110,10 +110,7 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `jv-182-domain/`
-- `jv-182-pricing/`
-- `jv-182-risk/`
-- `jv-182-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
