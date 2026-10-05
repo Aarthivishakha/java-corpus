@@ -1,6 +1,6 @@
 {
-  "branch": "JV-180",
-  "combo": "GRK-WAR-S",
+  "branch": "JV-179",
+  "combo": "GRK-WAR-M",
   "repository": "java-j12-179-183",
   "language": "java",
   "javaVersion": "12",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-180-domain",
-    "jv-180-pricing",
-    "jv-180-risk",
-    "jv-180-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "12",
   "testCompilerRelease": "12",

@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V12_GRADLEKOTLINDSL_WAR_MICRO
+﻿# Testable Java corpus — JV_V12_GRADLEKOTLINDSL_WAR_MONO
 
-Grid cell `GRK-WAR-S` of the 24-cell Java grid.
+Grid cell `GRK-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 17 |
 | Build system | Gradle / Kotlin DSL |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -94,7 +94,7 @@ Java 12 is **not an LTS release**. It shipped March 2019 and reached end of life
 September 2019, six months later. It is in this corpus to complete the version axis, not
 as a recommendation.
 
-Produces: `jv-180.war`
+Produces: `jv-179.war`
 
 ## Run
 
@@ -110,10 +110,7 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `jv-180-domain/`
-- `jv-180-pricing/`
-- `jv-180-risk/`
-- `jv-180-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
