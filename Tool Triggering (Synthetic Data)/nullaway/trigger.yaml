@@ -1,0 +1,16 @@
+tool: nullaway
+block: "All Definition Coverage"
+metrics: 1
+kind: degraded
+java_version: "10"
+host_jdk: "11"
+build_system: "Ant + Ivy"
+command: ./tools/nullaway/run.sh
+exit_codes:
+  0: ran
+  1: failed
+  3: skipped-cannot-run
+  4: not-installed
+status: "cannot-run"
+reason: "runs as an Error Prone compiler plugin, not a standalone step"
+expected_exit: 3

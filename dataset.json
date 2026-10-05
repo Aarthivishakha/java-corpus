@@ -1,0 +1,104 @@
+{
+  "branch": "JV-166",
+  "combo": "ANT-SHADE-S",
+  "repository": "java-j10-165-168",
+  "language": "java",
+  "javaVersion": "10",
+  "hostJdk": "11",
+  "buildSystem": "Ant + Ivy",
+  "buildSystemId": "ANT",
+  "packaging": "Shaded uber-jar (relocated)",
+  "packagingId": "SHADE",
+  "architecture": "Microservices",
+  "architectureId": "S",
+  "modules": [
+    "jv-166-domain",
+    "jv-166-pricing",
+    "jv-166-risk",
+    "jv-166-catalog"
+  ],
+  "mainCompilerRelease": "10",
+  "testCompilerRelease": "10",
+  "bytecodeMajorVersion": 54,
+  "testFramework": "JUnit 4.13.2",
+  "versionExclusiveFeatures": [
+    "local var",
+    "List.copyOf / Set.copyOf / Map.copyOf",
+    "Collectors.toUnmodifiableList",
+    "no-arg Optional.orElseThrow"
+  ],
+  "failsToCompileUnder": "9",
+  "toolPins": {
+    "junit": "4.13.2",
+    "jacoco": "0.8.14",
+    "pmd": "7.26.0",
+    "checkstyle": "10.26.1",
+    "spotbugs": "4.10.3",
+    "findsecbugs": "1.14.0",
+    "pit": "1.30.0",
+    "owasp": "13.0.0"
+  },
+  "buildToolPins": {
+    "gradle": "8.14.3",
+    "shadow": "8.3.11",
+    "ant": "1.10.14",
+    "ivy": "2.6.0"
+  },
+  "plantedCves": [
+    {
+      "groupId": "commons-collections",
+      "artifactId": "commons-collections",
+      "version": "3.2.1"
+    },
+    {
+      "groupId": "org.apache.commons",
+      "artifactId": "commons-text",
+      "version": "1.9"
+    },
+    {
+      "groupId": "com.fasterxml.jackson.core",
+      "artifactId": "jackson-databind",
+      "version": "2.9.10.1"
+    },
+    {
+      "groupId": "log4j",
+      "artifactId": "log4j",
+      "version": "1.2.17"
+    },
+    {
+      "groupId": "org.yaml",
+      "artifactId": "snakeyaml",
+      "version": "1.30"
+    }
+  ],
+  "relocations": [
+    {
+      "from": "org.apache.commons",
+      "to": "com.pramora.testable.shaded.commons"
+    },
+    {
+      "from": "com.fasterxml.jackson",
+      "to": "com.pramora.testable.shaded.jackson"
+    },
+    {
+      "from": "org.yaml.snakeyaml",
+      "to": "com.pramora.testable.shaded.snakeyaml"
+    }
+  ],
+  "answerKey": {
+    "duplicatePair": [
+      "analysis/DuplicateProcessorA.java",
+      "analysis/DuplicateProcessorB.java"
+    ],
+    "highestCyclomaticComplexity": "service/PricingService.java#priceCents",
+    "highestCognitiveComplexity": "analysis/RiskScorer.java#score",
+    "taintSource": "util/InputSanitizer.java#sanitize",
+    "testCount": 37
+  },
+  "exitCodeContract": {
+    "0": "ran",
+    "1": "failed",
+    "3": "skipped-cannot-run",
+    "4": "not-installed"
+  }
+}

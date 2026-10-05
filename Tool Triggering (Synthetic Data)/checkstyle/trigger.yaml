@@ -1,0 +1,13 @@
+tool: checkstyle
+block: "Lint / Rule Violations"
+metrics: 12
+kind: plugin
+java_version: "10"
+host_jdk: "11"
+build_system: "Ant + Ivy"
+command: ./tools/checkstyle/run.sh
+exit_codes:
+  0: ran
+  1: failed
+  3: skipped-cannot-run
+  4: not-installed

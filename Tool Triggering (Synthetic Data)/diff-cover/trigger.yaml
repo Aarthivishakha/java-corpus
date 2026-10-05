@@ -1,0 +1,13 @@
+tool: diff-cover
+block: "Coverage Delta"
+metrics: 6
+kind: standalone
+java_version: "10"
+host_jdk: "11"
+build_system: "Ant + Ivy"
+command: ./tools/diff-cover/run.sh
+exit_codes:
+  0: ran
+  1: failed
+  3: skipped-cannot-run
+  4: not-installed
