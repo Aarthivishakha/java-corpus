@@ -1,6 +1,6 @@
 {
-  "branch": "JV-156",
-  "combo": "GRK-WAR-S",
+  "branch": "JV-155",
+  "combo": "GRK-WAR-M",
   "repository": "java-j10-155-159",
   "language": "java",
   "javaVersion": "10",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-156-domain",
-    "jv-156-pricing",
-    "jv-156-risk",
-    "jv-156-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "10",
   "testCompilerRelease": "10",
