@@ -1,6 +1,6 @@
 {
-  "branch": "JV-164",
-  "combo": "ANT-THIN-S",
+  "branch": "JV-163",
+  "combo": "ANT-THIN-M",
   "repository": "java-j10-160-164",
   "language": "java",
   "javaVersion": "10",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-164-domain",
-    "jv-164-pricing",
-    "jv-164-risk",
-    "jv-164-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "10",
   "testCompilerRelease": "10",
