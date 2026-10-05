@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V11_MAVEN_WAR_MICRO
+﻿# Testable Java corpus — JV_V11_MAVEN_WAR_MONO
 
-Grid cell `MVN-WAR-S` of the 24-cell Java grid.
+Grid cell `MVN-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 11 |
 | Build system | Maven |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ uses local `var`, private interface methods, `Set.of`, `Collectors.toUnmodifiabl
 compile under `--release 8` in sixteen places — the version differentiation is real, not
 declared.
 
-Produces: `jv-030.war`
+Produces: `jv-029.war`
 
 ## Run
 
@@ -90,10 +90,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-030-domain/`
-- `jv-030-pricing/`
-- `jv-030-risk/`
-- `jv-030-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders

@@ -1,7 +1,7 @@
 {
-  "branch": "JV-030",
-  "combo": "MVN-WAR-S",
-  "repository": "java-j11-030-034",
+  "branch": "JV-029",
+  "combo": "MVN-WAR-M",
+  "repository": "java-j11-025-029",
   "language": "java",
   "javaVersion": "11",
   "hostJdk": "11",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-030-domain",
-    "jv-030-pricing",
-    "jv-030-risk",
-    "jv-030-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "11",
   "testCompilerRelease": "11",
