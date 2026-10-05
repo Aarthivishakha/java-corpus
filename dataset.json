@@ -1,6 +1,6 @@
 {
-  "branch": "JV-170",
-  "combo": "MVN-THIN-S",
+  "branch": "JV-169",
+  "combo": "MVN-THIN-M",
   "repository": "java-j12-169-173",
   "language": "java",
   "javaVersion": "12",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-170-domain",
-    "jv-170-pricing",
-    "jv-170-risk",
-    "jv-170-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "12",
   "testCompilerRelease": "12",

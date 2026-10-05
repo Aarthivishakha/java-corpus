@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V12_MAVEN_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V12_MAVEN_THINJAR_MONO
 
-Grid cell `MVN-THIN-S` of the 24-cell Java grid.
+Grid cell `MVN-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 17 |
 | Build system | Maven |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -94,7 +94,7 @@ Java 12 is **not an LTS release**. It shipped March 2019 and reached end of life
 September 2019, six months later. It is in this corpus to complete the version axis, not
 as a recommendation.
 
-Produces: `dist/jv-170.jar or target/jv-170-1.0.0.jar`
+Produces: `dist/jv-169.jar or target/jv-169-1.0.0.jar`
 
 ## Run
 
@@ -110,10 +110,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-170-domain/`
-- `jv-170-pricing/`
-- `jv-170-risk/`
-- `jv-170-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
