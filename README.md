@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V13_ANTIVY_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V13_ANTIVY_THINJAR_MONO
 
-Grid cell `ANT-THIN-S` of the 24-cell Java grid.
+Grid cell `ANT-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 17 |
 | Build system | Ant + Ivy |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -121,7 +121,7 @@ Java 13 is **not an LTS release**. It shipped September 2019 and reached end of 
 March 2020, six months later. It is in this corpus to complete the version axis, not as a
 recommendation.
 
-Produces: `dist/jv-212.jar or target/jv-212-1.0.0.jar`
+Produces: `dist/jv-211.jar or target/jv-211-1.0.0.jar`
 
 ## Run
 
@@ -137,10 +137,7 @@ ant test
 
 ## Workspace projects
 
-- `jv-212-domain/`
-- `jv-212-pricing/`
-- `jv-212-risk/`
-- `jv-212-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders

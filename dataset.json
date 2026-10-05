@@ -1,6 +1,6 @@
 {
-  "branch": "JV-212",
-  "combo": "ANT-THIN-S",
+  "branch": "JV-211",
+  "combo": "ANT-THIN-M",
   "repository": "java-j13-208-212",
   "language": "java",
   "javaVersion": "13",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-212-domain",
-    "jv-212-pricing",
-    "jv-212-risk",
-    "jv-212-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "13",
   "testCompilerRelease": "13",
