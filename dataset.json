@@ -1,6 +1,6 @@
 {
-  "branch": "JV-146",
-  "combo": "MVN-THIN-S",
+  "branch": "JV-145",
+  "combo": "MVN-THIN-M",
   "repository": "java-j10-145-149",
   "language": "java",
   "javaVersion": "10",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-146-domain",
-    "jv-146-pricing",
-    "jv-146-risk",
-    "jv-146-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "10",
   "testCompilerRelease": "10",
