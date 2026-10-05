@@ -4,7 +4,7 @@ metrics: 22
 kind: plugin
 java_version: "12"
 host_jdk: "17"
-build_system: "Ant + Ivy"
+build_system: "Gradle / Groovy DSL"
 command: ./tools/jacoco/run.sh
 exit_codes:
   0: ran
