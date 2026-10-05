@@ -2,9 +2,9 @@ tool: sonar
 block: "Coverage Delta"
 metrics: 2
 kind: degraded
-java_version: "10"
+java_version: "11"
 host_jdk: "11"
-build_system: "Maven"
+build_system: "Ant + Ivy"
 command: ./tools/sonar/run.sh
 exit_codes:
   0: ran

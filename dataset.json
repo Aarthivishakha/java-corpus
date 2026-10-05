@@ -1,30 +1,36 @@
 {
-  "branch": "JV-149",
-  "combo": "MVN-WAR-M",
-  "repository": "java-j10-145-149",
+  "branch": "JV-046",
+  "combo": "ANT-SHADE-S",
+  "repository": "java-j11-045-048",
   "language": "java",
-  "javaVersion": "10",
+  "javaVersion": "11",
   "hostJdk": "11",
-  "buildSystem": "Maven",
-  "buildSystemId": "MVN",
-  "packaging": "WAR",
-  "packagingId": "WAR",
-  "architecture": "Monolith",
-  "architectureId": "M",
+  "buildSystem": "Ant + Ivy",
+  "buildSystemId": "ANT",
+  "packaging": "Shaded uber-jar (relocated)",
+  "packagingId": "SHADE",
+  "architecture": "Microservices",
+  "architectureId": "S",
   "modules": [
-    "(single module)"
+    "jv-046-domain",
+    "jv-046-pricing",
+    "jv-046-risk",
+    "jv-046-catalog"
   ],
-  "mainCompilerRelease": "10",
-  "testCompilerRelease": "10",
-  "bytecodeMajorVersion": 54,
+  "mainCompilerRelease": "11",
+  "testCompilerRelease": "11",
+  "bytecodeMajorVersion": 55,
   "testFramework": "JUnit 4.13.2",
   "versionExclusiveFeatures": [
     "local var",
-    "List.copyOf / Set.copyOf / Map.copyOf",
+    "private interface methods",
+    "Set.of / List.of",
     "Collectors.toUnmodifiableList",
-    "no-arg Optional.orElseThrow"
+    "Optional.isEmpty",
+    "String.strip / isBlank / repeat",
+    "Predicate.not"
   ],
-  "failsToCompileUnder": "9",
+  "failsToCompileUnder": "8",
   "toolPins": {
     "junit": "4.13.2",
     "jacoco": "0.8.14",
@@ -68,7 +74,20 @@
       "version": "1.30"
     }
   ],
-  "relocations": [],
+  "relocations": [
+    {
+      "from": "org.apache.commons",
+      "to": "com.pramora.testable.shaded.commons"
+    },
+    {
+      "from": "com.fasterxml.jackson",
+      "to": "com.pramora.testable.shaded.jackson"
+    },
+    {
+      "from": "org.yaml.snakeyaml",
+      "to": "com.pramora.testable.shaded.snakeyaml"
+    }
+  ],
   "answerKey": {
     "duplicatePair": [
       "analysis/DuplicateProcessorA.java",
@@ -77,7 +96,7 @@
     "highestCyclomaticComplexity": "service/PricingService.java#priceCents",
     "highestCognitiveComplexity": "analysis/RiskScorer.java#score",
     "taintSource": "util/InputSanitizer.java#sanitize",
-    "testCount": 37
+    "testCount": 30
   },
   "exitCodeContract": {
     "0": "ran",

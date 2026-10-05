@@ -2,9 +2,9 @@ tool: pit
 block: "Mutation Score"
 metrics: 7
 kind: plugin
-java_version: "10"
+java_version: "11"
 host_jdk: "11"
-build_system: "Maven"
+build_system: "Ant + Ivy"
 command: ./tools/pit/run.sh
 exit_codes:
   0: ran

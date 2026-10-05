@@ -2,9 +2,9 @@ tool: spoon
 block: "Data Flow Testing"
 metrics: 1
 kind: degraded
-java_version: "10"
+java_version: "11"
 host_jdk: "11"
-build_system: "Maven"
+build_system: "Ant + Ivy"
 command: ./tools/spoon/run.sh
 exit_codes:
   0: ran

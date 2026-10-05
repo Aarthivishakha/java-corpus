@@ -18,9 +18,6 @@ CK_JAR="${CK_JAR:-tools/ck/ck.jar}"
 # a tool whose artefact is absent is not-installed (4); a missing input is skipped (3)
 case "git-churn" in
   ck)         [ -f "$CK_JAR" ] || exit 4 ;;
-  spoon)      [ -f tools/spoon/spoon.jar ] || exit 4 ;;
-  asm-defuse) [ -f tools/asm-defuse/asm-defuse.jar ] || exit 4 ;;
-  ba-dua)     [ -f tools/ba-dua/ba-dua-cli.jar ] || exit 4 ;;
   diff-cover) [ -n "${JACOCO_XML:-}" ] || exit 3 ;;
 esac
 

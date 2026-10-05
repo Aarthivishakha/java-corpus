@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V10_MAVEN_WAR_MONO
+﻿# Testable Java corpus — JV_V11_ANTIVY_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `MVN-WAR-M` of the 24-cell Java grid.
+Grid cell `ANT-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -17,16 +17,16 @@ only. See `dataset.json` for the machine-readable description of this branch.
 
 | Variable | Value |
 |---|---|
-| Java version | 10 |
+| Java version | 11 |
 | Host JDK | 11 |
-| Build system | Maven |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Ant + Ivy |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
 19 tools are wired on this branch (one `Tool Triggering (Synthetic Data)/<dir>/` folder
-each). **13 of them run on JDK 10 (host JDK 11); 6 do not.**
+each). **13 of them run on JDK 11 (host JDK 11); 6 do not.**
 
 That is the measurement, not a defect. A tool that cannot run exits **3**,
 not 0 -- a skip that looks like a pass is the failure mode this corpus
@@ -65,16 +65,16 @@ when a tool can't run on this family.
 ## Build
 
 ```
-mvn -B clean package
+ant clean package
 ```
 
-Main and test sources both compile at Java 10 (bytecode major version 54). The code
-uses local `var`, `List.copyOf`, `Set.copyOf`, `Collectors.toUnmodifiableList` and the
-no-argument `Optional.orElseThrow`, so it fails to compile under `--release 9` in thirteen
-places — the version differentiation is real, not
+Main and test sources both compile at Java 11 (bytecode major version 55). The code
+uses local `var`, private interface methods, `Set.of`, `Collectors.toUnmodifiableList`,
+`Optional.isEmpty`, `String.strip`/`isBlank`/`repeat` and `Predicate.not`, so it fails to
+compile under `--release 8` in sixteen places — the version differentiation is real, not
 declared.
 
-Produces: `jv-149.war`
+Produces: `jv-046-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -85,12 +85,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-mvn -B test
+ant test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-046-domain/`
+- `jv-046-pricing/`
+- `jv-046-risk/`
+- `jv-046-catalog/`
 
 
 ## Tool test-data folders
