@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="jv-190" default="package" basedir="."
+<project name="jv-189" default="package" basedir="."
          xmlns:ivy="antlib:org.apache.ivy.ant">
 
   <!-- release, not source/target: it pins the API surface as well as the bytecode level,
@@ -20,17 +20,15 @@
     <mkdir dir="${build.dir}/classes"/>
     <javac destdir="${build.dir}/classes" includeantruntime="false"
            release="${java.release}" debug="true" encoding="UTF-8">
-      <src path="jv-190-domain/src/main/java"/>
-      <src path="jv-190-pricing/src/main/java"/>
-      <src path="jv-190-risk/src/main/java"/>
-      <src path="jv-190-catalog/src/main/java"/>
+      <src path="src/main/java"/>
+
       <classpath><fileset dir="${lib.dir}" includes="**/*.jar"/></classpath>
     </javac>
   </target>
 
   <target name="compile-tests" depends="compile" description="compile test sources">
     <mkdir dir="${build.dir}/test-classes"/>
-    <javac srcdir="jv-190-domain/src/test/java" destdir="${build.dir}/test-classes" includeantruntime="false"
+    <javac srcdir="src/test/java" destdir="${build.dir}/test-classes" includeantruntime="false"
            release="${java.release}" debug="true" encoding="UTF-8">
       <classpath>
         <pathelement location="${build.dir}/classes"/>
@@ -49,7 +47,7 @@
       </classpath>
       <formatter type="xml"/>
       <batchtest todir="${report.dir}">
-        <fileset dir="jv-190-domain/src/test/java" includes="**/*Test.java"/>
+        <fileset dir="src/test/java" includes="**/*Test.java"/>
       </batchtest>
     </junit>
   </target>
