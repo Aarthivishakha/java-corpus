@@ -1,6 +1,6 @@
 {
-  "branch": "JV-210",
-  "combo": "GRG-WAR-S",
+  "branch": "JV-209",
+  "combo": "GRG-WAR-M",
   "repository": "java-j13-208-212",
   "language": "java",
   "javaVersion": "13",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-210-domain",
-    "jv-210-pricing",
-    "jv-210-risk",
-    "jv-210-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "13",
   "testCompilerRelease": "13",
