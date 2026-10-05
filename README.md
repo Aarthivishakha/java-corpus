@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V10_ANTIVY_THINJAR_MONO
+﻿# Testable Java corpus — JV_V10_ANTIVY_WAR_MICRO
 
-Grid cell `ANT-THIN-M` of the 24-cell Java grid.
+Grid cell `ANT-WAR-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 10 |
 | Host JDK | 11 |
 | Build system | Ant + Ivy |
-| Packaging | Thin jar |
-| Architecture | Monolith |
+| Packaging | WAR |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ no-argument `Optional.orElseThrow`, so it fails to compile under `--release 9` i
 places — the version differentiation is real, not
 declared.
 
-Produces: `dist/jv-163.jar or target/jv-163-1.0.0.jar`
+Produces: `jv-168.war`
 
 ## Run
 
@@ -90,7 +90,10 @@ ant test
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-168-domain/`
+- `jv-168-pricing/`
+- `jv-168-risk/`
+- `jv-168-catalog/`
 
 
 ## Tool test-data folders
