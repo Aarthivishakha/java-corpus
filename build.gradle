@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'com.gradleup.shadow' version '8.3.11'
     id 'jacoco'
     id 'checkstyle'
     id 'pmd'
@@ -52,8 +53,8 @@ spotbugs {
     excludeFilter = file('tools/spotbugs/exclude.xml')
 }
 
-jar {
-    manifest {
-        attributes 'Main-Class': 'com.pramora.testable.app.Main'
-    }
+shadowJar {
+    relocate 'org.apache.commons', 'com.pramora.testable.shaded.commons'
+    relocate 'com.fasterxml.jackson', 'com.pramora.testable.shaded.jackson'
+    relocate 'org.yaml.snakeyaml', 'com.pramora.testable.shaded.snakeyaml'
 }
