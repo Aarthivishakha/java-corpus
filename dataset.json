@@ -1,46 +1,51 @@
 {
-  "branch": "JV-029",
-  "combo": "MVN-WAR-M",
-  "repository": "java-j11-025-029",
+  "branch": "JV-190",
+  "combo": "ANT-SHADE-S",
+  "repository": "java-j12-189-192",
   "language": "java",
-  "javaVersion": "11",
-  "hostJdk": "11",
-  "buildSystem": "Maven",
-  "buildSystemId": "MVN",
-  "packaging": "WAR",
-  "packagingId": "WAR",
-  "architecture": "Monolith",
-  "architectureId": "M",
+  "javaVersion": "12",
+  "hostJdk": "17",
+  "buildSystem": "Ant + Ivy",
+  "buildSystemId": "ANT",
+  "packaging": "Shaded uber-jar (relocated)",
+  "packagingId": "SHADE",
+  "architecture": "Microservices",
+  "architectureId": "S",
   "modules": [
-    "(single module)"
+    "jv-190-domain",
+    "jv-190-pricing",
+    "jv-190-risk",
+    "jv-190-catalog"
   ],
-  "mainCompilerRelease": "11",
-  "testCompilerRelease": "11",
-  "bytecodeMajorVersion": 55,
+  "mainCompilerRelease": "12",
+  "testCompilerRelease": "12",
+  "bytecodeMajorVersion": 56,
   "testFramework": "JUnit 4.13.2",
   "versionExclusiveFeatures": [
-    "local var",
-    "private interface methods",
-    "Set.of / List.of",
-    "Collectors.toUnmodifiableList",
-    "Optional.isEmpty",
-    "String.strip / isBlank / repeat",
-    "Predicate.not"
+    "Collectors.teeing",
+    "String.transform",
+    "String.indent",
+    "NumberFormat.getCompactNumberInstance",
+    "CompactNumberFormat"
   ],
-  "failsToCompileUnder": "8",
+  "versionLockKind": "api-only",
+  "versionLockNote": "Java 12's switch expressions were a preview feature and did not become final until Java 14; with preview features off there is no Java-12-final syntax, so the lock is carried entirely by Java 12 APIs.",
+  "lts": false,
+  "hostJdkDiffersFromLanguageLevel": true,
+  "failsToCompileUnder": "11",
   "toolPins": {
     "junit": "4.13.2",
     "jacoco": "0.8.14",
     "pmd": "7.26.0",
-    "checkstyle": "10.26.1",
+    "checkstyle": "12.3.1",
     "spotbugs": "4.10.3",
     "findsecbugs": "1.14.0",
     "pit": "1.30.0",
     "owasp": "13.0.0"
   },
   "buildToolPins": {
-    "gradle": "8.14.3",
-    "shadow": "8.3.11",
+    "gradle": "9.7.1",
+    "shadow": "9.6.1",
     "ant": "1.10.14",
     "ivy": "2.6.0"
   },
@@ -71,7 +76,20 @@
       "version": "1.30"
     }
   ],
-  "relocations": [],
+  "relocations": [
+    {
+      "from": "org.apache.commons",
+      "to": "com.pramora.testable.shaded.commons"
+    },
+    {
+      "from": "com.fasterxml.jackson",
+      "to": "com.pramora.testable.shaded.jackson"
+    },
+    {
+      "from": "org.yaml.snakeyaml",
+      "to": "com.pramora.testable.shaded.snakeyaml"
+    }
+  ],
   "answerKey": {
     "duplicatePair": [
       "analysis/DuplicateProcessorA.java",
@@ -80,7 +98,7 @@
     "highestCyclomaticComplexity": "service/PricingService.java#priceCents",
     "highestCognitiveComplexity": "analysis/RiskScorer.java#score",
     "taintSource": "util/InputSanitizer.java#sanitize",
-    "testCount": 30
+    "testCount": 41
   },
   "exitCodeContract": {
     "0": "ran",

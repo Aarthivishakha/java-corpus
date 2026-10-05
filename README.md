@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V11_MAVEN_WAR_MONO
+﻿# Testable Java corpus — JV_V12_ANTIVY_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `MVN-WAR-M` of the 24-cell Java grid.
+Grid cell `ANT-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -17,16 +17,16 @@ only. See `dataset.json` for the machine-readable description of this branch.
 
 | Variable | Value |
 |---|---|
-| Java version | 11 |
-| Host JDK | 11 |
-| Build system | Maven |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Java version | 12 |
+| Host JDK | 17 |
+| Build system | Ant + Ivy |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
 19 tools are wired on this branch (one `Tool Triggering (Synthetic Data)/<dir>/` folder
-each). **13 of them run on JDK 11 (host JDK 11); 6 do not.**
+each). **14 of them run on JDK 12 (host JDK 17); 5 do not.**
 
 That is the measurement, not a defect. A tool that cannot run exits **3**,
 not 0 -- a skip that looks like a pass is the failure mode this corpus
@@ -49,6 +49,7 @@ when a tool can't run on this family.
 | `pit` | primary | Mutation Score |
 | `pmd` | primary | Cognitive Complexity |
 | `pydriller` | alternative | Code Churn |
+| `spoon` | primary | Data Flow Testing |
 | `spotbugs` | primary | Static Vulnerabilities (SAST) |
 
 ### Dark here
@@ -60,21 +61,40 @@ when a tool can't run on this family.
 | `custom-def-use` | n/a (placeholder) | Data Flow Testing | not a tool - the sheet names no package, version or vendor |
 | `nullaway` | primary | All Definition Coverage | runs as an Error Prone compiler plugin, not a standalone step |
 | `sonar` | primary | Coverage Delta | needs a running SonarQube server; set SONAR_HOST_URL to enable |
-| `spoon` | primary | Data Flow Testing | Spoon 11.5.1 requires JDK 17+; this family runs on JDK 11 |
 
 ## Build
 
 ```
-mvn -B clean package
+ant clean package
 ```
 
-Main and test sources both compile at Java 11 (bytecode major version 55). The code
-uses local `var`, private interface methods, `Set.of`, `Collectors.toUnmodifiableList`,
-`Optional.isEmpty`, `String.strip`/`isBlank`/`repeat` and `Predicate.not`, so it fails to
-compile under `--release 8` in sixteen places — the version differentiation is real, not
+Main and test sources both compile at Java 12 (bytecode major version 56), built by
+`javac 17` with `--release 12`.
+
+**The Java 12 lock is an API lock, not a syntax lock.** Java 12's headline language change
+was switch expressions, and they were a *preview* feature in 12 — they did not become final
+until Java 14. The corpus rule is that preview features stay off, so there is no
+Java-12-final syntax to lock against. `analysis/OrderDigest.java` carries the lock through
+four APIs that first shipped in Java 12 instead:
+
+| API | Added |
+|---|---|
+| `Collectors.teeing` | Java 12 |
+| `String.transform` | Java 12 |
+| `String.indent` | Java 12 |
+| `NumberFormat.getCompactNumberInstance` / `CompactNumberFormat` | Java 12 |
+
+The file fails to compile under `--release 11` in five places, and the Java 17 family's own
+lock files still fail under `--release 12` (`sealed classes are not supported in
+-source 12`, `text blocks are not supported in -source 12`, `switch expressions are not
+supported in -source 12`). The differentiation holds in both directions — it is real, not
 declared.
 
-Produces: `jv-029.war`
+Java 12 is **not an LTS release**. It shipped March 2019 and reached end of life in
+September 2019, six months later. It is in this corpus to complete the version axis, not
+as a recommendation.
+
+Produces: `jv-190-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -85,12 +105,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-mvn -B test
+ant test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-190-domain/`
+- `jv-190-pricing/`
+- `jv-190-risk/`
+- `jv-190-catalog/`
 
 
 ## Tool test-data folders

@@ -2,9 +2,9 @@ tool: ck
 block: "Cyclomatic Complexity"
 metrics: 6
 kind: standalone
-java_version: "11"
-host_jdk: "11"
-build_system: "Maven"
+java_version: "12"
+host_jdk: "17"
+build_system: "Ant + Ivy"
 command: ./tools/ck/run.sh
 exit_codes:
   0: ran
