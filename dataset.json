@@ -1,6 +1,6 @@
 {
-  "branch": "JV-148",
-  "combo": "MVN-SHADE-S",
+  "branch": "JV-147",
+  "combo": "MVN-SHADE-M",
   "repository": "java-j10-145-149",
   "language": "java",
   "javaVersion": "10",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-148-domain",
-    "jv-148-pricing",
-    "jv-148-risk",
-    "jv-148-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "10",
   "testCompilerRelease": "10",

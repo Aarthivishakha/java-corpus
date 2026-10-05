@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V10_MAVEN_SHADEDUBERJARRELOCATED_MICRO
+﻿# Testable Java corpus — JV_V10_MAVEN_SHADEDUBERJARRELOCATED_MONO
 
-Grid cell `MVN-SHADE-S` of the 24-cell Java grid.
+Grid cell `MVN-SHADE-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 11 |
 | Build system | Maven |
 | Packaging | Shaded uber-jar (relocated) |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ no-argument `Optional.orElseThrow`, so it fails to compile under `--release 9` i
 places — the version differentiation is real, not
 declared.
 
-Produces: `jv-148-all.jar (shaded, packages relocated)`
+Produces: `jv-147-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -90,10 +90,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-148-domain/`
-- `jv-148-pricing/`
-- `jv-148-risk/`
-- `jv-148-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
