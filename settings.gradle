@@ -1,0 +1,5 @@
+rootProject.name = 'jv-280-parent'
+include ':jv-280-domain'
+include ':jv-280-pricing'
+include ':jv-280-risk'
+include ':jv-280-catalog'
