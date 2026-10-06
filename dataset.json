@@ -1,6 +1,6 @@
 {
-  "branch": "JV-428",
-  "combo": "ANT-THIN-S",
+  "branch": "JV-427",
+  "combo": "ANT-THIN-M",
   "repository": "java-j24-424-428",
   "language": "java",
   "javaVersion": "24",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-428-domain",
-    "jv-428-pricing",
-    "jv-428-risk",
-    "jv-428-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "24",
   "testCompilerRelease": "24",
