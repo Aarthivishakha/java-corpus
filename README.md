@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V18_ANTIVY_WAR_MONO
+﻿# Testable Java corpus — JV_V18_GRADLEGROOVYDSL_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `ANT-WAR-M` of the 24-cell Java grid.
+Grid cell `GRG-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -19,9 +19,9 @@ only. See `dataset.json` for the machine-readable description of this branch.
 |---|---|
 | Java version | 18 |
 | Host JDK | 21 |
-| Build system | Ant + Ivy |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Gradle / Groovy DSL |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -65,7 +65,7 @@ when a tool can't run on this family.
 ## Build
 
 ```
-ant clean package
+./gradlew build
 ```
 
 Main and test sources both compile at Java 18 (bytecode major version 62), built by
@@ -115,7 +115,7 @@ Java 18 is **not an LTS release**. It shipped March 2022 and reached end of life
 2022, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-311.war`
+Produces: `jv-304-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -126,12 +126,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-ant test
+./gradlew test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-304-domain/`
+- `jv-304-pricing/`
+- `jv-304-risk/`
+- `jv-304-catalog/`
 
 
 ## Tool test-data folders
