@@ -1,6 +1,6 @@
 {
-  "branch": "JV-354",
-  "combo": "GRG-WAR-S",
+  "branch": "JV-353",
+  "combo": "GRG-WAR-M",
   "repository": "java-j20-352-356",
   "language": "java",
   "javaVersion": "20",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-354-domain",
-    "jv-354-pricing",
-    "jv-354-risk",
-    "jv-354-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "20",
   "testCompilerRelease": "20",

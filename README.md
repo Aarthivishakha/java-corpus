@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V20_GRADLEGROOVYDSL_WAR_MICRO
+﻿# Testable Java corpus — JV_V20_GRADLEGROOVYDSL_WAR_MONO
 
-Grid cell `GRG-WAR-S` of the 24-cell Java grid.
+Grid cell `GRG-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 21 |
 | Build system | Gradle / Groovy DSL |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -124,7 +124,7 @@ Java 20 is **not an LTS release**. It shipped March 2023 and reached end of life
 2023, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-354.war`
+Produces: `jv-353.war`
 
 ## Run
 
@@ -140,10 +140,7 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `jv-354-domain/`
-- `jv-354-pricing/`
-- `jv-354-risk/`
-- `jv-354-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
