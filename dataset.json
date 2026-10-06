@@ -1,7 +1,7 @@
 {
-  "branch": "JV-390",
-  "combo": "MVN-WAR-S",
-  "repository": "java-j23-390-394",
+  "branch": "JV-389",
+  "combo": "MVN-WAR-M",
+  "repository": "java-j23-385-389",
   "language": "java",
   "javaVersion": "23",
   "hostJdk": "25",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-390-domain",
-    "jv-390-pricing",
-    "jv-390-risk",
-    "jv-390-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "23",
   "testCompilerRelease": "23",

@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V23_MAVEN_WAR_MICRO
+﻿# Testable Java corpus — JV_V23_MAVEN_WAR_MONO
 
-Grid cell `MVN-WAR-S` of the 24-cell Java grid.
+Grid cell `MVN-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 25 |
 | Build system | Maven |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -131,7 +131,7 @@ Java 23 is **not an LTS release**. It shipped September 2024 and reached end of 
 2025, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-390.war`
+Produces: `jv-389.war`
 
 ## Run
 
@@ -147,10 +147,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-390-domain/`
-- `jv-390-pricing/`
-- `jv-390-risk/`
-- `jv-390-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
