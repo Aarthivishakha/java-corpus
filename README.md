@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V16_MAVEN_WAR_MONO
+﻿# Testable Java corpus — JV_V17_ANTIVY_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `MVN-WAR-M` of the 24-cell Java grid.
+Grid cell `ANT-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -17,16 +17,16 @@ only. See `dataset.json` for the machine-readable description of this branch.
 
 | Variable | Value |
 |---|---|
-| Java version | 16 |
+| Java version | 17 |
 | Host JDK | 17 |
-| Build system | Maven |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Ant + Ivy |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
 19 tools are wired on this branch (one `Tool Triggering (Synthetic Data)/<dir>/` folder
-each). **14 of them run on JDK 16 (host JDK 17); 5 do not.**
+each). **13 of them run on JDK 17 (host JDK 17); 6 do not.**
 
 That is the measurement, not a defect. A tool that cannot run exits **3**,
 not 0 -- a skip that looks like a pass is the failure mode this corpus
@@ -38,7 +38,6 @@ when a tool can't run on this family.
 | Tool | Role | Block |
 |---|---|---|
 | `checkstyle` | primary | Lint / Rule Violations |
-| `ck` | primary | Cyclomatic Complexity |
 | `cpd` | primary | Code Duplication |
 | `diff-cover` | primary | Coverage Delta |
 | `git-churn` | primary | Code Churn |
@@ -58,6 +57,7 @@ when a tool can't run on this family.
 |---|---|---|---|
 | `asm-defuse` | primary | Data Flow Testing | no jar published under a stable coordinate - place one in Tool Triggering (Synthetic Data)/asm-defuse/ |
 | `ba-dua` | primary | All Definition Coverage | ba-dua 0.8.0 links JaCoCo 0.8.1, which stops at Java 10 class files |
+| `ck` | primary | Cyclomatic Complexity | CK 0.7.0 bundles Eclipse JDT 3.26.0, which parses only up to Java 16 - it cannot read this branch's records or sealed types |
 | `custom-def-use` | n/a (placeholder) | Data Flow Testing | not a tool - the sheet names no package, version or vendor |
 | `nullaway` | primary | All Definition Coverage | runs as an Error Prone compiler plugin, not a standalone step |
 | `sonar` | primary | Coverage Delta | needs a running SonarQube server; set SONAR_HOST_URL to enable |
@@ -65,59 +65,16 @@ when a tool can't run on this family.
 ## Build
 
 ```
-mvn -B clean package
+ant clean package
 ```
 
-Main and test sources both compile at Java 16 (bytecode major version 60), built by
-`javac 17` with `--release 16`.
+Main and test sources both compile at Java 17 (bytecode major version 61). The code
+uses records, a sealed interface, pattern matching for `instanceof`, text blocks, switch
+expressions and `Stream.toList`, so it fails to compile under `--release 11` in eleven
+places — the version differentiation is real, not
+declared.
 
-**Two more preview arcs land here.** Records (JEP 395) and pattern matching for
-{@code instanceof} (JEP 394) both became final in Java 16 after preview in 14 and a second
-preview in 15 - the third and fourth three-release arcs in this corpus, after switch
-expressions (12, 13, final 14) and text blocks (13, 14, final 15). Four headline features,
-four families that could not use them, and the reason java12 and java13 have API-only locks.
-
-The Java 16 lock is deliberately split across three files, one lock kind per file:
-
-| File | Lock | Kind |
-|---|---|---|
-| `model/ShipmentLeg.java` | record declaration + compact canonical constructor | parse-time |
-| `analysis/RouteDescriber.java` | pattern matching for `instanceof` | parse-time |
-| `analysis/RoutePlanner.java` | `Stream.toList`, `Stream.mapMulti` | attribution-time |
-
-### Why the split, and why the lock count depends on how you compile
-
-`javac` halts at the first syntax error **in a file**, so an API lock that shares a file with
-a syntax lock can never be reported. Compiling the whole family at `--release 15` gives
-**2 errors**. Compiling each file separately, with the family's own compiled classes on the
-classpath, gives **5**:
-
-```
-ShipmentLeg.java     records are not supported in -source 15
-RouteDescriber.java  pattern matching in instanceof is not supported in -source 15
-RoutePlanner.java    cannot find symbol: method mapMulti(...)
-RoutePlanner.java    cannot find symbol: method toList()
-RoutePlanner.java    cannot find symbol: method toList()
-```
-
-Same source, same release, two and a half times the locks. The whole-family number is not
-wrong, it just answers a different question - *does this branch build?* rather than *how many
-independent things pin it to this version?* Earlier families measured the second number by
-neutralising the syntax lock in a scratch copy, which needs a hand-written stand-in per
-family and silently under-reports if the stand-in drifts. Per-file compilation needs nothing
-hand-written and cannot drift, so it replaces that step from this family on.
-
-**Sealed types are deliberately absent.** They were in their second preview in Java 16 and
-became final in Java 17, so they belong to that family - and they are what java17's
-`model/PricingEvent.java` already uses.
-
-Forward-checked at `--release 17, 21` and `25`: clean.
-
-Java 16 is **not an LTS release**. It shipped March 2021 and reached end of life in
-September 2021, six months later. It is in this corpus to complete the version axis, not as
-a recommendation.
-
-Produces: `jv-269.war`
+Produces: `jv-070-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -128,12 +85,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-mvn -B test
+ant test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-070-domain/`
+- `jv-070-pricing/`
+- `jv-070-risk/`
+- `jv-070-catalog/`
 
 
 ## Tool test-data folders

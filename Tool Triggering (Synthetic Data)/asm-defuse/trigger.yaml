@@ -2,9 +2,9 @@ tool: asm-defuse
 block: "Data Flow Testing"
 metrics: 1
 kind: degraded
-java_version: "16"
+java_version: "17"
 host_jdk: "17"
-build_system: "Maven"
+build_system: "Ant + Ivy"
 command: ./tools/asm-defuse/run.sh
 exit_codes:
   0: ran

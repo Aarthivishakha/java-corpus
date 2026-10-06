@@ -1,88 +1,36 @@
 {
-  "branch": "JV-269",
-  "combo": "MVN-WAR-M",
-  "repository": "java-j16-265-269",
+  "branch": "JV-070",
+  "combo": "ANT-SHADE-S",
+  "repository": "java-j17-069-072",
   "language": "java",
-  "javaVersion": "16",
+  "javaVersion": "17",
   "hostJdk": "17",
-  "buildSystem": "Maven",
-  "buildSystemId": "MVN",
-  "packaging": "WAR",
-  "packagingId": "WAR",
-  "architecture": "Monolith",
-  "architectureId": "M",
+  "buildSystem": "Ant + Ivy",
+  "buildSystemId": "ANT",
+  "packaging": "Shaded uber-jar (relocated)",
+  "packagingId": "SHADE",
+  "architecture": "Microservices",
+  "architectureId": "S",
   "modules": [
-    "(single module)"
+    "jv-070-domain",
+    "jv-070-pricing",
+    "jv-070-risk",
+    "jv-070-catalog"
   ],
-  "mainCompilerRelease": "16",
-  "testCompilerRelease": "16",
-  "bytecodeMajorVersion": 60,
+  "mainCompilerRelease": "17",
+  "testCompilerRelease": "17",
+  "bytecodeMajorVersion": 61,
   "testFramework": "JUnit 4.13.2",
   "versionExclusiveFeatures": [
     "records",
-    "compact canonical constructor",
+    "sealed interfaces",
     "pattern matching for instanceof",
+    "text blocks",
+    "switch expressions",
     "Stream.toList",
-    "Stream.mapMulti"
+    "String.formatted"
   ],
-  "versionLockKind": "syntax+api",
-  "versionLockNote": "Records and pattern matching for instanceof both became final in Java 16 after preview in 14 and second preview in 15. The lock is split one kind per file so that per-file compilation can see all of it: compiling the whole family at --release 15 reports 2 errors, compiling each file separately against the family's own classes reports 5.",
-  "versionLockLayers": {
-    "parseTime": [
-      {
-        "file": "model/ShipmentLeg.java",
-        "errors": 1
-      },
-      {
-        "file": "analysis/RouteDescriber.java",
-        "errors": 1
-      }
-    ],
-    "attributionTime": [
-      {
-        "file": "analysis/RoutePlanner.java",
-        "errors": 3
-      }
-    ]
-  },
-  "lockErrorsWholeFamily": 2,
-  "lockErrorsPerFile": 5,
-  "previewFeaturesDeliberatelyAbsent": [
-    "sealed types (2nd preview in 16, final 17)"
-  ],
-  "forwardChecked": [
-    "17",
-    "21",
-    "25"
-  ],
-  "inheritedLocks": {
-    "12": [
-      "Collectors.teeing",
-      "String.transform",
-      "String.indent",
-      "NumberFormat.getCompactNumberInstance"
-    ],
-    "13": [
-      "ByteBuffer.get(int,byte[])",
-      "CharBuffer.get(int,char[])",
-      "FileSystems.newFileSystem(Path,Map)"
-    ],
-    "14": [
-      "switch expressions",
-      "yield",
-      "java.io.Serial"
-    ],
-    "15": [
-      "text blocks",
-      "String.formatted",
-      "String.stripIndent",
-      "String.translateEscapes",
-      "CharSequence.isEmpty"
-    ]
-  },
-  "lts": false,
-  "hostJdkDiffersFromLanguageLevel": true,
-  "failsToCompileUnder": "15",
+  "failsToCompileUnder": "11",
   "toolPins": {
     "junit": "4.13.2",
     "jacoco": "0.8.14",
@@ -126,7 +74,20 @@
       "version": "1.30"
     }
   ],
-  "relocations": [],
+  "relocations": [
+    {
+      "from": "org.apache.commons",
+      "to": "com.pramora.testable.shaded.commons"
+    },
+    {
+      "from": "com.fasterxml.jackson",
+      "to": "com.pramora.testable.shaded.jackson"
+    },
+    {
+      "from": "org.yaml.snakeyaml",
+      "to": "com.pramora.testable.shaded.snakeyaml"
+    }
+  ],
   "answerKey": {
     "duplicatePair": [
       "analysis/DuplicateProcessorA.java",
@@ -135,7 +96,7 @@
     "highestCyclomaticComplexity": "service/PricingService.java#priceCents",
     "highestCognitiveComplexity": "analysis/RiskScorer.java#score",
     "taintSource": "util/InputSanitizer.java#sanitize",
-    "testCount": 120
+    "testCount": 37
   },
   "exitCodeContract": {
     "0": "ran",
