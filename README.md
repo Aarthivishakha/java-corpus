@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V20_MAVEN_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V20_MAVEN_THINJAR_MONO
 
-Grid cell `MVN-THIN-S` of the 24-cell Java grid.
+Grid cell `MVN-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 21 |
 | Build system | Maven |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -124,7 +124,7 @@ Java 20 is **not an LTS release**. It shipped March 2023 and reached end of life
 2023, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-338.jar or target/jv-338-1.0.0.jar`
+Produces: `dist/jv-337.jar or target/jv-337-1.0.0.jar`
 
 ## Run
 
@@ -140,10 +140,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-338-domain/`
-- `jv-338-pricing/`
-- `jv-338-risk/`
-- `jv-338-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
