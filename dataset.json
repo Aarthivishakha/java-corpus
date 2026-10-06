@@ -1,6 +1,6 @@
 {
-  "branch": "JV-364",
-  "combo": "MVN-SHADE-S",
+  "branch": "JV-363",
+  "combo": "MVN-SHADE-M",
   "repository": "java-j22-361-365",
   "language": "java",
   "javaVersion": "22",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-364-domain",
-    "jv-364-pricing",
-    "jv-364-risk",
-    "jv-364-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "22",
   "testCompilerRelease": "22",
