@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V16_ANTIVY_SHADEDUBERJARRELOCATED_MICRO
+﻿# Testable Java corpus — JV_V16_ANTIVY_SHADEDUBERJARRELOCATED_MONO
 
-Grid cell `ANT-SHADE-S` of the 24-cell Java grid.
+Grid cell `ANT-SHADE-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 17 |
 | Build system | Ant + Ivy |
 | Packaging | Shaded uber-jar (relocated) |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -117,7 +117,7 @@ Java 16 is **not an LTS release**. It shipped March 2021 and reached end of life
 September 2021, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-286-all.jar (shaded, packages relocated)`
+Produces: `jv-285-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -133,10 +133,7 @@ ant test
 
 ## Workspace projects
 
-- `jv-286-domain/`
-- `jv-286-pricing/`
-- `jv-286-risk/`
-- `jv-286-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
