@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V15_ANTIVY_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V15_ANTIVY_THINJAR_MONO
 
-Grid cell `ANT-THIN-S` of the 24-cell Java grid.
+Grid cell `ANT-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 17 |
 | Build system | Ant + Ivy |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -124,7 +124,7 @@ Java 15 is **not an LTS release**. It shipped September 2020 and reached end of 
 March 2021, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-260.jar or target/jv-260-1.0.0.jar`
+Produces: `dist/jv-259.jar or target/jv-259-1.0.0.jar`
 
 ## Run
 
@@ -140,10 +140,7 @@ ant test
 
 ## Workspace projects
 
-- `jv-260-domain/`
-- `jv-260-pricing/`
-- `jv-260-risk/`
-- `jv-260-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
