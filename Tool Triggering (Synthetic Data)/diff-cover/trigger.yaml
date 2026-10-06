@@ -2,9 +2,9 @@ tool: diff-cover
 block: "Coverage Delta"
 metrics: 6
 kind: standalone
-java_version: "17"
-host_jdk: "17"
-build_system: "Maven"
+java_version: "18"
+host_jdk: "21"
+build_system: "Ant + Ivy"
 command: ./tools/diff-cover/run.sh
 exit_codes:
   0: ran

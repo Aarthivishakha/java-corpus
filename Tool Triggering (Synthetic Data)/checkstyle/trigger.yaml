@@ -2,9 +2,9 @@ tool: checkstyle
 block: "Lint / Rule Violations"
 metrics: 12
 kind: plugin
-java_version: "17"
-host_jdk: "17"
-build_system: "Maven"
+java_version: "18"
+host_jdk: "21"
+build_system: "Ant + Ivy"
 command: ./tools/checkstyle/run.sh
 exit_codes:
   0: ran

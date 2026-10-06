@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V17_MAVEN_WAR_MONO
+﻿# Testable Java corpus — JV_V18_ANTIVY_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `MVN-WAR-M` of the 24-cell Java grid.
+Grid cell `ANT-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -17,16 +17,16 @@ only. See `dataset.json` for the machine-readable description of this branch.
 
 | Variable | Value |
 |---|---|
-| Java version | 17 |
-| Host JDK | 17 |
-| Build system | Maven |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Java version | 18 |
+| Host JDK | 21 |
+| Build system | Ant + Ivy |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
 19 tools are wired on this branch (one `Tool Triggering (Synthetic Data)/<dir>/` folder
-each). **13 of them run on JDK 17 (host JDK 17); 6 do not.**
+each). **13 of them run on JDK 18 (host JDK 21); 6 do not.**
 
 That is the measurement, not a defect. A tool that cannot run exits **3**,
 not 0 -- a skip that looks like a pass is the failure mode this corpus
@@ -65,16 +65,57 @@ when a tool can't run on this family.
 ## Build
 
 ```
-mvn -B clean package
+ant clean package
 ```
 
-Main and test sources both compile at Java 17 (bytecode major version 61). The code
-uses records, a sealed interface, pattern matching for `instanceof`, text blocks, switch
-expressions and `Stream.toList`, so it fails to compile under `--release 11` in eleven
-places — the version differentiation is real, not
-declared.
+Main and test sources both compile at Java 18 (bytecode major version 62), built by
+`javac 21` with `--release 18`.
 
-Produces: `jv-053.war`
+**Java 18 added no final language syntax at all.** Its JEPs were UTF-8 by default (400), the
+Simple Web Server (408), Javadoc snippets (413), a core-reflection reimplementation (416), the
+Vector API's third incubator (417), an address-resolution SPI (418), FFM's second incubator
+(419) and the deprecation of finalization (421) - none of which change the language - plus a
+*second preview* of pattern matching for `switch` (420), which the preview-off rule excludes.
+Java 18 is therefore the **third API-only family**, after Java 12 and Java 13.
+
+| Lock | Kind | File | Since |
+|---|---|---|---|
+| `Math.ceilDiv`, `Math.ceilMod` | attribution-time | `analysis/SlaCalculator.java` | 18 |
+| `Math.divideExact`, `floorDivExact`, `ceilDivExact` | attribution-time | `analysis/SlaCalculator.java` | 18 |
+| `Duration.isPositive` | attribution-time | `analysis/SlaCalculator.java` | 18 |
+| sealed interface + `permits` | parse-time | `model/RouteEvent.java` | **17** |
+
+The `Math` additions are not decorative. `ceilDiv` is the operation capacity planning
+actually needs, and before Java 18 it was written by hand as `(a + b - 1) / b`, which
+overflows silently. The `Exact` variants throw on the one pair of ints where integer division
+overflows - `Integer.MIN_VALUE / -1` - instead of wrapping. The test suite exercises exactly
+that pair.
+
+### The sealed lock, and why it is in this family
+
+`model/RouteEvent.java` is a **sealed interface**, which is Java **17**'s lock, not Java 18's.
+It is here because this family sits directly above java16 in the cumulative ladder and Java 17
+is the release in between - so the branch fails at `--release 17` on the Java 18 APIs (7
+errors, all in `SlaCalculator`) and separately at `--release 16` on the sealed type. Both
+directions are checked.
+
+That also makes java18 the first family built on the corrected ladder: it extends `domain16`,
+which carries every lock added since java11. The existing java17, java21 and java25 families
+still extend java11 directly and are missing those classes - recorded under Next steps, and
+this family is what the rebuilt java17 will have to slot underneath.
+
+**Pattern matching for `switch` is deliberately absent.** It was in its second preview in Java
+18 (JEP 420) and became final in Java 21, so it belongs to the java21 family - and it is what
+java21's `PricingNarrator` already uses. `SlaCalculator.summarise` deliberately switches over a
+plain string tag instead.
+
+Forward-checked at `--release 21` and `25`: clean.
+
+Java 18 is **not an LTS release**. It shipped March 2022 and reached end of life in September
+2022, six months later. It is in this corpus to complete the version axis, not as
+a recommendation.
+
+Produces: `jv-310-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -85,12 +126,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-mvn -B test
+ant test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-310-domain/`
+- `jv-310-pricing/`
+- `jv-310-risk/`
+- `jv-310-catalog/`
 
 
 ## Tool test-data folders
