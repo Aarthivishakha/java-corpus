@@ -1,31 +1,104 @@
 {
-  "branch": "JV-077",
-  "combo": "MVN-WAR-M",
-  "repository": "java-j21-073-077",
+  "branch": "JV-382",
+  "combo": "ANT-SHADE-S",
+  "repository": "java-j22-381-384",
   "language": "java",
-  "javaVersion": "21",
-  "hostJdk": "21",
-  "buildSystem": "Maven",
-  "buildSystemId": "MVN",
-  "packaging": "WAR",
-  "packagingId": "WAR",
-  "architecture": "Monolith",
-  "architectureId": "M",
+  "javaVersion": "22",
+  "hostJdk": "25",
+  "buildSystem": "Ant + Ivy",
+  "buildSystemId": "ANT",
+  "packaging": "Shaded uber-jar (relocated)",
+  "packagingId": "SHADE",
+  "architecture": "Microservices",
+  "architectureId": "S",
   "modules": [
-    "(single module)"
+    "jv-382-domain",
+    "jv-382-pricing",
+    "jv-382-risk",
+    "jv-382-catalog"
   ],
-  "mainCompilerRelease": "21",
-  "testCompilerRelease": "21",
-  "bytecodeMajorVersion": 65,
+  "mainCompilerRelease": "22",
+  "testCompilerRelease": "22",
+  "bytecodeMajorVersion": 66,
   "testFramework": "JUnit 4.13.2",
   "versionExclusiveFeatures": [
-    "pattern matching for switch",
-    "record deconstruction patterns",
-    "guarded patterns (when)",
-    "null case labels",
-    "sequenced collections (List.getFirst/getLast/reversed)"
+    "unnamed variables",
+    "unnamed patterns",
+    "java.lang.foreign (FFM)",
+    "Arena",
+    "MemorySegment"
   ],
-  "failsToCompileUnder": "17",
+  "versionLockKind": "syntax+api",
+  "versionLockNote": "Java 22 ends three consecutive releases with no final syntax. This family also carries Java 21's locks (pattern switch, record patterns, sequenced collections) because it sits directly above java20 in the cumulative ladder. At --release 21 FFM fails as a PREVIEW API, not a missing symbol - the third such case in the corpus.",
+  "versionLockLayers": {
+    "parseTime": [
+      {
+        "file": "analysis/LegAuditor.java",
+        "errors": 1,
+        "release": "21",
+        "since": "22"
+      },
+      {
+        "file": "analysis/EventNarrator.java",
+        "errors": 2,
+        "release": "20",
+        "since": "21"
+      }
+    ],
+    "attributionTime": [
+      {
+        "file": "util/NativeMetrics.java",
+        "errors": 13,
+        "release": "21",
+        "since": "22",
+        "diagnostic": "preview API disabled"
+      },
+      {
+        "file": "analysis/RouteLog.java",
+        "errors": 14,
+        "release": "20",
+        "since": "21"
+      }
+    ]
+  },
+  "previewFeaturesDeliberatelyAbsent": [
+    "stream gatherers (preview in 22, final 24)",
+    "statements before super (preview in 22, final 25)",
+    "string templates (2nd preview in 22, later withdrawn)",
+    "implicitly declared classes (2nd preview in 22)",
+    "structured concurrency (2nd preview in 22)"
+  ],
+  "forwardChecked": [
+    "25"
+  ],
+  "inheritedLocks": {
+    "17": [
+      "sealed interfaces"
+    ],
+    "18": [
+      "Math.ceilDiv",
+      "Math.ceilMod",
+      "Duration.isPositive"
+    ],
+    "19": [
+      "Thread.threadId",
+      "Future.state",
+      "Locale.of"
+    ],
+    "20": [
+      "Float.floatToFloat16",
+      "Class.accessFlags",
+      "URL.of"
+    ],
+    "21": [
+      "pattern matching for switch",
+      "record patterns",
+      "sequenced collections"
+    ]
+  },
+  "lts": false,
+  "hostJdkDiffersFromLanguageLevel": true,
+  "failsToCompileUnder": "21",
   "toolPins": {
     "junit": "4.13.2",
     "jacoco": "0.8.14",
@@ -69,7 +142,20 @@
       "version": "1.30"
     }
   ],
-  "relocations": [],
+  "relocations": [
+    {
+      "from": "org.apache.commons",
+      "to": "com.pramora.testable.shaded.commons"
+    },
+    {
+      "from": "com.fasterxml.jackson",
+      "to": "com.pramora.testable.shaded.jackson"
+    },
+    {
+      "from": "org.yaml.snakeyaml",
+      "to": "com.pramora.testable.shaded.snakeyaml"
+    }
+  ],
   "answerKey": {
     "duplicatePair": [
       "analysis/DuplicateProcessorA.java",
@@ -78,7 +164,7 @@
     "highestCyclomaticComplexity": "service/PricingService.java#priceCents",
     "highestCognitiveComplexity": "analysis/RiskScorer.java#score",
     "taintSource": "util/InputSanitizer.java#sanitize",
-    "testCount": 41
+    "testCount": 201
   },
   "exitCodeContract": {
     "0": "ran",

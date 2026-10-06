@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V21_MAVEN_WAR_MONO
+﻿# Testable Java corpus — JV_V22_ANTIVY_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `MVN-WAR-M` of the 24-cell Java grid.
+Grid cell `ANT-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -17,16 +17,16 @@ only. See `dataset.json` for the machine-readable description of this branch.
 
 | Variable | Value |
 |---|---|
-| Java version | 21 |
-| Host JDK | 21 |
-| Build system | Maven |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Java version | 22 |
+| Host JDK | 25 |
+| Build system | Ant + Ivy |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
 19 tools are wired on this branch (one `Tool Triggering (Synthetic Data)/<dir>/` folder
-each). **13 of them run on JDK 21 (host JDK 21); 6 do not.**
+each). **13 of them run on JDK 22 (host JDK 25); 6 do not.**
 
 That is the measurement, not a defect. A tool that cannot run exits **3**,
 not 0 -- a skip that looks like a pass is the failure mode this corpus
@@ -65,16 +65,69 @@ when a tool can't run on this family.
 ## Build
 
 ```
-mvn -B clean package
+ant clean package
 ```
 
-Main and test sources both compile at Java 21 (bytecode major version 65). The code
-uses pattern matching for `switch`, record deconstruction patterns, guarded `when`
-clauses, `null` case labels and the sequenced-collection methods `getFirst`/`getLast`/
-`reversed`, so it fails to compile under `--release 17` — the version differentiation is real, not
-declared.
+Main and test sources both compile at Java 22 (bytecode major version 66), built by
+`javac 25` with `--release 22`.
 
-Produces: `jv-077.war`
+**Syntax returns after three empty releases.** java18, java19 and java20 contributed no final
+language features at all. Java 22 ends that, and because this family sits directly above
+java20 in the cumulative ladder, it carries **Java 21's** locks as well as its own - four lock
+files, one kind of lock each:
+
+| File | Lock | Kind | Since |
+|---|---|---|---|
+| `analysis/EventNarrator.java` | pattern matching for `switch`, record patterns, guards, `case null` | parse-time | **21** |
+| `analysis/RouteLog.java` | sequenced collections (`getFirst`/`getLast`/`reversed`, `SequencedSet`, `SequencedMap`) | attribution-time | **21** |
+| `analysis/LegAuditor.java` | unnamed variables and unnamed patterns (`_`) | parse-time | 22 |
+| `util/NativeMetrics.java` | Foreign Function and Memory API | attribution-time | 22 |
+
+Measured in both directions. At `--release 21` the Java 22 locks fire: 1 error in `LegAuditor`
+(*"unnamed variables are not supported in -source 21"*) and 13 in `NativeMetrics`. At
+`--release 20` the inherited Java 21 locks fire as well: 2 in `EventNarrator`
+(*"patterns in switch statements are not supported in -source 20"*) and 14 in `RouteLog`.
+
+### Two features that show what the preview rule was protecting
+
+**Pattern matching for `switch` was previewed in 17, 18, 19 and 20** - four rounds - before
+going final in 21. It is the longest preview run of any language feature in this corpus, and
+it is single-handedly why java18, java19 and java20 are API-only families.
+
+**The Foreign Function and Memory API took even longer**: incubator in 17, 18, 19 and 20,
+preview in 21 and 22, final in Java 22. Six releases from first incubator to final. What it
+replaces is worth stating, because it is why the wait mattered: before it, off-heap memory
+meant either `ByteBuffer.allocateDirect`, whose lifetime is decided by the garbage collector
+rather than by the caller and which is capped at `Integer.MAX_VALUE` bytes, or
+`sun.misc.Unsafe`, which is neither safe nor supported. An `Arena` closes deterministically,
+and a confined arena additionally enforces single-thread access, so use-after-free and
+cross-thread access become exceptions instead of undefined behaviour. `NativeMetrics`
+exercises exactly that: the test closes the arena and asserts that the next read throws.
+
+### A diagnostic worth noticing
+
+At `--release 21`, FFM does not fail with *"cannot find symbol"* - it fails with **"Arena is a
+preview API and is disabled by default"**. The type exists in Java 21's API surface; it is the
+preview status that stops it. That is the same shape as `String.formatted` at `--release 14`
+(recorded under java13) and `ScopedValue` at `--release 21` (recorded under java25). Three
+independent instances now: **a version lock can be a policy error rather than a missing
+symbol**, and a gate that only greps for "cannot find symbol" would miss all three.
+
+### Unnamed patterns change what can be expressed, not only how it reads
+
+`LegAuditor.skuOf` destructures one component out of a four-component nested record. Before
+Java 22 a record pattern had to bind *every* component, so reading one field meant naming
+three variables the compiler would then warn were unused. `_` is enforced, not cosmetic:
+referring to it is an error, and two `_` in one scope are legal where two identical names are
+not.
+
+Forward-checked at `--release 25`: clean.
+
+Java 22 is **not an LTS release**. It shipped March 2024 and reached end of life in September
+2024, six months later. It is in this corpus to complete the version axis, not as
+a recommendation.
+
+Produces: `jv-382-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -85,12 +138,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-mvn -B test
+ant test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-382-domain/`
+- `jv-382-pricing/`
+- `jv-382-risk/`
+- `jv-382-catalog/`
 
 
 ## Tool test-data folders
