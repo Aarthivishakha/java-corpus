@@ -1,6 +1,6 @@
 {
-  "branch": "JV-406",
-  "combo": "ANT-SHADE-S",
+  "branch": "JV-405",
+  "combo": "ANT-SHADE-M",
   "repository": "java-j23-405-408",
   "language": "java",
   "javaVersion": "23",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-406-domain",
-    "jv-406-pricing",
-    "jv-406-risk",
-    "jv-406-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "23",
   "testCompilerRelease": "23",
