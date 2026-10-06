@@ -1,6 +1,6 @@
 {
-  "branch": "JV-282",
-  "combo": "GRG-WAR-S",
+  "branch": "JV-281",
+  "combo": "GRG-WAR-M",
   "repository": "java-j16-280-284",
   "language": "java",
   "javaVersion": "16",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-282-domain",
-    "jv-282-pricing",
-    "jv-282-risk",
-    "jv-282-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "16",
   "testCompilerRelease": "16",
