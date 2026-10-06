@@ -4,7 +4,7 @@ metrics: 2
 kind: degraded
 java_version: "24"
 host_jdk: "25"
-build_system: "Gradle / Kotlin DSL"
+build_system: "Maven"
 command: ./tools/sonar/run.sh
 exit_codes:
   0: ran
