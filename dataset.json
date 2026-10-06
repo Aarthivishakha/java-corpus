@@ -1,6 +1,6 @@
 {
-  "branch": "JV-056",
-  "combo": "GRK-THIN-S",
+  "branch": "JV-055",
+  "combo": "GRK-THIN-M",
   "repository": "java-j17-054-058",
   "language": "java",
   "javaVersion": "17",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-056-domain",
-    "jv-056-pricing",
-    "jv-056-risk",
-    "jv-056-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "17",
   "testCompilerRelease": "17",
