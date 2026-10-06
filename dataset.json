@@ -1,7 +1,7 @@
 {
-  "branch": "JV-294",
-  "combo": "MVN-WAR-S",
-  "repository": "java-j18-294-298",
+  "branch": "JV-293",
+  "combo": "MVN-WAR-M",
+  "repository": "java-j18-289-293",
   "language": "java",
   "javaVersion": "18",
   "hostJdk": "21",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-294-domain",
-    "jv-294-pricing",
-    "jv-294-risk",
-    "jv-294-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "18",
   "testCompilerRelease": "18",

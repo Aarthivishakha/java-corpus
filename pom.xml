@@ -5,17 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.pramora.testable</groupId>
-  <artifactId>jv-294-parent</artifactId>
+  <artifactId>jv-293</artifactId>
   <version>1.0.0</version>
-  <packaging>pom</packaging>
-  <name>Testable Java corpus JV-294 (parent)</name>
-
-  <modules>
-    <module>jv-294-domain</module>
-    <module>jv-294-pricing</module>
-    <module>jv-294-risk</module>
-    <module>jv-294-catalog</module>
-  </modules>
+  <packaging>war</packaging>
+  <name>Testable Java corpus JV-293</name>
 
   <properties>
     <!-- release, not source/target: it pins the API surface to Java 18 as well as the
@@ -57,10 +50,17 @@
       <artifactId>snakeyaml</artifactId>
       <version>1.30</version>
     </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 
   <build>
-    <pluginManagement><plugins>
+    <finalName>jv-293-1.0.0</finalName>
+    <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -71,8 +71,12 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.5.2</version>
       </plugin>
-    </plugins></pluginManagement>
-    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
+        <configuration><failOnMissingWebXml>false</failOnMissingWebXml></configuration>
+      </plugin>
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>

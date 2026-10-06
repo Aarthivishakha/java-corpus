@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V18_MAVEN_WAR_MICRO
+﻿# Testable Java corpus — JV_V18_MAVEN_WAR_MONO
 
-Grid cell `MVN-WAR-S` of the 24-cell Java grid.
+Grid cell `MVN-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 21 |
 | Build system | Maven |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -115,7 +115,7 @@ Java 18 is **not an LTS release**. It shipped March 2022 and reached end of life
 2022, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-294.war`
+Produces: `jv-293.war`
 
 ## Run
 
@@ -131,10 +131,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-294-domain/`
-- `jv-294-pricing/`
-- `jv-294-risk/`
-- `jv-294-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
