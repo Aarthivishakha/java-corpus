@@ -1,6 +1,6 @@
 {
-  "branch": "JV-218",
-  "combo": "MVN-THIN-S",
+  "branch": "JV-217",
+  "combo": "MVN-THIN-M",
   "repository": "java-j14-217-221",
   "language": "java",
   "javaVersion": "14",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-218-domain",
-    "jv-218-pricing",
-    "jv-218-risk",
-    "jv-218-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "14",
   "testCompilerRelease": "14",

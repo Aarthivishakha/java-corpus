@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V14_MAVEN_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V14_MAVEN_THINJAR_MONO
 
-Grid cell `MVN-THIN-S` of the 24-cell Java grid.
+Grid cell `MVN-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 17 |
 | Build system | Maven |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -107,7 +107,7 @@ Java 14 is **not an LTS release**. It shipped March 2020 and reached end of life
 September 2020, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-218.jar or target/jv-218-1.0.0.jar`
+Produces: `dist/jv-217.jar or target/jv-217-1.0.0.jar`
 
 ## Run
 
@@ -123,10 +123,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-218-domain/`
-- `jv-218-pricing/`
-- `jv-218-risk/`
-- `jv-218-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
