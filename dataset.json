@@ -1,6 +1,6 @@
 {
-  "branch": "JV-300",
-  "combo": "GRK-WAR-S",
+  "branch": "JV-299",
+  "combo": "GRK-WAR-M",
   "repository": "java-j18-299-303",
   "language": "java",
   "javaVersion": "18",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-300-domain",
-    "jv-300-pricing",
-    "jv-300-risk",
-    "jv-300-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "18",
   "testCompilerRelease": "18",
