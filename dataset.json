@@ -1,6 +1,6 @@
 {
-  "branch": "JV-230",
-  "combo": "GRG-THIN-S",
+  "branch": "JV-229",
+  "combo": "GRG-THIN-M",
   "repository": "java-j14-227-231",
   "language": "java",
   "javaVersion": "14",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-230-domain",
-    "jv-230-pricing",
-    "jv-230-risk",
-    "jv-230-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "14",
   "testCompilerRelease": "14",
