@@ -1,6 +1,6 @@
 {
-  "branch": "JV-252",
-  "combo": "GRK-WAR-S",
+  "branch": "JV-251",
+  "combo": "GRK-WAR-M",
   "repository": "java-j15-251-255",
   "language": "java",
   "javaVersion": "15",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-252-domain",
-    "jv-252-pricing",
-    "jv-252-risk",
-    "jv-252-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "15",
   "testCompilerRelease": "15",
