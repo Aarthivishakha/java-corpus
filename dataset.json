@@ -1,7 +1,7 @@
 {
-  "branch": "JV-342",
-  "combo": "MVN-WAR-S",
-  "repository": "java-j20-342-346",
+  "branch": "JV-341",
+  "combo": "MVN-WAR-M",
+  "repository": "java-j20-337-341",
   "language": "java",
   "javaVersion": "20",
   "hostJdk": "21",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-342-domain",
-    "jv-342-pricing",
-    "jv-342-risk",
-    "jv-342-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "20",
   "testCompilerRelease": "20",
