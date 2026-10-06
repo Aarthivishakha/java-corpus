@@ -1,18 +1,21 @@
 {
-  "branch": "JV-339",
-  "combo": "MVN-SHADE-M",
+  "branch": "JV-338",
+  "combo": "MVN-THIN-S",
   "repository": "java-j20-337-341",
   "language": "java",
   "javaVersion": "20",
   "hostJdk": "21",
   "buildSystem": "Maven",
   "buildSystemId": "MVN",
-  "packaging": "Shaded uber-jar (relocated)",
-  "packagingId": "SHADE",
-  "architecture": "Monolith",
-  "architectureId": "M",
+  "packaging": "Thin jar",
+  "packagingId": "THIN",
+  "architecture": "Microservices",
+  "architectureId": "S",
   "modules": [
-    "(single module)"
+    "jv-338-domain",
+    "jv-338-pricing",
+    "jv-338-risk",
+    "jv-338-catalog"
   ],
   "mainCompilerRelease": "20",
   "testCompilerRelease": "20",
@@ -100,20 +103,7 @@
       "version": "1.30"
     }
   ],
-  "relocations": [
-    {
-      "from": "org.apache.commons",
-      "to": "com.pramora.testable.shaded.commons"
-    },
-    {
-      "from": "com.fasterxml.jackson",
-      "to": "com.pramora.testable.shaded.jackson"
-    },
-    {
-      "from": "org.yaml.snakeyaml",
-      "to": "com.pramora.testable.shaded.snakeyaml"
-    }
-  ],
+  "relocations": [],
   "answerKey": {
     "duplicatePair": [
       "analysis/DuplicateProcessorA.java",

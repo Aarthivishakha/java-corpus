@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V20_MAVEN_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V20_MAVEN_THINJAR_MICRO
 
-Grid cell `MVN-SHADE-M` of the 24-cell Java grid.
+Grid cell `MVN-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 20 |
 | Host JDK | 21 |
 | Build system | Maven |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -124,7 +124,7 @@ Java 20 is **not an LTS release**. It shipped March 2023 and reached end of life
 2023, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-339-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-338.jar or target/jv-338-1.0.0.jar`
 
 ## Run
 
@@ -140,7 +140,10 @@ mvn -B test
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-338-domain/`
+- `jv-338-pricing/`
+- `jv-338-risk/`
+- `jv-338-catalog/`
 
 
 ## Tool test-data folders
