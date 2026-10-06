@@ -5,10 +5,17 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.pramora.testable</groupId>
-  <artifactId>jv-001</artifactId>
+  <artifactId>jv-006-parent</artifactId>
   <version>1.0.0</version>
-  <packaging>jar</packaging>
-  <name>Testable Java corpus JV-001</name>
+  <packaging>pom</packaging>
+  <name>Testable Java corpus JV-006 (parent)</name>
+
+  <modules>
+    <module>jv-006-domain</module>
+    <module>jv-006-pricing</module>
+    <module>jv-006-risk</module>
+    <module>jv-006-catalog</module>
+  </modules>
 
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -51,8 +58,7 @@
   </dependencies>
 
   <build>
-    <finalName>jv-001-1.0.0</finalName>
-    <plugins>
+    <pluginManagement><plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -63,27 +69,8 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.5.2</version>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.4.2</version>
-        <configuration>
-          <archive><manifest>
-            <addClasspath>true</addClasspath>
-            <classpathPrefix>lib/</classpathPrefix>
-            <mainClass>com.pramora.testable.app.Main</mainClass>
-          </manifest></archive>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.8.1</version>
-        <executions><execution>
-          <id>copy-dependencies</id><phase>package</phase><goals><goal>copy-dependencies</goal></goals>
-          <configuration><outputDirectory>${project.build.directory}/lib</outputDirectory></configuration>
-        </execution></executions>
-      </plugin>
+    </plugins></pluginManagement>
+    <plugins>
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
