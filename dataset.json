@@ -1,6 +1,6 @@
 {
-  "branch": "JV-138",
-  "combo": "GRG-WAR-S",
+  "branch": "JV-137",
+  "combo": "GRG-WAR-M",
   "repository": "java-j9-136-140",
   "language": "java",
   "javaVersion": "9",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-138-domain",
-    "jv-138-pricing",
-    "jv-138-risk",
-    "jv-138-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "9",
   "testCompilerRelease": "9",
