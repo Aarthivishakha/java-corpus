@@ -1,6 +1,6 @@
 {
-  "branch": "JV-382",
-  "combo": "ANT-SHADE-S",
+  "branch": "JV-381",
+  "combo": "ANT-SHADE-M",
   "repository": "java-j22-381-384",
   "language": "java",
   "javaVersion": "22",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-382-domain",
-    "jv-382-pricing",
-    "jv-382-risk",
-    "jv-382-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "22",
   "testCompilerRelease": "22",

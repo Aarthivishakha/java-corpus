@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V22_ANTIVY_SHADEDUBERJARRELOCATED_MICRO
+﻿# Testable Java corpus — JV_V22_ANTIVY_SHADEDUBERJARRELOCATED_MONO
 
-Grid cell `ANT-SHADE-S` of the 24-cell Java grid.
+Grid cell `ANT-SHADE-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 25 |
 | Build system | Ant + Ivy |
 | Packaging | Shaded uber-jar (relocated) |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -127,7 +127,7 @@ Java 22 is **not an LTS release**. It shipped March 2024 and reached end of life
 2024, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-382-all.jar (shaded, packages relocated)`
+Produces: `jv-381-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -143,10 +143,7 @@ ant test
 
 ## Workspace projects
 
-- `jv-382-domain/`
-- `jv-382-pricing/`
-- `jv-382-risk/`
-- `jv-382-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
