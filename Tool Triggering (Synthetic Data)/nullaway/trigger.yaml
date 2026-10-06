@@ -2,9 +2,9 @@ tool: nullaway
 block: "All Definition Coverage"
 metrics: 1
 kind: degraded
-java_version: "25"
-host_jdk: "25"
-build_system: "Maven"
+java_version: "8"
+host_jdk: "8"
+build_system: "Ant + Ivy"
 command: ./tools/nullaway/run.sh
 exit_codes:
   0: ran

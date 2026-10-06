@@ -1,16 +1,13 @@
 tool: ck
 block: "Cyclomatic Complexity"
 metrics: 6
-kind: degraded
-java_version: "25"
-host_jdk: "25"
-build_system: "Maven"
+kind: standalone
+java_version: "8"
+host_jdk: "8"
+build_system: "Ant + Ivy"
 command: ./tools/ck/run.sh
 exit_codes:
   0: ran
   1: failed
   3: skipped-cannot-run
   4: not-installed
-status: "cannot-run"
-reason: "CK 0.7.0 bundles Eclipse JDT 3.26.0, which parses only up to Java 16 - it cannot read this branch's records or sealed types"
-expected_exit: 3

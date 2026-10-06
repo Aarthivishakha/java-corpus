@@ -2,9 +2,9 @@ tool: pydriller
 block: "Code Churn - alternative"
 metrics: 5
 kind: standalone
-java_version: "25"
-host_jdk: "25"
-build_system: "Maven"
+java_version: "8"
+host_jdk: "8"
+build_system: "Ant + Ivy"
 command: ./tools/pydriller/run.sh
 exit_codes:
   0: ran

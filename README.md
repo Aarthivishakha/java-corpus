@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V25_MAVEN_WAR_MONO
+﻿# Testable Java corpus — JV_V8_ANTIVY_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `MVN-WAR-M` of the 24-cell Java grid.
+Grid cell `ANT-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -17,16 +17,16 @@ only. See `dataset.json` for the machine-readable description of this branch.
 
 | Variable | Value |
 |---|---|
-| Java version | 25 |
-| Host JDK | 25 |
-| Build system | Maven |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Java version | 8 |
+| Host JDK | 8 |
+| Build system | Ant + Ivy |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
 19 tools are wired on this branch (one `Tool Triggering (Synthetic Data)/<dir>/` folder
-each). **13 of them run on JDK 25 (host JDK 25); 6 do not.**
+each). **13 of them run on JDK 8 (host JDK 8); 6 do not.**
 
 That is the measurement, not a defect. A tool that cannot run exits **3**,
 not 0 -- a skip that looks like a pass is the failure mode this corpus
@@ -38,6 +38,7 @@ when a tool can't run on this family.
 | Tool | Role | Block |
 |---|---|---|
 | `checkstyle` | primary | Lint / Rule Violations |
+| `ck` | primary | Cyclomatic Complexity |
 | `cpd` | primary | Code Duplication |
 | `diff-cover` | primary | Coverage Delta |
 | `git-churn` | primary | Code Churn |
@@ -48,7 +49,6 @@ when a tool can't run on this family.
 | `pit` | primary | Mutation Score |
 | `pmd` | primary | Cognitive Complexity |
 | `pydriller` | alternative | Code Churn |
-| `spoon` | primary | Data Flow Testing |
 | `spotbugs` | primary | Static Vulnerabilities (SAST) |
 
 ### Dark here
@@ -57,24 +57,23 @@ when a tool can't run on this family.
 |---|---|---|---|
 | `asm-defuse` | primary | Data Flow Testing | no jar published under a stable coordinate - place one in Tool Triggering (Synthetic Data)/asm-defuse/ |
 | `ba-dua` | primary | All Definition Coverage | ba-dua 0.8.0 links JaCoCo 0.8.1, which stops at Java 10 class files |
-| `ck` | primary | Cyclomatic Complexity | CK 0.7.0 bundles Eclipse JDT 3.26.0, which parses only up to Java 16 - it cannot read this branch's records or sealed types |
 | `custom-def-use` | n/a (placeholder) | Data Flow Testing | not a tool - the sheet names no package, version or vendor |
 | `nullaway` | primary | All Definition Coverage | runs as an Error Prone compiler plugin, not a standalone step |
 | `sonar` | primary | Coverage Delta | needs a running SonarQube server; set SONAR_HOST_URL to enable |
+| `spoon` | primary | Data Flow Testing | Spoon 11.5.1 requires JDK 17+; this family runs on JDK 8 |
 
 ## Build
 
 ```
-mvn -B clean package
+ant clean package
 ```
 
-Main and test sources both compile at Java 25 (bytecode major version 69). The code
-uses stream gatherers (`Stream.gather`, final in 24), flexible constructor bodies,
-module import declarations and scoped values (all final in 25), plus Markdown `///` doc
-comments (final in 23), so it fails to compile under `--release 21` — the version differentiation is real, not
-declared.
+Main and test sources both compile at Java 8 (bytecode major version 52). The code
+uses lambdas, method references, streams, `Optional`, `java.time` and default interface
+methods, so it fails to compile under `-source 7` — the version differentiation is real,
+not declared.
 
-Produces: `jv-101.war`
+Produces: `jv-022-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -85,12 +84,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-mvn -B test
+ant test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-022-domain/`
+- `jv-022-pricing/`
+- `jv-022-risk/`
+- `jv-022-catalog/`
 
 
 ## Tool test-data folders
