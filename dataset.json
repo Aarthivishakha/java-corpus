@@ -1,18 +1,21 @@
 {
-  "branch": "JV-411",
-  "combo": "MVN-SHADE-M",
+  "branch": "JV-410",
+  "combo": "MVN-THIN-S",
   "repository": "java-j24-409-413",
   "language": "java",
   "javaVersion": "24",
   "hostJdk": "25",
   "buildSystem": "Maven",
   "buildSystemId": "MVN",
-  "packaging": "Shaded uber-jar (relocated)",
-  "packagingId": "SHADE",
-  "architecture": "Monolith",
-  "architectureId": "M",
+  "packaging": "Thin jar",
+  "packagingId": "THIN",
+  "architecture": "Microservices",
+  "architectureId": "S",
   "modules": [
-    "(single module)"
+    "jv-410-domain",
+    "jv-410-pricing",
+    "jv-410-risk",
+    "jv-410-catalog"
   ],
   "mainCompilerRelease": "24",
   "testCompilerRelease": "24",
@@ -103,20 +106,7 @@
       "version": "1.30"
     }
   ],
-  "relocations": [
-    {
-      "from": "org.apache.commons",
-      "to": "com.pramora.testable.shaded.commons"
-    },
-    {
-      "from": "com.fasterxml.jackson",
-      "to": "com.pramora.testable.shaded.jackson"
-    },
-    {
-      "from": "org.yaml.snakeyaml",
-      "to": "com.pramora.testable.shaded.snakeyaml"
-    }
-  ],
+  "relocations": [],
   "answerKey": {
     "duplicatePair": [
       "analysis/DuplicateProcessorA.java",
