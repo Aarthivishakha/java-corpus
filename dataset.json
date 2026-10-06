@@ -1,6 +1,6 @@
 {
-  "branch": "JV-124",
-  "combo": "MVN-SHADE-S",
+  "branch": "JV-123",
+  "combo": "MVN-SHADE-M",
   "repository": "java-j9-121-125",
   "language": "java",
   "javaVersion": "9",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-124-domain",
-    "jv-124-pricing",
-    "jv-124-risk",
-    "jv-124-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "9",
   "testCompilerRelease": "9",
