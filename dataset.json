@@ -1,7 +1,7 @@
 {
-  "branch": "JV-112",
-  "combo": "GRG-SHADE-S",
-  "repository": "java-j25-112-116",
+  "branch": "JV-111",
+  "combo": "GRG-SHADE-M",
+  "repository": "java-j25-107-111",
   "language": "java",
   "javaVersion": "25",
   "hostJdk": "25",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-112-domain",
-    "jv-112-pricing",
-    "jv-112-risk",
-    "jv-112-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "25",
   "testCompilerRelease": "25",
