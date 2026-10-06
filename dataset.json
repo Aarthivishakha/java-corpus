@@ -1,7 +1,7 @@
 {
-  "branch": "JV-424",
-  "combo": "GRG-SHADE-S",
-  "repository": "java-j24-424-428",
+  "branch": "JV-423",
+  "combo": "GRG-SHADE-M",
+  "repository": "java-j24-419-423",
   "language": "java",
   "javaVersion": "24",
   "hostJdk": "25",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-424-domain",
-    "jv-424-pricing",
-    "jv-424-risk",
-    "jv-424-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "24",
   "testCompilerRelease": "24",
