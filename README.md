@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V17_MAVEN_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V17_MAVEN_THINJAR_MICRO
 
-Grid cell `MVN-SHADE-M` of the 24-cell Java grid.
+Grid cell `MVN-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 17 |
 | Host JDK | 17 |
 | Build system | Maven |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ expressions and `Stream.toList`, so it fails to compile under `--release 11` in 
 places — the version differentiation is real, not
 declared.
 
-Produces: `jv-051-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-050.jar or target/jv-050-1.0.0.jar`
 
 ## Run
 
@@ -90,7 +90,10 @@ mvn -B test
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-050-domain/`
+- `jv-050-pricing/`
+- `jv-050-risk/`
+- `jv-050-catalog/`
 
 
 ## Tool test-data folders
