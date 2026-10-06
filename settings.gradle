@@ -1,0 +1,5 @@
+rootProject.name = 'jv-400-parent'
+include ':jv-400-domain'
+include ':jv-400-pricing'
+include ':jv-400-risk'
+include ':jv-400-catalog'
