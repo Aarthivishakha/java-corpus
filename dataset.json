@@ -1,6 +1,6 @@
 {
-  "branch": "JV-332",
-  "combo": "ANT-THIN-S",
+  "branch": "JV-331",
+  "combo": "ANT-THIN-M",
   "repository": "java-j19-328-332",
   "language": "java",
   "javaVersion": "19",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-332-domain",
-    "jv-332-pricing",
-    "jv-332-risk",
-    "jv-332-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "19",
   "testCompilerRelease": "19",
