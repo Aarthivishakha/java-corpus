@@ -1,5 +1,6 @@
 plugins {
     java
+    war
     jacoco
     checkstyle
     pmd
@@ -20,6 +21,7 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.9.10.1")
     implementation("log4j:log4j:1.2.17")
     implementation("org.yaml:snakeyaml:1.30")
+    compileOnly("javax.servlet:javax.servlet-api:3.1.0")
 }
 
 java {
@@ -59,10 +61,4 @@ pmd {
 spotbugs {
     toolVersion.set("4.10.3")
     excludeFilter.set(file("tools/spotbugs/exclude.xml"))
-}
-
-tasks.jar {
-    manifest {
-        attributes(mapOf("Main-Class" to "com.pramora.testable.app.Main"))
-    }
 }

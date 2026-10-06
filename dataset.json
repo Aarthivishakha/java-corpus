@@ -1,6 +1,6 @@
 {
-  "branch": "JV-396",
-  "combo": "GRK-WAR-S",
+  "branch": "JV-395",
+  "combo": "GRK-WAR-M",
   "repository": "java-j23-395-399",
   "language": "java",
   "javaVersion": "23",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-396-domain",
-    "jv-396-pricing",
-    "jv-396-risk",
-    "jv-396-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "23",
   "testCompilerRelease": "23",
