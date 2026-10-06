@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V20_ANTIVY_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V20_ANTIVY_THINJAR_MICRO
 
-Grid cell `ANT-SHADE-M` of the 24-cell Java grid.
+Grid cell `ANT-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 20 |
 | Host JDK | 21 |
 | Build system | Ant + Ivy |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -124,7 +124,7 @@ Java 20 is **not an LTS release**. It shipped March 2023 and reached end of life
 2023, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-357-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-356.jar or target/jv-356-1.0.0.jar`
 
 ## Run
 
@@ -140,7 +140,10 @@ ant test
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-356-domain/`
+- `jv-356-pricing/`
+- `jv-356-risk/`
+- `jv-356-catalog/`
 
 
 ## Tool test-data folders
