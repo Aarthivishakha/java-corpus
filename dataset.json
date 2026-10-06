@@ -1,6 +1,6 @@
 {
-  "branch": "JV-058",
-  "combo": "GRK-SHADE-S",
+  "branch": "JV-057",
+  "combo": "GRK-SHADE-M",
   "repository": "java-j17-054-058",
   "language": "java",
   "javaVersion": "17",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-058-domain",
-    "jv-058-pricing",
-    "jv-058-risk",
-    "jv-058-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "17",
   "testCompilerRelease": "17",
