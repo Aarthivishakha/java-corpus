@@ -5,17 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.pramora.testable</groupId>
-  <artifactId>jv-388-parent</artifactId>
+  <artifactId>jv-387</artifactId>
   <version>1.0.0</version>
-  <packaging>pom</packaging>
-  <name>Testable Java corpus JV-388 (parent)</name>
-
-  <modules>
-    <module>jv-388-domain</module>
-    <module>jv-388-pricing</module>
-    <module>jv-388-risk</module>
-    <module>jv-388-catalog</module>
-  </modules>
+  <packaging>jar</packaging>
+  <name>Testable Java corpus JV-387</name>
 
   <properties>
     <!-- release, not source/target: it pins the API surface to Java 23 as well as the
@@ -60,7 +53,8 @@
   </dependencies>
 
   <build>
-    <pluginManagement><plugins>
+    <finalName>jv-387-1.0.0</finalName>
+    <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -71,8 +65,35 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.5.2</version>
       </plugin>
-    </plugins></pluginManagement>
-    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.6.2</version>
+        <executions><execution>
+          <phase>package</phase><goals><goal>shade</goal></goals>
+          <configuration>
+            <relocations>
+                  <relocation>
+                    <pattern>org.apache.commons</pattern>
+                    <shadedPattern>com.pramora.testable.shaded.commons</shadedPattern>
+                  </relocation>
+                  <relocation>
+                    <pattern>com.fasterxml.jackson</pattern>
+                    <shadedPattern>com.pramora.testable.shaded.jackson</shadedPattern>
+                  </relocation>
+                  <relocation>
+                    <pattern>org.yaml.snakeyaml</pattern>
+                    <shadedPattern>com.pramora.testable.shaded.snakeyaml</shadedPattern>
+                  </relocation>
+            </relocations>
+            <transformers>
+              <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                <mainClass>com.pramora.testable.app.Main</mainClass>
+              </transformer>
+            </transformers>
+          </configuration>
+        </execution></executions>
+      </plugin>
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
