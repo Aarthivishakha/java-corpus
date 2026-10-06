@@ -1,6 +1,6 @@
 {
-  "branch": "JV-284",
-  "combo": "ANT-THIN-S",
+  "branch": "JV-283",
+  "combo": "ANT-THIN-M",
   "repository": "java-j16-280-284",
   "language": "java",
   "javaVersion": "16",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-284-domain",
-    "jv-284-pricing",
-    "jv-284-risk",
-    "jv-284-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "16",
   "testCompilerRelease": "16",
