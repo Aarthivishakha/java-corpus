@@ -1,6 +1,6 @@
 {
-  "branch": "JV-248",
-  "combo": "GRK-THIN-S",
+  "branch": "JV-247",
+  "combo": "GRK-THIN-M",
   "repository": "java-j15-246-250",
   "language": "java",
   "javaVersion": "15",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-248-domain",
-    "jv-248-pricing",
-    "jv-248-risk",
-    "jv-248-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "15",
   "testCompilerRelease": "15",

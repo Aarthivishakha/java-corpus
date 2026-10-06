@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V15_GRADLEKOTLINDSL_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V15_GRADLEKOTLINDSL_THINJAR_MONO
 
-Grid cell `GRK-THIN-S` of the 24-cell Java grid.
+Grid cell `GRK-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 17 |
 | Build system | Gradle / Kotlin DSL |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -124,7 +124,7 @@ Java 15 is **not an LTS release**. It shipped September 2020 and reached end of 
 March 2021, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-248.jar or target/jv-248-1.0.0.jar`
+Produces: `dist/jv-247.jar or target/jv-247-1.0.0.jar`
 
 ## Run
 
@@ -140,10 +140,7 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `jv-248-domain/`
-- `jv-248-pricing/`
-- `jv-248-risk/`
-- `jv-248-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
