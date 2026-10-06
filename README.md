@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V17_GRADLEGROOVYDSL_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V17_GRADLEGROOVYDSL_THINJAR_MICRO
 
-Grid cell `GRG-SHADE-M` of the 24-cell Java grid.
+Grid cell `GRG-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 17 |
 | Host JDK | 17 |
 | Build system | Gradle / Groovy DSL |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ expressions and `Stream.toList`, so it fails to compile under `--release 11` in 
 places — the version differentiation is real, not
 declared.
 
-Produces: `jv-063-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-062.jar or target/jv-062-1.0.0.jar`
 
 ## Run
 
@@ -90,7 +90,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-062-domain/`
+- `jv-062-pricing/`
+- `jv-062-risk/`
+- `jv-062-catalog/`
 
 
 ## Tool test-data folders
