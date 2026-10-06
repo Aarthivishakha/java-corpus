@@ -1,7 +1,7 @@
 {
-  "branch": "JV-366",
-  "combo": "MVN-WAR-S",
-  "repository": "java-j22-366-370",
+  "branch": "JV-365",
+  "combo": "MVN-WAR-M",
+  "repository": "java-j22-361-365",
   "language": "java",
   "javaVersion": "22",
   "hostJdk": "25",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-366-domain",
-    "jv-366-pricing",
-    "jv-366-risk",
-    "jv-366-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "22",
   "testCompilerRelease": "22",
