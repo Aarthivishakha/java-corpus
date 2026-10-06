@@ -1,6 +1,6 @@
 {
-  "branch": "JV-306",
-  "combo": "GRG-WAR-S",
+  "branch": "JV-305",
+  "combo": "GRG-WAR-M",
   "repository": "java-j18-304-308",
   "language": "java",
   "javaVersion": "18",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-306-domain",
-    "jv-306-pricing",
-    "jv-306-risk",
-    "jv-306-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "18",
   "testCompilerRelease": "18",
