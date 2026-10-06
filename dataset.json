@@ -1,101 +1,60 @@
 {
-  "branch": "JV-365",
-  "combo": "MVN-WAR-M",
-  "repository": "java-j22-361-365",
+  "branch": "JV-406",
+  "combo": "ANT-SHADE-S",
+  "repository": "java-j23-405-408",
   "language": "java",
-  "javaVersion": "22",
+  "javaVersion": "23",
   "hostJdk": "25",
-  "buildSystem": "Maven",
-  "buildSystemId": "MVN",
-  "packaging": "WAR",
-  "packagingId": "WAR",
-  "architecture": "Monolith",
-  "architectureId": "M",
+  "buildSystem": "Ant + Ivy",
+  "buildSystemId": "ANT",
+  "packaging": "Shaded uber-jar (relocated)",
+  "packagingId": "SHADE",
+  "architecture": "Microservices",
+  "architectureId": "S",
   "modules": [
-    "(single module)"
+    "jv-406-domain",
+    "jv-406-pricing",
+    "jv-406-risk",
+    "jv-406-catalog"
   ],
-  "mainCompilerRelease": "22",
-  "testCompilerRelease": "22",
-  "bytecodeMajorVersion": 66,
+  "mainCompilerRelease": "23",
+  "testCompilerRelease": "23",
+  "bytecodeMajorVersion": 67,
   "testFramework": "JUnit 4.13.2",
   "versionExclusiveFeatures": [
-    "unnamed variables",
-    "unnamed patterns",
-    "java.lang.foreign (FFM)",
-    "Arena",
-    "MemorySegment"
+    "NumberFormat.setStrict",
+    "NumberFormat.isStrict",
+    "Instant.until(Instant)",
+    "Inet4Address.ofPosixLiteral",
+    "MemorySegment.maxByteAlignment"
   ],
-  "versionLockKind": "syntax+api",
-  "versionLockNote": "Java 22 ends three consecutive releases with no final syntax. This family also carries Java 21's locks (pattern switch, record patterns, sequenced collections) because it sits directly above java20 in the cumulative ladder. At --release 21 FFM fails as a PREVIEW API, not a missing symbol - the third such case in the corpus.",
+  "versionLockKind": "api-only",
+  "versionLockNote": "Java 23's only language JEP was Markdown doc comments, and /// is lexically an ordinary line comment - verified to compile unchanged at --release 21 through 25, so it locks nothing. Everything else was preview or incubator. Fifth API-only family. Locks found by diffing javac's ct.sym signatures between release 22 and 23.",
   "versionLockLayers": {
-    "parseTime": [
-      {
-        "file": "analysis/LegAuditor.java",
-        "errors": 1,
-        "release": "21",
-        "since": "22"
-      },
-      {
-        "file": "analysis/EventNarrator.java",
-        "errors": 2,
-        "release": "20",
-        "since": "21"
-      }
-    ],
     "attributionTime": [
       {
-        "file": "util/NativeMetrics.java",
-        "errors": 13,
-        "release": "21",
-        "since": "22",
-        "diagnostic": "preview API disabled"
-      },
-      {
-        "file": "analysis/RouteLog.java",
-        "errors": 14,
-        "release": "20",
-        "since": "21"
+        "file": "util/StrictFormats.java",
+        "errors": 7,
+        "release": "22"
       }
     ]
   },
   "previewFeaturesDeliberatelyAbsent": [
-    "stream gatherers (preview in 22, final 24)",
-    "statements before super (preview in 22, final 25)",
-    "string templates (2nd preview in 22, later withdrawn)",
-    "implicitly declared classes (2nd preview in 22)",
-    "structured concurrency (2nd preview in 22)"
+    "primitive types in patterns (preview in 23)",
+    "module import declarations (preview in 23, final 25)",
+    "implicitly declared classes (3rd preview in 23, final 25)",
+    "flexible constructor bodies (2nd preview in 23, final 25)",
+    "stream gatherers (2nd preview in 23, final 24)",
+    "Class-File API (2nd preview in 23, final 24)",
+    "scoped values (3rd preview in 23, final 25)"
   ],
   "forwardChecked": [
+    "24",
     "25"
   ],
-  "inheritedLocks": {
-    "17": [
-      "sealed interfaces"
-    ],
-    "18": [
-      "Math.ceilDiv",
-      "Math.ceilMod",
-      "Duration.isPositive"
-    ],
-    "19": [
-      "Thread.threadId",
-      "Future.state",
-      "Locale.of"
-    ],
-    "20": [
-      "Float.floatToFloat16",
-      "Class.accessFlags",
-      "URL.of"
-    ],
-    "21": [
-      "pattern matching for switch",
-      "record patterns",
-      "sequenced collections"
-    ]
-  },
   "lts": false,
   "hostJdkDiffersFromLanguageLevel": true,
-  "failsToCompileUnder": "21",
+  "failsToCompileUnder": "22",
   "toolPins": {
     "junit": "4.13.2",
     "jacoco": "0.8.14",
@@ -139,7 +98,20 @@
       "version": "1.30"
     }
   ],
-  "relocations": [],
+  "relocations": [
+    {
+      "from": "org.apache.commons",
+      "to": "com.pramora.testable.shaded.commons"
+    },
+    {
+      "from": "com.fasterxml.jackson",
+      "to": "com.pramora.testable.shaded.jackson"
+    },
+    {
+      "from": "org.yaml.snakeyaml",
+      "to": "com.pramora.testable.shaded.snakeyaml"
+    }
+  ],
   "answerKey": {
     "duplicatePair": [
       "analysis/DuplicateProcessorA.java",
@@ -148,7 +120,7 @@
     "highestCyclomaticComplexity": "service/PricingService.java#priceCents",
     "highestCognitiveComplexity": "analysis/RiskScorer.java#score",
     "taintSource": "util/InputSanitizer.java#sanitize",
-    "testCount": 201
+    "testCount": 220
   },
   "exitCodeContract": {
     "0": "ran",

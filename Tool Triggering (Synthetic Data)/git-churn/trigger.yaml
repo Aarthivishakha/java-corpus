@@ -2,9 +2,9 @@ tool: git-churn
 block: "Code Churn"
 metrics: 5
 kind: standalone
-java_version: "22"
+java_version: "23"
 host_jdk: "25"
-build_system: "Maven"
+build_system: "Ant + Ivy"
 command: ./tools/git-churn/run.sh
 exit_codes:
   0: ran
