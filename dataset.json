@@ -1,6 +1,6 @@
 {
-  "branch": "JV-236",
-  "combo": "ANT-THIN-S",
+  "branch": "JV-235",
+  "combo": "ANT-THIN-M",
   "repository": "java-j14-232-236",
   "language": "java",
   "javaVersion": "14",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-236-domain",
-    "jv-236-pricing",
-    "jv-236-risk",
-    "jv-236-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "14",
   "testCompilerRelease": "14",
