@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V17_ANTIVY_WAR_MONO
+﻿# Testable Java corpus — JV_V17_GRADLEGROOVYDSL_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `ANT-WAR-M` of the 24-cell Java grid.
+Grid cell `GRG-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -19,9 +19,9 @@ only. See `dataset.json` for the machine-readable description of this branch.
 |---|---|
 | Java version | 17 |
 | Host JDK | 17 |
-| Build system | Ant + Ivy |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Gradle / Groovy DSL |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -65,7 +65,7 @@ when a tool can't run on this family.
 ## Build
 
 ```
-ant clean package
+./gradlew build
 ```
 
 Main and test sources both compile at Java 17 (bytecode major version 61). The code
@@ -74,7 +74,7 @@ expressions and `Stream.toList`, so it fails to compile under `--release 11` in 
 places — the version differentiation is real, not
 declared.
 
-Produces: `jv-071.war`
+Produces: `jv-064-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -85,12 +85,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-ant test
+./gradlew test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-064-domain/`
+- `jv-064-pricing/`
+- `jv-064-risk/`
+- `jv-064-catalog/`
 
 
 ## Tool test-data folders

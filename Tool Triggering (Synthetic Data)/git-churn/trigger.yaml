@@ -4,7 +4,7 @@ metrics: 5
 kind: standalone
 java_version: "17"
 host_jdk: "17"
-build_system: "Ant + Ivy"
+build_system: "Gradle / Groovy DSL"
 command: ./tools/git-churn/run.sh
 exit_codes:
   0: ran
