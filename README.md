@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V25_GRADLEKOTLINDSL_WAR_MONO
+﻿# Testable Java corpus — JV_V25_MAVEN_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `GRK-WAR-M` of the 24-cell Java grid.
+Grid cell `MVN-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -19,9 +19,9 @@ only. See `dataset.json` for the machine-readable description of this branch.
 |---|---|
 | Java version | 25 |
 | Host JDK | 25 |
-| Build system | Gradle / Kotlin DSL |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Maven |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -65,7 +65,7 @@ when a tool can't run on this family.
 ## Build
 
 ```
-./gradlew build
+mvn -B clean package
 ```
 
 Main and test sources both compile at Java 25 (bytecode major version 69). The code
@@ -74,7 +74,7 @@ module import declarations and scoped values (all final in 25), plus Markdown `/
 comments (final in 23), so it fails to compile under `--release 21` — the version differentiation is real, not
 declared.
 
-Produces: `jv-107.war`
+Produces: `jv-100-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -85,12 +85,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-./gradlew test
+mvn -B test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-100-domain/`
+- `jv-100-pricing/`
+- `jv-100-risk/`
+- `jv-100-catalog/`
 
 
 ## Tool test-data folders
