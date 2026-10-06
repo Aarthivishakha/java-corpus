@@ -1,6 +1,6 @@
 {
-  "branch": "JV-118",
-  "combo": "ANT-SHADE-S",
+  "branch": "JV-117",
+  "combo": "ANT-SHADE-M",
   "repository": "java-j25-117-120",
   "language": "java",
   "javaVersion": "25",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-118-domain",
-    "jv-118-pricing",
-    "jv-118-risk",
-    "jv-118-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "25",
   "testCompilerRelease": "25",
