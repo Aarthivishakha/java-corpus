@@ -1,6 +1,6 @@
 {
-  "branch": "JV-068",
-  "combo": "ANT-THIN-S",
+  "branch": "JV-067",
+  "combo": "ANT-THIN-M",
   "repository": "java-j17-064-068",
   "language": "java",
   "javaVersion": "17",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-068-domain",
-    "jv-068-pricing",
-    "jv-068-risk",
-    "jv-068-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "17",
   "testCompilerRelease": "17",

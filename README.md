@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V17_ANTIVY_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V17_ANTIVY_THINJAR_MONO
 
-Grid cell `ANT-THIN-S` of the 24-cell Java grid.
+Grid cell `ANT-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 17 |
 | Build system | Ant + Ivy |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ expressions and `Stream.toList`, so it fails to compile under `--release 11` in 
 places — the version differentiation is real, not
 declared.
 
-Produces: `dist/jv-068.jar or target/jv-068-1.0.0.jar`
+Produces: `dist/jv-067.jar or target/jv-067-1.0.0.jar`
 
 ## Run
 
@@ -90,10 +90,7 @@ ant test
 
 ## Workspace projects
 
-- `jv-068-domain/`
-- `jv-068-pricing/`
-- `jv-068-risk/`
-- `jv-068-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
