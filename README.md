@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V21_GRADLEGROOVYDSL_SHADEDUBERJARRELOCATED_MICRO
+﻿# Testable Java corpus — JV_V21_GRADLEGROOVYDSL_SHADEDUBERJARRELOCATED_MONO
 
-Grid cell `GRG-SHADE-S` of the 24-cell Java grid.
+Grid cell `GRG-SHADE-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 21 |
 | Build system | Gradle / Groovy DSL |
 | Packaging | Shaded uber-jar (relocated) |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ clauses, `null` case labels and the sequenced-collection methods `getFirst`/`get
 `reversed`, so it fails to compile under `--release 17` — the version differentiation is real, not
 declared.
 
-Produces: `jv-088-all.jar (shaded, packages relocated)`
+Produces: `jv-087-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -90,10 +90,7 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `jv-088-domain/`
-- `jv-088-pricing/`
-- `jv-088-risk/`
-- `jv-088-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
