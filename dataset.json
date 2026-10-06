@@ -1,6 +1,6 @@
 {
-  "branch": "JV-380",
-  "combo": "ANT-THIN-S",
+  "branch": "JV-379",
+  "combo": "ANT-THIN-M",
   "repository": "java-j22-376-380",
   "language": "java",
   "javaVersion": "22",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-380-domain",
-    "jv-380-pricing",
-    "jv-380-risk",
-    "jv-380-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "22",
   "testCompilerRelease": "22",
