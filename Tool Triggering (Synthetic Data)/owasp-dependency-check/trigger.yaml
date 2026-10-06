@@ -4,7 +4,7 @@ metrics: 8
 kind: plugin
 java_version: "23"
 host_jdk: "25"
-build_system: "Gradle / Groovy DSL"
+build_system: "Gradle / Kotlin DSL"
 command: ./tools/owasp-dependency-check/run.sh
 exit_codes:
   0: ran

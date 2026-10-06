@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V23_GRADLEGROOVYDSL_WAR_MONO
+﻿# Testable Java corpus — JV_V23_GRADLEKOTLINDSL_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `GRG-WAR-M` of the 24-cell Java grid.
+Grid cell `GRK-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -19,9 +19,9 @@ only. See `dataset.json` for the machine-readable description of this branch.
 |---|---|
 | Java version | 23 |
 | Host JDK | 25 |
-| Build system | Gradle / Groovy DSL |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Gradle / Kotlin DSL |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -131,7 +131,7 @@ Java 23 is **not an LTS release**. It shipped September 2024 and reached end of 
 2025, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-401.war`
+Produces: `jv-394-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -147,7 +147,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-394-domain/`
+- `jv-394-pricing/`
+- `jv-394-risk/`
+- `jv-394-catalog/`
 
 
 ## Tool test-data folders
