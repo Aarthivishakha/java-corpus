@@ -1,6 +1,6 @@
 {
-  "branch": "JV-350",
-  "combo": "GRG-THIN-S",
+  "branch": "JV-349",
+  "combo": "GRG-THIN-M",
   "repository": "java-j20-347-351",
   "language": "java",
   "javaVersion": "20",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-350-domain",
-    "jv-350-pricing",
-    "jv-350-risk",
-    "jv-350-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "20",
   "testCompilerRelease": "20",
