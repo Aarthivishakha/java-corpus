@@ -1,6 +1,6 @@
 {
-  "branch": "JV-110",
-  "combo": "GRG-THIN-S",
+  "branch": "JV-109",
+  "combo": "GRG-THIN-M",
   "repository": "java-j25-107-111",
   "language": "java",
   "javaVersion": "25",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-110-domain",
-    "jv-110-pricing",
-    "jv-110-risk",
-    "jv-110-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "25",
   "testCompilerRelease": "25",
