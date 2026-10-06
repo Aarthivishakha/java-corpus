@@ -1,6 +1,6 @@
 {
-  "branch": "JV-278",
-  "combo": "GRG-THIN-S",
+  "branch": "JV-277",
+  "combo": "GRG-THIN-M",
   "repository": "java-j16-275-279",
   "language": "java",
   "javaVersion": "16",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-278-domain",
-    "jv-278-pricing",
-    "jv-278-risk",
-    "jv-278-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "16",
   "testCompilerRelease": "16",

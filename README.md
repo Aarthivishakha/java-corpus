@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V16_GRADLEGROOVYDSL_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V16_GRADLEGROOVYDSL_THINJAR_MONO
 
-Grid cell `GRG-THIN-S` of the 24-cell Java grid.
+Grid cell `GRG-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 17 |
 | Build system | Gradle / Groovy DSL |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -117,7 +117,7 @@ Java 16 is **not an LTS release**. It shipped March 2021 and reached end of life
 September 2021, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-278.jar or target/jv-278-1.0.0.jar`
+Produces: `dist/jv-277.jar or target/jv-277-1.0.0.jar`
 
 ## Run
 
@@ -133,10 +133,7 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `jv-278-domain/`
-- `jv-278-pricing/`
-- `jv-278-risk/`
-- `jv-278-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
