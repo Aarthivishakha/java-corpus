@@ -4,7 +4,7 @@ metrics: 1
 kind: degraded
 java_version: "16"
 host_jdk: "17"
-build_system: "Gradle / Groovy DSL"
+build_system: "Gradle / Kotlin DSL"
 command: ./tools/nullaway/run.sh
 exit_codes:
   0: ran
