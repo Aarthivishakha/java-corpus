@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V18_GRADLEKOTLINDSL_WAR_MONO
+﻿# Testable Java corpus — JV_V18_MAVEN_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `GRK-WAR-M` of the 24-cell Java grid.
+Grid cell `MVN-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -19,9 +19,9 @@ only. See `dataset.json` for the machine-readable description of this branch.
 |---|---|
 | Java version | 18 |
 | Host JDK | 21 |
-| Build system | Gradle / Kotlin DSL |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Maven |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -65,7 +65,7 @@ when a tool can't run on this family.
 ## Build
 
 ```
-./gradlew build
+mvn -B clean package
 ```
 
 Main and test sources both compile at Java 18 (bytecode major version 62), built by
@@ -115,7 +115,7 @@ Java 18 is **not an LTS release**. It shipped March 2022 and reached end of life
 2022, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-299.war`
+Produces: `jv-292-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -126,12 +126,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-./gradlew test
+mvn -B test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-292-domain/`
+- `jv-292-pricing/`
+- `jv-292-risk/`
+- `jv-292-catalog/`
 
 
 ## Tool test-data folders
