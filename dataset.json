@@ -1,6 +1,6 @@
 {
-  "branch": "JV-240",
-  "combo": "ANT-WAR-S",
+  "branch": "JV-239",
+  "combo": "ANT-WAR-M",
   "repository": "java-j14-237-240",
   "language": "java",
   "javaVersion": "14",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-240-domain",
-    "jv-240-pricing",
-    "jv-240-risk",
-    "jv-240-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "14",
   "testCompilerRelease": "14",
