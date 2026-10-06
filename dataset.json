@@ -1,6 +1,6 @@
 {
-  "branch": "JV-250",
-  "combo": "GRK-SHADE-S",
+  "branch": "JV-249",
+  "combo": "GRK-SHADE-M",
   "repository": "java-j15-246-250",
   "language": "java",
   "javaVersion": "15",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-250-domain",
-    "jv-250-pricing",
-    "jv-250-risk",
-    "jv-250-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "15",
   "testCompilerRelease": "15",
