@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jv-142" default="package" basedir="."
+         xmlns:ivy="antlib:org.apache.ivy.ant">
+
+  <property name="java.source" value="9"/>
+  <property name="java.target" value="9"/>
+  <property name="build.dir"   value="build"/>
+  <property name="dist.dir"    value="dist"/>
+  <property name="lib.dir"     value="lib"/>
+  <property name="report.dir"  value="${build.dir}/reports"/>
+
+  <target name="resolve" description="fetch dependencies with Ivy">
+    <mkdir dir="${lib.dir}"/>
+    <ivy:retrieve pattern="${lib.dir}/[artifact]-[revision].[ext]"/>
+  </target>
+
+  <target name="compile" depends="resolve" description="compile main sources at Java 9">
+    <mkdir dir="${build.dir}/classes"/>
+    <javac destdir="${build.dir}/classes" includeantruntime="false"
+           source="${java.source}" target="${java.target}" debug="true" encoding="UTF-8">
+      <src path="jv-142-domain/src/main/java"/>
+      <src path="jv-142-pricing/src/main/java"/>
+      <src path="jv-142-risk/src/main/java"/>
+      <src path="jv-142-catalog/src/main/java"/>
+      <classpath><fileset dir="${lib.dir}" includes="**/*.jar"/></classpath>
+    </javac>
+  </target>
+
+  <target name="compile-tests" depends="compile" description="compile test sources">
+    <mkdir dir="${build.dir}/test-classes"/>
+    <javac srcdir="jv-142-domain/src/test/java" destdir="${build.dir}/test-classes" includeantruntime="false"
+           source="${java.source}" target="${java.target}" debug="true" encoding="UTF-8">
+      <classpath>
+        <pathelement location="${build.dir}/classes"/>
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="test" depends="compile-tests" description="run the JUnit suite">
+    <mkdir dir="${report.dir}"/>
+    <junit printsummary="true" haltonfailure="true" fork="true">
+      <classpath>
+        <pathelement location="${build.dir}/classes"/>
+        <pathelement location="${build.dir}/test-classes"/>
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+      </classpath>
+      <formatter type="xml"/>
+      <batchtest todir="${report.dir}">
+        <fileset dir="jv-142-domain/src/test/java" includes="**/*Test.java"/>
+      </batchtest>
+    </junit>
+  </target>
+
+  <target name="package" depends="compile" description="shaded uber-jar with relocated packages">
+    <taskdef name="jarjar" classname="com.tonicsystems.jarjar.JarJarTask"
+             classpath="${lib.dir}/jarjar.jar"/>
+    <jarjar destfile="${dist.dir}/${ant.project.name}-all.jar">
+      <fileset dir="${build.dir}/classes"/>
+      <zipgroupfileset dir="${lib.dir}" includes="**/*.jar" excludes="jarjar.jar"/>
+      <rule pattern="org.apache.commons.**" result="com.pramora.testable.shaded.commons.@1"/>
+      <rule pattern="com.fasterxml.jackson.**" result="com.pramora.testable.shaded.jackson.@1"/>
+      <rule pattern="org.yaml.snakeyaml.**" result="com.pramora.testable.shaded.snakeyaml.@1"/>
+      <manifest>
+        <attribute name="Main-Class" value="com.pramora.testable.app.Main"/>
+      </manifest>
+    </jarjar>
+  </target>
+
+  <target name="clean" description="remove build output">
+    <delete dir="${build.dir}"/>
+    <delete dir="${dist.dir}"/>
+  </target>
+</project>

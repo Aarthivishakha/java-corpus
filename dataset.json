@@ -1,45 +1,49 @@
 {
-  "branch": "JV-005",
-  "combo": "MVN-WAR-M",
-  "repository": "java-j8-001-005",
+  "branch": "JV-142",
+  "combo": "ANT-SHADE-S",
+  "repository": "java-j9-141-144",
   "language": "java",
-  "javaVersion": "8",
-  "hostJdk": "8",
-  "buildSystem": "Maven",
-  "buildSystemId": "MVN",
-  "packaging": "WAR",
-  "packagingId": "WAR",
-  "architecture": "Monolith",
-  "architectureId": "M",
+  "javaVersion": "9",
+  "hostJdk": "11",
+  "buildSystem": "Ant + Ivy",
+  "buildSystemId": "ANT",
+  "packaging": "Shaded uber-jar (relocated)",
+  "packagingId": "SHADE",
+  "architecture": "Microservices",
+  "architectureId": "S",
   "modules": [
-    "(single module)"
+    "jv-142-domain",
+    "jv-142-pricing",
+    "jv-142-risk",
+    "jv-142-catalog"
   ],
-  "mainCompilerRelease": "8",
-  "testCompilerRelease": "8",
-  "bytecodeMajorVersion": 52,
+  "mainCompilerRelease": "9",
+  "testCompilerRelease": "9",
+  "bytecodeMajorVersion": 53,
   "testFramework": "JUnit 4.13.2",
   "versionExclusiveFeatures": [
-    "lambda expressions",
-    "method references",
-    "streams",
-    "Optional",
-    "java.time",
-    "default interface methods"
+    "private interface methods",
+    "Set.of / List.of",
+    "Optional.or",
+    "Optional.stream",
+    "Stream.takeWhile",
+    "try-with-resources on an effectively final variable",
+    "diamond operator on an anonymous class"
   ],
-  "failsToCompileUnder": "7",
+  "failsToCompileUnder": "8",
   "toolPins": {
     "junit": "4.13.2",
     "jacoco": "0.8.14",
     "pmd": "7.26.0",
-    "checkstyle": "9.3",
-    "spotbugs": "4.8.6",
-    "findsecbugs": "1.13.0",
-    "pit": "1.17.4",
-    "owasp": "9.2.0"
+    "checkstyle": "10.26.1",
+    "spotbugs": "4.10.3",
+    "findsecbugs": "1.14.0",
+    "pit": "1.30.0",
+    "owasp": "13.0.0"
   },
   "buildToolPins": {
     "gradle": "8.14.3",
-    "shadow": "8.1.1",
+    "shadow": "8.3.11",
     "ant": "1.10.14",
     "ivy": "2.6.0"
   },
@@ -70,7 +74,20 @@
       "version": "1.30"
     }
   ],
-  "relocations": [],
+  "relocations": [
+    {
+      "from": "org.apache.commons",
+      "to": "com.pramora.testable.shaded.commons"
+    },
+    {
+      "from": "com.fasterxml.jackson",
+      "to": "com.pramora.testable.shaded.jackson"
+    },
+    {
+      "from": "org.yaml.snakeyaml",
+      "to": "com.pramora.testable.shaded.snakeyaml"
+    }
+  ],
   "answerKey": {
     "duplicatePair": [
       "analysis/DuplicateProcessorA.java",
@@ -79,7 +96,7 @@
     "highestCyclomaticComplexity": "service/PricingService.java#priceCents",
     "highestCognitiveComplexity": "analysis/RiskScorer.java#score",
     "taintSource": "util/InputSanitizer.java#sanitize",
-    "testCount": 26
+    "testCount": 33
   },
   "exitCodeContract": {
     "0": "ran",

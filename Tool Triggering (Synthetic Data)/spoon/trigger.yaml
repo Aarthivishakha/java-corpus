@@ -2,9 +2,9 @@ tool: spoon
 block: "Data Flow Testing"
 metrics: 1
 kind: degraded
-java_version: "8"
-host_jdk: "8"
-build_system: "Maven"
+java_version: "9"
+host_jdk: "11"
+build_system: "Ant + Ivy"
 command: ./tools/spoon/run.sh
 exit_codes:
   0: ran
@@ -12,5 +12,5 @@ exit_codes:
   3: skipped-cannot-run
   4: not-installed
 status: "cannot-run"
-reason: "Spoon 11.5.1 requires JDK 17+; this family runs on JDK 8"
+reason: "Spoon 11.5.1 requires JDK 17+; this family runs on JDK 11"
 expected_exit: 3

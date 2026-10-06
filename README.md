@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V8_MAVEN_WAR_MONO
+﻿# Testable Java corpus — JV_V9_ANTIVY_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `MVN-WAR-M` of the 24-cell Java grid.
+Grid cell `ANT-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -17,16 +17,16 @@ only. See `dataset.json` for the machine-readable description of this branch.
 
 | Variable | Value |
 |---|---|
-| Java version | 8 |
-| Host JDK | 8 |
-| Build system | Maven |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Java version | 9 |
+| Host JDK | 11 |
+| Build system | Ant + Ivy |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
 19 tools are wired on this branch (one `Tool Triggering (Synthetic Data)/<dir>/` folder
-each). **13 of them run on JDK 8 (host JDK 8); 6 do not.**
+each). **13 of them run on JDK 9 (host JDK 11); 6 do not.**
 
 That is the measurement, not a defect. A tool that cannot run exits **3**,
 not 0 -- a skip that looks like a pass is the failure mode this corpus
@@ -60,20 +60,21 @@ when a tool can't run on this family.
 | `custom-def-use` | n/a (placeholder) | Data Flow Testing | not a tool - the sheet names no package, version or vendor |
 | `nullaway` | primary | All Definition Coverage | runs as an Error Prone compiler plugin, not a standalone step |
 | `sonar` | primary | Coverage Delta | needs a running SonarQube server; set SONAR_HOST_URL to enable |
-| `spoon` | primary | Data Flow Testing | Spoon 11.5.1 requires JDK 17+; this family runs on JDK 8 |
+| `spoon` | primary | Data Flow Testing | Spoon 11.5.1 requires JDK 17+; this family runs on JDK 11 |
 
 ## Build
 
 ```
-mvn -B clean package
+ant clean package
 ```
 
-Main and test sources both compile at Java 8 (bytecode major version 52). The code
-uses lambdas, method references, streams, `Optional`, `java.time` and default interface
-methods, so it fails to compile under `-source 7` — the version differentiation is real,
-not declared.
+Main and test sources both compile at Java 9 (bytecode major version 53). The code
+uses private interface methods, `Set.of`, `Optional.or`, `Optional.stream`,
+`Stream.takeWhile`, try-with-resources on an effectively-final variable and the diamond
+operator on an anonymous class, so it fails to compile under `--release 8` — the version differentiation is real, not
+declared.
 
-Produces: `jv-005.war`
+Produces: `jv-142-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -84,12 +85,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-mvn -B test
+ant test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-142-domain/`
+- `jv-142-pricing/`
+- `jv-142-risk/`
+- `jv-142-catalog/`
 
 
 ## Tool test-data folders

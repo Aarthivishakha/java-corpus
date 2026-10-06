@@ -2,9 +2,9 @@ tool: jacoco
 block: "Statement / Branch / Path Coverage"
 metrics: 22
 kind: plugin
-java_version: "8"
-host_jdk: "8"
-build_system: "Maven"
+java_version: "9"
+host_jdk: "11"
+build_system: "Ant + Ivy"
 command: ./tools/jacoco/run.sh
 exit_codes:
   0: ran
