@@ -1,5 +1,1 @@
-rootProject.name = 'jv-018-parent'
-include ':jv-018-domain'
-include ':jv-018-pricing'
-include ':jv-018-risk'
-include ':jv-018-catalog'
+rootProject.name = 'jv-017'
