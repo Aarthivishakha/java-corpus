@@ -1,6 +1,6 @@
 {
-  "branch": "JV-108",
-  "combo": "GRK-WAR-S",
+  "branch": "JV-107",
+  "combo": "GRK-WAR-M",
   "repository": "java-j25-107-111",
   "language": "java",
   "javaVersion": "25",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-108-domain",
-    "jv-108-pricing",
-    "jv-108-risk",
-    "jv-108-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "25",
   "testCompilerRelease": "25",
