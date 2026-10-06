@@ -1,7 +1,7 @@
 {
-  "branch": "JV-270",
-  "combo": "MVN-WAR-S",
-  "repository": "java-j16-270-274",
+  "branch": "JV-269",
+  "combo": "MVN-WAR-M",
+  "repository": "java-j16-265-269",
   "language": "java",
   "javaVersion": "16",
   "hostJdk": "17",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-270-domain",
-    "jv-270-pricing",
-    "jv-270-risk",
-    "jv-270-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "16",
   "testCompilerRelease": "16",
