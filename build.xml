@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="jv-142" default="package" basedir="."
+<project name="jv-141" default="package" basedir="."
          xmlns:ivy="antlib:org.apache.ivy.ant">
 
   <property name="java.source" value="9"/>
@@ -18,17 +18,15 @@
     <mkdir dir="${build.dir}/classes"/>
     <javac destdir="${build.dir}/classes" includeantruntime="false"
            source="${java.source}" target="${java.target}" debug="true" encoding="UTF-8">
-      <src path="jv-142-domain/src/main/java"/>
-      <src path="jv-142-pricing/src/main/java"/>
-      <src path="jv-142-risk/src/main/java"/>
-      <src path="jv-142-catalog/src/main/java"/>
+      <src path="src/main/java"/>
+
       <classpath><fileset dir="${lib.dir}" includes="**/*.jar"/></classpath>
     </javac>
   </target>
 
   <target name="compile-tests" depends="compile" description="compile test sources">
     <mkdir dir="${build.dir}/test-classes"/>
-    <javac srcdir="jv-142-domain/src/test/java" destdir="${build.dir}/test-classes" includeantruntime="false"
+    <javac srcdir="src/test/java" destdir="${build.dir}/test-classes" includeantruntime="false"
            source="${java.source}" target="${java.target}" debug="true" encoding="UTF-8">
       <classpath>
         <pathelement location="${build.dir}/classes"/>
@@ -47,7 +45,7 @@
       </classpath>
       <formatter type="xml"/>
       <batchtest todir="${report.dir}">
-        <fileset dir="jv-142-domain/src/test/java" includes="**/*Test.java"/>
+        <fileset dir="src/test/java" includes="**/*Test.java"/>
       </batchtest>
     </junit>
   </target>
