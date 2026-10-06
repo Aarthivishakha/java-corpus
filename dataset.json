@@ -1,6 +1,6 @@
 {
-  "branch": "JV-254",
-  "combo": "GRG-THIN-S",
+  "branch": "JV-253",
+  "combo": "GRG-THIN-M",
   "repository": "java-j15-251-255",
   "language": "java",
   "javaVersion": "15",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-254-domain",
-    "jv-254-pricing",
-    "jv-254-risk",
-    "jv-254-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "15",
   "testCompilerRelease": "15",
