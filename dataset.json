@@ -1,6 +1,6 @@
 {
-  "branch": "JV-266",
-  "combo": "MVN-THIN-S",
+  "branch": "JV-265",
+  "combo": "MVN-THIN-M",
   "repository": "java-j16-265-269",
   "language": "java",
   "javaVersion": "16",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-266-domain",
-    "jv-266-pricing",
-    "jv-266-risk",
-    "jv-266-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "16",
   "testCompilerRelease": "16",

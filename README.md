@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V16_MAVEN_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V16_MAVEN_THINJAR_MONO
 
-Grid cell `MVN-THIN-S` of the 24-cell Java grid.
+Grid cell `MVN-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 17 |
 | Build system | Maven |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -117,7 +117,7 @@ Java 16 is **not an LTS release**. It shipped March 2021 and reached end of life
 September 2021, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-266.jar or target/jv-266-1.0.0.jar`
+Produces: `dist/jv-265.jar or target/jv-265-1.0.0.jar`
 
 ## Run
 
@@ -133,10 +133,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-266-domain/`
-- `jv-266-pricing/`
-- `jv-266-risk/`
-- `jv-266-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
