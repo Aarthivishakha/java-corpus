@@ -1,6 +1,6 @@
 {
-  "branch": "JV-072",
-  "combo": "ANT-WAR-S",
+  "branch": "JV-071",
+  "combo": "ANT-WAR-M",
   "repository": "java-j17-069-072",
   "language": "java",
   "javaVersion": "17",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-072-domain",
-    "jv-072-pricing",
-    "jv-072-risk",
-    "jv-072-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "17",
   "testCompilerRelease": "17",
