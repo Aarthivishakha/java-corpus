@@ -1,6 +1,6 @@
 {
-  "branch": "JV-276",
-  "combo": "GRK-WAR-S",
+  "branch": "JV-275",
+  "combo": "GRK-WAR-M",
   "repository": "java-j16-275-279",
   "language": "java",
   "javaVersion": "16",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-276-domain",
-    "jv-276-pricing",
-    "jv-276-risk",
-    "jv-276-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "16",
   "testCompilerRelease": "16",
