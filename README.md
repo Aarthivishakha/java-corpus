@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V9_GRADLEGROOVYDSL_WAR_MONO
+﻿# Testable Java corpus — JV_V9_GRADLEKOTLINDSL_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `GRG-WAR-M` of the 24-cell Java grid.
+Grid cell `GRK-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -19,9 +19,9 @@ only. See `dataset.json` for the machine-readable description of this branch.
 |---|---|
 | Java version | 9 |
 | Host JDK | 11 |
-| Build system | Gradle / Groovy DSL |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Gradle / Kotlin DSL |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ uses private interface methods, `Set.of`, `Optional.or`, `Optional.stream`,
 operator on an anonymous class, so it fails to compile under `--release 8` — the version differentiation is real, not
 declared.
 
-Produces: `jv-137.war`
+Produces: `jv-130-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -90,7 +90,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-130-domain/`
+- `jv-130-pricing/`
+- `jv-130-risk/`
+- `jv-130-catalog/`
 
 
 ## Tool test-data folders
