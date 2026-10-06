@@ -1,6 +1,6 @@
 {
-  "branch": "JV-344",
-  "combo": "GRK-THIN-S",
+  "branch": "JV-343",
+  "combo": "GRK-THIN-M",
   "repository": "java-j20-342-346",
   "language": "java",
   "javaVersion": "20",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-344-domain",
-    "jv-344-pricing",
-    "jv-344-risk",
-    "jv-344-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "20",
   "testCompilerRelease": "20",
