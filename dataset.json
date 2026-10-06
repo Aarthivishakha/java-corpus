@@ -1,6 +1,6 @@
 {
-  "branch": "JV-116",
-  "combo": "ANT-THIN-S",
+  "branch": "JV-115",
+  "combo": "ANT-THIN-M",
   "repository": "java-j25-112-116",
   "language": "java",
   "javaVersion": "25",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-116-domain",
-    "jv-116-pricing",
-    "jv-116-risk",
-    "jv-116-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "25",
   "testCompilerRelease": "25",
