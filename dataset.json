@@ -1,6 +1,6 @@
 {
-  "branch": "JV-314",
-  "combo": "MVN-THIN-S",
+  "branch": "JV-313",
+  "combo": "MVN-THIN-M",
   "repository": "java-j19-313-317",
   "language": "java",
   "javaVersion": "19",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-314-domain",
-    "jv-314-pricing",
-    "jv-314-risk",
-    "jv-314-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "19",
   "testCompilerRelease": "19",
