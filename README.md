@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V23_MAVEN_THINJAR_MONO
+﻿# Testable Java corpus — JV_V23_MAVEN_WAR_MICRO
 
-Grid cell `MVN-THIN-M` of the 24-cell Java grid.
+Grid cell `MVN-WAR-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 23 |
 | Host JDK | 25 |
 | Build system | Maven |
-| Packaging | Thin jar |
-| Architecture | Monolith |
+| Packaging | WAR |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -131,7 +131,7 @@ Java 23 is **not an LTS release**. It shipped September 2024 and reached end of 
 2025, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-385.jar or target/jv-385-1.0.0.jar`
+Produces: `jv-390.war`
 
 ## Run
 
@@ -147,7 +147,10 @@ mvn -B test
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-390-domain/`
+- `jv-390-pricing/`
+- `jv-390-risk/`
+- `jv-390-catalog/`
 
 
 ## Tool test-data folders
