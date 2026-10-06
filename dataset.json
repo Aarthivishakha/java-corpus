@@ -1,6 +1,6 @@
 {
-  "branch": "JV-086",
-  "combo": "GRG-THIN-S",
+  "branch": "JV-085",
+  "combo": "GRG-THIN-M",
   "repository": "java-j21-083-087",
   "language": "java",
   "javaVersion": "21",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-086-domain",
-    "jv-086-pricing",
-    "jv-086-risk",
-    "jv-086-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "21",
   "testCompilerRelease": "21",
