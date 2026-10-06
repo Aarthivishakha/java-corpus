@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V13_MAVEN_WAR_MICRO
+﻿# Testable Java corpus — JV_V13_MAVEN_WAR_MONO
 
-Grid cell `MVN-WAR-S` of the 24-cell Java grid.
+Grid cell `MVN-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 17 |
 | Build system | Maven |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -121,7 +121,7 @@ Java 13 is **not an LTS release**. It shipped September 2019 and reached end of 
 March 2020, six months later. It is in this corpus to complete the version axis, not as a
 recommendation.
 
-Produces: `jv-198.war`
+Produces: `jv-197.war`
 
 ## Run
 
@@ -137,10 +137,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-198-domain/`
-- `jv-198-pricing/`
-- `jv-198-risk/`
-- `jv-198-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
