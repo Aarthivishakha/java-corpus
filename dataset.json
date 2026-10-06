@@ -1,6 +1,6 @@
 {
-  "branch": "JV-348",
-  "combo": "GRK-WAR-S",
+  "branch": "JV-347",
+  "combo": "GRK-WAR-M",
   "repository": "java-j20-347-351",
   "language": "java",
   "javaVersion": "20",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-348-domain",
-    "jv-348-pricing",
-    "jv-348-risk",
-    "jv-348-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "20",
   "testCompilerRelease": "20",
