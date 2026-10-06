@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V8_MAVEN_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V8_MAVEN_THINJAR_MONO
 
-Grid cell `MVN-THIN-S` of the 24-cell Java grid.
+Grid cell `MVN-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 8 |
 | Build system | Maven |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -73,7 +73,7 @@ uses lambdas, method references, streams, `Optional`, `java.time` and default in
 methods, so it fails to compile under `-source 7` — the version differentiation is real,
 not declared.
 
-Produces: `dist/jv-002.jar or target/jv-002-1.0.0.jar`
+Produces: `dist/jv-001.jar or target/jv-001-1.0.0.jar`
 
 ## Run
 
@@ -89,10 +89,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-002-domain/`
-- `jv-002-pricing/`
-- `jv-002-risk/`
-- `jv-002-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders

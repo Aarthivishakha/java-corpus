@@ -1,6 +1,6 @@
 {
-  "branch": "JV-002",
-  "combo": "MVN-THIN-S",
+  "branch": "JV-001",
+  "combo": "MVN-THIN-M",
   "repository": "java-j8-001-005",
   "language": "java",
   "javaVersion": "8",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-002-domain",
-    "jv-002-pricing",
-    "jv-002-risk",
-    "jv-002-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "8",
   "testCompilerRelease": "8",
