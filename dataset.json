@@ -1,6 +1,6 @@
 {
-  "branch": "JV-264",
-  "combo": "ANT-WAR-S",
+  "branch": "JV-263",
+  "combo": "ANT-WAR-M",
   "repository": "java-j15-261-264",
   "language": "java",
   "javaVersion": "15",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-264-domain",
-    "jv-264-pricing",
-    "jv-264-risk",
-    "jv-264-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "15",
   "testCompilerRelease": "15",
