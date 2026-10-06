@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V9_MAVEN_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V9_MAVEN_THINJAR_MONO
 
-Grid cell `MVN-THIN-S` of the 24-cell Java grid.
+Grid cell `MVN-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 11 |
 | Build system | Maven |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ uses private interface methods, `Set.of`, `Optional.or`, `Optional.stream`,
 operator on an anonymous class, so it fails to compile under `--release 8` — the version differentiation is real, not
 declared.
 
-Produces: `dist/jv-122.jar or target/jv-122-1.0.0.jar`
+Produces: `dist/jv-121.jar or target/jv-121-1.0.0.jar`
 
 ## Run
 
@@ -90,10 +90,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-122-domain/`
-- `jv-122-pricing/`
-- `jv-122-risk/`
-- `jv-122-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders

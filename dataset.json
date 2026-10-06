@@ -1,6 +1,6 @@
 {
-  "branch": "JV-122",
-  "combo": "MVN-THIN-S",
+  "branch": "JV-121",
+  "combo": "MVN-THIN-M",
   "repository": "java-j9-121-125",
   "language": "java",
   "javaVersion": "9",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-122-domain",
-    "jv-122-pricing",
-    "jv-122-risk",
-    "jv-122-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "9",
   "testCompilerRelease": "9",
