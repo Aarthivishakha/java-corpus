@@ -1,6 +1,6 @@
 {
-  "branch": "JV-070",
-  "combo": "ANT-SHADE-S",
+  "branch": "JV-069",
+  "combo": "ANT-SHADE-M",
   "repository": "java-j17-069-072",
   "language": "java",
   "javaVersion": "17",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-070-domain",
-    "jv-070-pricing",
-    "jv-070-risk",
-    "jv-070-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "17",
   "testCompilerRelease": "17",
