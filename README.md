@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V21_MAVEN_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V21_MAVEN_THINJAR_MONO
 
-Grid cell `MVN-THIN-S` of the 24-cell Java grid.
+Grid cell `MVN-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 21 |
 | Build system | Maven |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ clauses, `null` case labels and the sequenced-collection methods `getFirst`/`get
 `reversed`, so it fails to compile under `--release 17` — the version differentiation is real, not
 declared.
 
-Produces: `dist/jv-074.jar or target/jv-074-1.0.0.jar`
+Produces: `dist/jv-073.jar or target/jv-073-1.0.0.jar`
 
 ## Run
 
@@ -90,10 +90,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-074-domain/`
-- `jv-074-pricing/`
-- `jv-074-risk/`
-- `jv-074-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
