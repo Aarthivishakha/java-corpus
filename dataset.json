@@ -1,7 +1,7 @@
 {
-  "branch": "JV-246",
-  "combo": "MVN-WAR-S",
-  "repository": "java-j15-246-250",
+  "branch": "JV-245",
+  "combo": "MVN-WAR-M",
+  "repository": "java-j15-241-245",
   "language": "java",
   "javaVersion": "15",
   "hostJdk": "17",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-246-domain",
-    "jv-246-pricing",
-    "jv-246-risk",
-    "jv-246-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "15",
   "testCompilerRelease": "15",
