@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V18_ANTIVY_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V18_ANTIVY_THINJAR_MONO
 
-Grid cell `ANT-THIN-S` of the 24-cell Java grid.
+Grid cell `ANT-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 21 |
 | Build system | Ant + Ivy |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -115,7 +115,7 @@ Java 18 is **not an LTS release**. It shipped March 2022 and reached end of life
 2022, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-308.jar or target/jv-308-1.0.0.jar`
+Produces: `dist/jv-307.jar or target/jv-307-1.0.0.jar`
 
 ## Run
 
@@ -131,10 +131,7 @@ ant test
 
 ## Workspace projects
 
-- `jv-308-domain/`
-- `jv-308-pricing/`
-- `jv-308-risk/`
-- `jv-308-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
