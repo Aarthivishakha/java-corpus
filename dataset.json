@@ -1,6 +1,6 @@
 {
-  "branch": "JV-420",
-  "combo": "GRK-WAR-S",
+  "branch": "JV-419",
+  "combo": "GRK-WAR-M",
   "repository": "java-j24-419-423",
   "language": "java",
   "javaVersion": "24",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-420-domain",
-    "jv-420-pricing",
-    "jv-420-risk",
-    "jv-420-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "24",
   "testCompilerRelease": "24",
