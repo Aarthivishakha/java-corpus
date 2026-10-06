@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V20_ANTIVY_WAR_MONO
+﻿# Testable Java corpus — JV_V20_GRADLEGROOVYDSL_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `ANT-WAR-M` of the 24-cell Java grid.
+Grid cell `GRG-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -19,9 +19,9 @@ only. See `dataset.json` for the machine-readable description of this branch.
 |---|---|
 | Java version | 20 |
 | Host JDK | 21 |
-| Build system | Ant + Ivy |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Gradle / Groovy DSL |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -65,7 +65,7 @@ when a tool can't run on this family.
 ## Build
 
 ```
-ant clean package
+./gradlew build
 ```
 
 Main and test sources both compile at Java 20 (bytecode major version 64), built by
@@ -124,7 +124,7 @@ Java 20 is **not an LTS release**. It shipped March 2023 and reached end of life
 2023, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-359.war`
+Produces: `jv-352-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -135,12 +135,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-ant test
+./gradlew test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-352-domain/`
+- `jv-352-pricing/`
+- `jv-352-risk/`
+- `jv-352-catalog/`
 
 
 ## Tool test-data folders
