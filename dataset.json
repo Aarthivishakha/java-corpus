@@ -1,54 +1,57 @@
 {
-  "branch": "JV-221",
-  "combo": "MVN-WAR-M",
-  "repository": "java-j14-217-221",
+  "branch": "JV-262",
+  "combo": "ANT-SHADE-S",
+  "repository": "java-j15-261-264",
   "language": "java",
-  "javaVersion": "14",
+  "javaVersion": "15",
   "hostJdk": "17",
-  "buildSystem": "Maven",
-  "buildSystemId": "MVN",
-  "packaging": "WAR",
-  "packagingId": "WAR",
-  "architecture": "Monolith",
-  "architectureId": "M",
+  "buildSystem": "Ant + Ivy",
+  "buildSystemId": "ANT",
+  "packaging": "Shaded uber-jar (relocated)",
+  "packagingId": "SHADE",
+  "architecture": "Microservices",
+  "architectureId": "S",
   "modules": [
-    "(single module)"
+    "jv-262-domain",
+    "jv-262-pricing",
+    "jv-262-risk",
+    "jv-262-catalog"
   ],
-  "mainCompilerRelease": "14",
-  "testCompilerRelease": "14",
-  "bytecodeMajorVersion": 58,
+  "mainCompilerRelease": "15",
+  "testCompilerRelease": "15",
+  "bytecodeMajorVersion": 59,
   "testFramework": "JUnit 4.13.2",
   "versionExclusiveFeatures": [
-    "switch expressions",
-    "switch arrow rules",
-    "multiple case labels",
-    "yield",
-    "java.io.Serial"
+    "text blocks",
+    "String.formatted",
+    "String.stripIndent",
+    "String.translateEscapes",
+    "CharSequence.isEmpty"
   ],
   "versionLockKind": "syntax+api",
-  "versionLockNote": "Switch expressions became final in Java 14 (JEP 361) after preview in 12 and 13, so this is the first family since java11 with both a parse-time and an attribution-time lock. javac reports only the 3 syntax errors at --release 13 because the parser stops before attribution; the 4 java.io.Serial errors surface only once the syntax lock is neutralised in a scratch copy.",
+  "versionLockNote": "Text blocks became final in Java 15 (JEP 378) after preview in 13 and 14. javac reports only the 1 text-block error at --release 14 because the parser stops before attribution; the 4 API errors surface only once the text blocks are neutralised in a scratch copy.",
   "versionLockLayers": {
     "parseTime": {
-      "file": "analysis/OrderClassifier.java",
-      "errors": 3
+      "file": "service/PricingReport.java",
+      "errors": 1
     },
     "attributionTime": {
-      "file": "model/PricingSnapshot.java",
+      "file": "service/PricingReport.java",
       "errors": 4
     }
   },
   "previewFeaturesDeliberatelyAbsent": [
-    "records (final 16)",
-    "pattern matching for instanceof (final 16)",
-    "text blocks (final 15)"
+    "records (2nd preview in 15, final 16)",
+    "pattern matching for instanceof (2nd preview in 15, final 16)",
+    "sealed types (1st preview in 15, final 17)"
   ],
   "forwardChecked": [
-    "15",
     "16",
     "17",
     "21",
     "25"
   ],
+  "apiHistoryNote": "String.formatted/stripIndent/translateEscapes are absent at --release 12, deprecated-for-removal at 13, preview-disabled at 14 and final from 15. They were rejected as the java13 lock for that reason and belong here.",
   "inheritedLocks": {
     "12": [
       "Collectors.teeing",
@@ -60,11 +63,16 @@
       "ByteBuffer.get(int,byte[])",
       "CharBuffer.get(int,char[])",
       "FileSystems.newFileSystem(Path,Map)"
+    ],
+    "14": [
+      "switch expressions",
+      "yield",
+      "java.io.Serial"
     ]
   },
   "lts": false,
   "hostJdkDiffersFromLanguageLevel": true,
-  "failsToCompileUnder": "13",
+  "failsToCompileUnder": "14",
   "toolPins": {
     "junit": "4.13.2",
     "jacoco": "0.8.14",
@@ -108,7 +116,20 @@
       "version": "1.30"
     }
   ],
-  "relocations": [],
+  "relocations": [
+    {
+      "from": "org.apache.commons",
+      "to": "com.pramora.testable.shaded.commons"
+    },
+    {
+      "from": "com.fasterxml.jackson",
+      "to": "com.pramora.testable.shaded.jackson"
+    },
+    {
+      "from": "org.yaml.snakeyaml",
+      "to": "com.pramora.testable.shaded.snakeyaml"
+    }
+  ],
   "answerKey": {
     "duplicatePair": [
       "analysis/DuplicateProcessorA.java",
@@ -117,7 +138,7 @@
     "highestCyclomaticComplexity": "service/PricingService.java#priceCents",
     "highestCognitiveComplexity": "analysis/RiskScorer.java#score",
     "taintSource": "util/InputSanitizer.java#sanitize",
-    "testCount": 86
+    "testCount": 97
   },
   "exitCodeContract": {
     "0": "ran",

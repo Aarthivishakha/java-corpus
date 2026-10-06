@@ -24,7 +24,7 @@ case "spoon" in
   diff-cover) [ -n "${JACOCO_XML:-}" ] || exit 3 ;;
 esac
 
-java -cp "tools/spoon/spoon.jar" spoon.Launcher -i "$SRC" -o tools/spoon/out/ --compliance 14
+java -cp "tools/spoon/spoon.jar" spoon.Launcher -i "$SRC" -o tools/spoon/out/ --compliance 15
 rc=$?
 # propagate the tool's own skipped/not-installed codes instead of flattening them to 1
 case $rc in

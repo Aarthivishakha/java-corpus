@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V14_MAVEN_WAR_MONO
+﻿# Testable Java corpus — JV_V15_ANTIVY_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `MVN-WAR-M` of the 24-cell Java grid.
+Grid cell `ANT-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -17,16 +17,16 @@ only. See `dataset.json` for the machine-readable description of this branch.
 
 | Variable | Value |
 |---|---|
-| Java version | 14 |
+| Java version | 15 |
 | Host JDK | 17 |
-| Build system | Maven |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Ant + Ivy |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
 19 tools are wired on this branch (one `Tool Triggering (Synthetic Data)/<dir>/` folder
-each). **14 of them run on JDK 14 (host JDK 17); 5 do not.**
+each). **14 of them run on JDK 15 (host JDK 17); 5 do not.**
 
 That is the measurement, not a defect. A tool that cannot run exits **3**,
 not 0 -- a skip that looks like a pass is the failure mode this corpus
@@ -65,49 +65,66 @@ when a tool can't run on this family.
 ## Build
 
 ```
-mvn -B clean package
+ant clean package
 ```
 
-Main and test sources both compile at Java 14 (bytecode major version 58), built by
-`javac 17` with `--release 14`.
+Main and test sources both compile at Java 15 (bytecode major version 59), built by
+`javac 17` with `--release 15`.
 
-**Syntax is back.** Java 12 and Java 13 both contributed no final language syntax, because
-their headline feature was held in preview through two cycles. That feature lands here:
-**switch expressions became final in Java 14** (JEP 361), after preview in 12 (JEP 325) and
-again in 13 (JEP 354). java14 closes the arc the two families before it opened, and it is
-the first family since java11 to carry both kinds of lock at once:
+**Text blocks land here.** They were preview in Java 13 (JEP 355) and again in Java 14
+(JEP 368), and became final in Java 15 (JEP 378). That is the second three-release preview
+arc in this corpus, after switch expressions (preview 12, preview 13, final 14) - and it is
+the reason the java13 family's lock had to be API-only. `service/PricingReport.java` carries
+the entire Java 15 lock, in both layers:
 
-| Lock | Kind | Where | Since |
-|---|---|---|---|
-| switch expressions, arrow rules, multiple case labels, `yield` | **parse-time** | `analysis/OrderClassifier.java` | 14 (final) |
-| `java.io.Serial` | **attribution-time** | `model/PricingSnapshot.java` | 14 |
+| Lock | Kind | Since |
+|---|---|---|
+| text blocks | **parse-time** | 15 (final) |
+| `String.formatted` | attribution-time | 15 (final) |
+| `String.stripIndent` | attribution-time | 15 (final) |
+| `String.translateEscapes` | attribution-time | 15 (final) |
+| `CharSequence.isEmpty` | attribution-time | 15 |
 
-The distinction is measured, not asserted. `javac --release 13` reports only **three** errors
-on the branch, all in `OrderClassifier` - *"switch expressions are not supported in
--source 13"*, *"switch rules..."*, *"multiple case labels..."* - because the parser stops
-there and never reaches attribution. Delete that one file from a scratch copy and
-`--release 13` reports **four more**, all `cannot find symbol: class Serial`. Seven locks
-total, in two layers.
+`javac --release 14` reports **one** error - the text block - because the parser stops there.
+Neutralise the text blocks in a scratch copy and four more appear.
 
-`@Serial` is a real API, not a decorative one: serialization's hook methods are matched by
-name and signature at runtime with no interface to implement, so a misspelled `readObject`
-silently does nothing. The annotation is what turns that into a compile error.
+### The three String methods, and why they belong here and not in java13
 
-**Records, pattern matching for `instanceof` and text blocks are deliberately absent.** All
-three were still preview in Java 14 - final in 16, 16 and 15 - so under the preview-off rule
-they belong to later families, exactly as pattern-matching `switch` was held back from
-java17 to java21.
+`String.formatted`, `stripIndent` and `translateEscapes` were evaluated as the **Java 13**
+family's lock and rejected. This is the family where they are correct. Measured with
+`javac 17` and `javac 25`, reading the exact diagnostic rather than pass/fail:
 
-Forward-checked as well as backward: the branch compiles clean at `--release 15, 16, 17, 21`
-and `25`, so the cumulative ladder holds above it. That check entered the corpus after the
-Java 13 family turned up `String.formatted` - an API that passes the backward check and then
-disappears one release later.
+| `--release` | Status |
+|---|---|
+| 12 | absent - `cannot find symbol` |
+| 13 | present, **deprecated for removal** - warning only, compiles |
+| 14 | present, **preview API, disabled by default** - hard error under preview-off |
+| **15** | **final - compiles clean** |
+| 16 / 17 / 21 / 25 | final - compiles clean |
 
-Java 14 is **not an LTS release**. It shipped March 2020 and reached end of life in
-September 2020, six months later. It is in this corpus to complete the version axis, not as
+They shipped in JDK 13 as provisional API alongside preview text blocks, were reclassified
+as preview APIs in JDK 14 with JEP 368, and became final in JDK 15. They travel with the
+text blocks they were built for, which is why they land in the same family and the same
+file.
+
+Two things follow that the corpus's gates now encode. First, **a version lock has to be
+checked forward as well as backward** - at java13 these pass the backward check and then
+stop compiling one release up. Second, **pass/fail is not enough**: at `--release 13` they
+compile with only a deprecation warning, so a gate reading exit status alone would have
+called them healthy.
+
+**Records, pattern matching for `instanceof` and sealed types are deliberately absent** -
+records and `instanceof` patterns were in their second preview in 15 (final in 16) and
+sealed types in their first (final in 17).
+
+Forward-checked at `--release 16, 17, 21` and `25`: clean, so the cumulative ladder holds
+above this family.
+
+Java 15 is **not an LTS release**. It shipped September 2020 and reached end of life in
+March 2021, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-221.war`
+Produces: `jv-262-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -118,12 +135,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-mvn -B test
+ant test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-262-domain/`
+- `jv-262-pricing/`
+- `jv-262-risk/`
+- `jv-262-catalog/`
 
 
 ## Tool test-data folders
