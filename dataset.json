@@ -1,6 +1,6 @@
 {
-  "branch": "JV-234",
-  "combo": "GRG-WAR-S",
+  "branch": "JV-233",
+  "combo": "GRG-WAR-M",
   "repository": "java-j14-232-236",
   "language": "java",
   "javaVersion": "14",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-234-domain",
-    "jv-234-pricing",
-    "jv-234-risk",
-    "jv-234-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "14",
   "testCompilerRelease": "14",
