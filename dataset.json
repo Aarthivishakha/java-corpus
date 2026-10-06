@@ -1,7 +1,7 @@
 {
-  "branch": "JV-016",
-  "combo": "GRG-SHADE-S",
-  "repository": "java-j8-016-020",
+  "branch": "JV-015",
+  "combo": "GRG-SHADE-M",
+  "repository": "java-j8-011-015",
   "language": "java",
   "javaVersion": "8",
   "hostJdk": "8",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-016-domain",
-    "jv-016-pricing",
-    "jv-016-risk",
-    "jv-016-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "8",
   "testCompilerRelease": "8",
