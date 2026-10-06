@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V23_ANTIVY_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V23_ANTIVY_THINJAR_MICRO
 
-Grid cell `ANT-SHADE-M` of the 24-cell Java grid.
+Grid cell `ANT-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 23 |
 | Host JDK | 25 |
 | Build system | Ant + Ivy |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -131,7 +131,7 @@ Java 23 is **not an LTS release**. It shipped September 2024 and reached end of 
 2025, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-405-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-404.jar or target/jv-404-1.0.0.jar`
 
 ## Run
 
@@ -147,7 +147,10 @@ ant test
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-404-domain/`
+- `jv-404-pricing/`
+- `jv-404-risk/`
+- `jv-404-catalog/`
 
 
 ## Tool test-data folders
