@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V21_MAVEN_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V21_MAVEN_THINJAR_MICRO
 
-Grid cell `MVN-SHADE-M` of the 24-cell Java grid.
+Grid cell `MVN-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 21 |
 | Host JDK | 21 |
 | Build system | Maven |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ clauses, `null` case labels and the sequenced-collection methods `getFirst`/`get
 `reversed`, so it fails to compile under `--release 17` — the version differentiation is real, not
 declared.
 
-Produces: `jv-075-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-074.jar or target/jv-074-1.0.0.jar`
 
 ## Run
 
@@ -90,7 +90,10 @@ mvn -B test
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-074-domain/`
+- `jv-074-pricing/`
+- `jv-074-risk/`
+- `jv-074-catalog/`
 
 
 ## Tool test-data folders
