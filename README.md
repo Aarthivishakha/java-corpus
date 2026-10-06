@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V16_GRADLEKOTLINDSL_WAR_MONO
+﻿# Testable Java corpus — JV_V16_MAVEN_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `GRK-WAR-M` of the 24-cell Java grid.
+Grid cell `MVN-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -19,9 +19,9 @@ only. See `dataset.json` for the machine-readable description of this branch.
 |---|---|
 | Java version | 16 |
 | Host JDK | 17 |
-| Build system | Gradle / Kotlin DSL |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Maven |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -65,7 +65,7 @@ when a tool can't run on this family.
 ## Build
 
 ```
-./gradlew build
+mvn -B clean package
 ```
 
 Main and test sources both compile at Java 16 (bytecode major version 60), built by
@@ -117,7 +117,7 @@ Java 16 is **not an LTS release**. It shipped March 2021 and reached end of life
 September 2021, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-275.war`
+Produces: `jv-268-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -128,12 +128,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-./gradlew test
+mvn -B test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-268-domain/`
+- `jv-268-pricing/`
+- `jv-268-risk/`
+- `jv-268-catalog/`
 
 
 ## Tool test-data folders
