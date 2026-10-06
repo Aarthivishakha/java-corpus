@@ -1,6 +1,6 @@
 {
-  "branch": "JV-292",
-  "combo": "MVN-SHADE-S",
+  "branch": "JV-291",
+  "combo": "MVN-SHADE-M",
   "repository": "java-j18-289-293",
   "language": "java",
   "javaVersion": "18",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-292-domain",
-    "jv-292-pricing",
-    "jv-292-risk",
-    "jv-292-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "18",
   "testCompilerRelease": "18",
