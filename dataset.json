@@ -1,6 +1,6 @@
 {
-  "branch": "JV-228",
-  "combo": "GRK-WAR-S",
+  "branch": "JV-227",
+  "combo": "GRK-WAR-M",
   "repository": "java-j14-227-231",
   "language": "java",
   "javaVersion": "14",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-228-domain",
-    "jv-228-pricing",
-    "jv-228-risk",
-    "jv-228-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "14",
   "testCompilerRelease": "14",

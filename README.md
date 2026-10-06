@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V14_GRADLEKOTLINDSL_WAR_MICRO
+﻿# Testable Java corpus — JV_V14_GRADLEKOTLINDSL_WAR_MONO
 
-Grid cell `GRK-WAR-S` of the 24-cell Java grid.
+Grid cell `GRK-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 17 |
 | Build system | Gradle / Kotlin DSL |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -107,7 +107,7 @@ Java 14 is **not an LTS release**. It shipped March 2020 and reached end of life
 September 2020, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-228.war`
+Produces: `jv-227.war`
 
 ## Run
 
@@ -123,10 +123,7 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `jv-228-domain/`
-- `jv-228-pricing/`
-- `jv-228-risk/`
-- `jv-228-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
