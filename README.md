@@ -1,145 +1,58 @@
-﻿# Testable Java corpus — JV_V9_MAVEN_WAR_MONO
+# Java Tool-Evaluation Corpus
 
-Grid cell `MVN-WAR-M` of the 24-cell Java grid.
+`main` carries only this overview -- it holds no project code. Every other
+branch in this repository is a complete, independently buildable project for
+one exact combination of Java version, build system (`Maven`/`Ant + Ivy`/`Gradle Groovy DSL`/`Gradle Kotlin DSL`), packaging (`Thin jar`/`WAR`/`Shaded uber-jar`) and architecture (`Monolith`/`Microservices`).
 
-## Project type
+This repository consolidates what used to be 90 separate small repositories
+into one repository holding all 432 branches, so the full corpus for this
+language lives in a single place.
 
-Order pricing and risk domain. The domain layer is byte-identical across all 24 branches
-in this family, so any difference in tool output is attributable to the branch variables
-below and not to the code the tool was pointed at.
+## Branch naming
 
-## Branches
+Every branch name encodes its own identity, so the name alone tells you what
+it is without needing to open it:
 
-This repository holds 432 orphan branches, one per grid cell across every Java version, build system and packaging combination in this corpus. `main` carries the title
-only. See `dataset.json` for the machine-readable description of this branch.
+```
+JV_V{ver}_{BUNDLER}_{PKGMGR}_{ARCH}
+```
 
-## Branch variables
+## Versions in this corpus
 
-| Variable | Value |
+18 Java versions, 24 branches each (one per bundler x package manager x
+architecture combination):
+
+| Java version | Branches |
 |---|---|
-| Java version | 9 |
-| Host JDK | 11 |
-| Build system | Maven |
-| Packaging | WAR |
-| Architecture | Monolith |
+| 8 | 24 |
+| 9 | 24 |
+| 10 | 24 |
+| 11 | 24 |
+| 12 | 24 |
+| 13 | 24 |
+| 14 | 24 |
+| 15 | 24 |
+| 16 | 24 |
+| 17 | 24 |
+| 18 | 24 |
+| 19 | 24 |
+| 20 | 24 |
+| 21 | 24 |
+| 22 | 24 |
+| 23 | 24 |
+| 24 | 24 |
+| 25 | 24 |
 
-## Supported tools
+## Finding a branch
 
-19 tools are wired on this branch (one `Tool Triggering (Synthetic Data)/<dir>/` folder
-each). **13 of them run on JDK 9 (host JDK 11); 6 do not.**
+Each branch's own `README.md` describes its exact cell (version, bundler,
+package manager, architecture) and its full tool roster. `dataset.json` on
+each branch is the machine-readable answer key for that cell.
 
-That is the measurement, not a defect. A tool that cannot run exits **3**,
-not 0 -- a skip that looks like a pass is the failure mode this corpus
-exists to expose. Every `trigger.yaml` records the real, specific reason
-when a tool can't run on this family.
+## History
 
-### Running here
-
-| Tool | Role | Block |
-|---|---|---|
-| `checkstyle` | primary | Lint / Rule Violations |
-| `ck` | primary | Cyclomatic Complexity |
-| `cpd` | primary | Code Duplication |
-| `diff-cover` | primary | Coverage Delta |
-| `git-churn` | primary | Code Churn |
-| `grype` | alternative | Dependency Risk (SCA) |
-| `jacoco` | primary | Statement / Branch / Path Coverage |
-| `lizard` | alternative | Cyclomatic Complexity |
-| `owasp-dependency-check` | primary | Dependency Risk (SCA) |
-| `pit` | primary | Mutation Score |
-| `pmd` | primary | Cognitive Complexity |
-| `pydriller` | alternative | Code Churn |
-| `spotbugs` | primary | Static Vulnerabilities (SAST) |
-
-### Dark here
-
-| Tool | Role | Block | Why |
-|---|---|---|---|
-| `asm-defuse` | primary | Data Flow Testing | no jar published under a stable coordinate - place one in Tool Triggering (Synthetic Data)/asm-defuse/ |
-| `ba-dua` | primary | All Definition Coverage | ba-dua 0.8.0 links JaCoCo 0.8.1, which stops at Java 10 class files |
-| `custom-def-use` | n/a (placeholder) | Data Flow Testing | not a tool - the sheet names no package, version or vendor |
-| `nullaway` | primary | All Definition Coverage | runs as an Error Prone compiler plugin, not a standalone step |
-| `sonar` | primary | Coverage Delta | needs a running SonarQube server; set SONAR_HOST_URL to enable |
-| `spoon` | primary | Data Flow Testing | Spoon 11.5.1 requires JDK 17+; this family runs on JDK 11 |
-
-## Build
-
-```
-mvn -B clean package
-```
-
-Main and test sources both compile at Java 9 (bytecode major version 53). The code
-uses private interface methods, `Set.of`, `Optional.or`, `Optional.stream`,
-`Stream.takeWhile`, try-with-resources on an effectively-final variable and the diamond
-operator on an anonymous class, so it fails to compile under `--release 8` — the version differentiation is real, not
-declared.
-
-Produces: `jv-125.war`
-
-## Run
-
-```
-java -jar <artifact> O-1234
-```
-
-## Test
-
-```
-mvn -B test
-```
-
-## Workspace projects
-
-- `src/main/java/` (single module)
-
-
-## Tool test-data folders
-
-Three sibling folders sit at the repo root, alongside this branch's own
-`Tool Triggering (Synthetic Data)/` (above).
-
-### `Tool Triggering (Tool Github Test data)/`
-16 of this branch's 19 wired tools carry their own real upstream test suite
-or source, pulled as-is from that tool's actual GitHub project -- not
-generated: `CK/`, `Spoon/`, `JaCoCo/`, `PMD/`, `SpotBugs/`, `FindSecBugs/`,
-`Checkstyle/`, `CPD/`, `PIT/`, `OWASP Dependency-Check/`, `Grype/`, `Lizard/`,
-`ASM-DefUse/`, `ba-dua/`, `diff-cover/` and `pydriller/`. The remaining 3
-wired tools have no folder here because there is no applicable upstream test
-suite to pull: `git-churn` is just git's own log, not a packaged tool;
-`nullaway` runs embedded as an Error Prone compiler plugin, not a standalone
-artifact; and `sonar` needs a live SonarQube server rather than a static
-test suite. (`custom-def-use` is the corpus's own deliberate non-tool
-placeholder -- see the Supported tools table above -- so it was never a
-candidate for this folder either.)
-
-### `Tool Clean (Synthetic Data)/`
-Most tools here carry 5 generated fixture packages, one per representative
-JDK family (8, 9, 16, 24, 25), engineered to be clean so the tool should
-report zero findings: the **Tool Clean (100% pass)** condition.
-
-### `Tool Invalid (Synthetic Data)/`
-Same shape as Clean -- the same 5-JDK-family fixtures -- but engineered so
-every fixture makes the tool flag or fail rather than pass: the
-**Tool Invalid** condition. `diff-cover` and `pydriller` each carry one real
-git repository's worth of history in both Clean and Invalid rather than 5
-per-version copies, restored from `_git-bundles/` via `restore-git.ps1`
-rather than kept as a live `.git` folder, so a plain file copy never
-silently drops their content.
-
-## Tool entry points
-
-Each tool has `Tool Triggering (Synthetic Data)/<tool>/trigger.yaml` and `Tool Triggering (Synthetic Data)/<tool>/run.sh`. Runners follow the
-exit-code contract: 0 ran, 1 failed, 3 skipped-cannot-run, 4 not-installed.
-
-## Planted CVE pins
-
-| Dependency | Version |
-|---|---|
-| `commons-collections:commons-collections` | 3.2.1 |
-| `org.apache.commons:commons-text` | 1.9 |
-| `com.fasterxml.jackson.core:jackson-databind` | 2.9.10.1 |
-| `log4j:log4j` | 1.2.17 |
-| `org.yaml:snakeyaml` | 1.30 |
-
-Deliberately vulnerable versions, so the SCA metrics have known true positives. Do not
-upgrade them.
+Branches were moved into this repository by relocating their existing git
+history under a new name -- every commit, author, date and
+`Co-authored-by:` trailer is unchanged from before consolidation. Nothing
+was squashed or rewritten, so tools that read commit history (churn,
+ownership, `pydriller`, etc.) see the same signal they always did.
