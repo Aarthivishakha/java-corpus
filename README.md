@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V8_GRADLEGROOVYDSL_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V8_GRADLEGROOVYDSL_THINJAR_MICRO
 
-Grid cell `GRG-SHADE-M` of the 24-cell Java grid.
+Grid cell `GRG-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 8 |
 | Host JDK | 8 |
 | Build system | Gradle / Groovy DSL |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -73,7 +73,7 @@ uses lambdas, method references, streams, `Optional`, `java.time` and default in
 methods, so it fails to compile under `-source 7` — the version differentiation is real,
 not declared.
 
-Produces: `jv-015-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-014.jar or target/jv-014-1.0.0.jar`
 
 ## Run
 
@@ -89,7 +89,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-014-domain/`
+- `jv-014-pricing/`
+- `jv-014-risk/`
+- `jv-014-catalog/`
 
 
 ## Tool test-data folders
