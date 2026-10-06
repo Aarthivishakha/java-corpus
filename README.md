@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V19_GRADLEKOTLINDSL_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V19_GRADLEKOTLINDSL_THINJAR_MICRO
 
-Grid cell `GRK-SHADE-M` of the 24-cell Java grid.
+Grid cell `GRK-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 19 |
 | Host JDK | 21 |
 | Build system | Gradle / Kotlin DSL |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -112,7 +112,7 @@ Java 19 is **not an LTS release**. It shipped September 2022 and reached end of 
 2023, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-321-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-320.jar or target/jv-320-1.0.0.jar`
 
 ## Run
 
@@ -128,7 +128,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-320-domain/`
+- `jv-320-pricing/`
+- `jv-320-risk/`
+- `jv-320-catalog/`
 
 
 ## Tool test-data folders
