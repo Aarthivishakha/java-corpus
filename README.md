@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V24_GRADLEGROOVYDSL_WAR_MONO
+﻿# Testable Java corpus — JV_V24_GRADLEKOTLINDSL_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `GRG-WAR-M` of the 24-cell Java grid.
+Grid cell `GRK-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -19,9 +19,9 @@ only. See `dataset.json` for the machine-readable description of this branch.
 |---|---|
 | Java version | 24 |
 | Host JDK | 25 |
-| Build system | Gradle / Groovy DSL |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Gradle / Kotlin DSL |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -129,7 +129,7 @@ Java 24 is **not an LTS release**. It shipped March 2025 and reached end of life
 2025, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-425.war`
+Produces: `jv-418-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -145,7 +145,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-418-domain/`
+- `jv-418-pricing/`
+- `jv-418-risk/`
+- `jv-418-catalog/`
 
 
 ## Tool test-data folders

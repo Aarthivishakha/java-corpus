@@ -1,18 +1,21 @@
 {
-  "branch": "JV-425",
-  "combo": "GRG-WAR-M",
-  "repository": "java-j24-424-428",
+  "branch": "JV-418",
+  "combo": "GRK-SHADE-S",
+  "repository": "java-j24-414-418",
   "language": "java",
   "javaVersion": "24",
   "hostJdk": "25",
-  "buildSystem": "Gradle / Groovy DSL",
-  "buildSystemId": "GRG",
-  "packaging": "WAR",
-  "packagingId": "WAR",
-  "architecture": "Monolith",
-  "architectureId": "M",
+  "buildSystem": "Gradle / Kotlin DSL",
+  "buildSystemId": "GRK",
+  "packaging": "Shaded uber-jar (relocated)",
+  "packagingId": "SHADE",
+  "architecture": "Microservices",
+  "architectureId": "S",
   "modules": [
-    "(single module)"
+    "jv-418-domain",
+    "jv-418-pricing",
+    "jv-418-risk",
+    "jv-418-catalog"
   ],
   "mainCompilerRelease": "24",
   "testCompilerRelease": "24",
@@ -103,7 +106,20 @@
       "version": "1.30"
     }
   ],
-  "relocations": [],
+  "relocations": [
+    {
+      "from": "org.apache.commons",
+      "to": "com.pramora.testable.shaded.commons"
+    },
+    {
+      "from": "com.fasterxml.jackson",
+      "to": "com.pramora.testable.shaded.jackson"
+    },
+    {
+      "from": "org.yaml.snakeyaml",
+      "to": "com.pramora.testable.shaded.snakeyaml"
+    }
+  ],
   "answerKey": {
     "duplicatePair": [
       "analysis/DuplicateProcessorA.java",
