@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V22_ANTIVY_THINJAR_MONO
+﻿# Testable Java corpus — JV_V22_ANTIVY_WAR_MICRO
 
-Grid cell `ANT-THIN-M` of the 24-cell Java grid.
+Grid cell `ANT-WAR-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 22 |
 | Host JDK | 25 |
 | Build system | Ant + Ivy |
-| Packaging | Thin jar |
-| Architecture | Monolith |
+| Packaging | WAR |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -127,7 +127,7 @@ Java 22 is **not an LTS release**. It shipped March 2024 and reached end of life
 2024, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-379.jar or target/jv-379-1.0.0.jar`
+Produces: `jv-384.war`
 
 ## Run
 
@@ -143,7 +143,10 @@ ant test
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-384-domain/`
+- `jv-384-pricing/`
+- `jv-384-risk/`
+- `jv-384-catalog/`
 
 
 ## Tool test-data folders
