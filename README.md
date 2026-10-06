@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V18_GRADLEKOTLINDSL_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V18_GRADLEKOTLINDSL_THINJAR_MICRO
 
-Grid cell `GRK-SHADE-M` of the 24-cell Java grid.
+Grid cell `GRK-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 18 |
 | Host JDK | 21 |
 | Build system | Gradle / Kotlin DSL |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -115,7 +115,7 @@ Java 18 is **not an LTS release**. It shipped March 2022 and reached end of life
 2022, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-297-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-296.jar or target/jv-296-1.0.0.jar`
 
 ## Run
 
@@ -131,7 +131,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-296-domain/`
+- `jv-296-pricing/`
+- `jv-296-risk/`
+- `jv-296-catalog/`
 
 
 ## Tool test-data folders
