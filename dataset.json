@@ -1,6 +1,6 @@
 {
-  "branch": "JV-242",
-  "combo": "MVN-THIN-S",
+  "branch": "JV-241",
+  "combo": "MVN-THIN-M",
   "repository": "java-j15-241-245",
   "language": "java",
   "javaVersion": "15",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-242-domain",
-    "jv-242-pricing",
-    "jv-242-risk",
-    "jv-242-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "15",
   "testCompilerRelease": "15",
