@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V22_GRADLEKOTLINDSL_SHADEDUBERJARRELOCATED_MICRO
+﻿# Testable Java corpus — JV_V22_GRADLEKOTLINDSL_SHADEDUBERJARRELOCATED_MONO
 
-Grid cell `GRK-SHADE-S` of the 24-cell Java grid.
+Grid cell `GRK-SHADE-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 25 |
 | Build system | Gradle / Kotlin DSL |
 | Packaging | Shaded uber-jar (relocated) |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -127,7 +127,7 @@ Java 22 is **not an LTS release**. It shipped March 2024 and reached end of life
 2024, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-370-all.jar (shaded, packages relocated)`
+Produces: `jv-369-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -143,10 +143,7 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `jv-370-domain/`
-- `jv-370-pricing/`
-- `jv-370-risk/`
-- `jv-370-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders

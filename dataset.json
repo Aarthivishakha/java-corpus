@@ -1,6 +1,6 @@
 {
-  "branch": "JV-370",
-  "combo": "GRK-SHADE-S",
+  "branch": "JV-369",
+  "combo": "GRK-SHADE-M",
   "repository": "java-j22-366-370",
   "language": "java",
   "javaVersion": "22",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-370-domain",
-    "jv-370-pricing",
-    "jv-370-risk",
-    "jv-370-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "22",
   "testCompilerRelease": "22",
