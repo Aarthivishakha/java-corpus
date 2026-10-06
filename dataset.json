@@ -1,6 +1,6 @@
 {
-  "branch": "JV-316",
-  "combo": "MVN-SHADE-S",
+  "branch": "JV-315",
+  "combo": "MVN-SHADE-M",
   "repository": "java-j19-313-317",
   "language": "java",
   "javaVersion": "19",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-316-domain",
-    "jv-316-pricing",
-    "jv-316-risk",
-    "jv-316-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "19",
   "testCompilerRelease": "19",
