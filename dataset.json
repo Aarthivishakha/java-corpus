@@ -1,6 +1,6 @@
 {
-  "branch": "JV-096",
-  "combo": "ANT-WAR-S",
+  "branch": "JV-095",
+  "combo": "ANT-WAR-M",
   "repository": "java-j21-093-096",
   "language": "java",
   "javaVersion": "21",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-096-domain",
-    "jv-096-pricing",
-    "jv-096-risk",
-    "jv-096-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "21",
   "testCompilerRelease": "21",
