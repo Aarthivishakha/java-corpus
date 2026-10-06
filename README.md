@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V20_GRADLEKOTLINDSL_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V20_GRADLEKOTLINDSL_THINJAR_MICRO
 
-Grid cell `GRK-SHADE-M` of the 24-cell Java grid.
+Grid cell `GRK-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 20 |
 | Host JDK | 21 |
 | Build system | Gradle / Kotlin DSL |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -124,7 +124,7 @@ Java 20 is **not an LTS release**. It shipped March 2023 and reached end of life
 2023, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-345-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-344.jar or target/jv-344-1.0.0.jar`
 
 ## Run
 
@@ -140,7 +140,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-344-domain/`
+- `jv-344-pricing/`
+- `jv-344-risk/`
+- `jv-344-catalog/`
 
 
 ## Tool test-data folders
