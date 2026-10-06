@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V22_GRADLEGROOVYDSL_THINJAR_MONO
+﻿# Testable Java corpus — JV_V22_GRADLEGROOVYDSL_WAR_MICRO
 
-Grid cell `GRG-THIN-M` of the 24-cell Java grid.
+Grid cell `GRG-WAR-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 22 |
 | Host JDK | 25 |
 | Build system | Gradle / Groovy DSL |
-| Packaging | Thin jar |
-| Architecture | Monolith |
+| Packaging | WAR |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -127,7 +127,7 @@ Java 22 is **not an LTS release**. It shipped March 2024 and reached end of life
 2024, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-373.jar or target/jv-373-1.0.0.jar`
+Produces: `jv-378.war`
 
 ## Run
 
@@ -143,7 +143,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-378-domain/`
+- `jv-378-pricing/`
+- `jv-378-risk/`
+- `jv-378-catalog/`
 
 
 ## Tool test-data folders
