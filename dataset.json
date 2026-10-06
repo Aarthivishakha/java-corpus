@@ -1,6 +1,6 @@
 {
-  "branch": "JV-402",
-  "combo": "GRG-WAR-S",
+  "branch": "JV-401",
+  "combo": "GRG-WAR-M",
   "repository": "java-j23-400-404",
   "language": "java",
   "javaVersion": "23",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-402-domain",
-    "jv-402-pricing",
-    "jv-402-risk",
-    "jv-402-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "23",
   "testCompilerRelease": "23",

@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V23_GRADLEGROOVYDSL_WAR_MICRO
+﻿# Testable Java corpus — JV_V23_GRADLEGROOVYDSL_WAR_MONO
 
-Grid cell `GRG-WAR-S` of the 24-cell Java grid.
+Grid cell `GRG-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 25 |
 | Build system | Gradle / Groovy DSL |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -131,7 +131,7 @@ Java 23 is **not an LTS release**. It shipped September 2024 and reached end of 
 2025, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-402.war`
+Produces: `jv-401.war`
 
 ## Run
 
@@ -147,10 +147,7 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `jv-402-domain/`
-- `jv-402-pricing/`
-- `jv-402-risk/`
-- `jv-402-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
