@@ -1,6 +1,6 @@
 {
-  "branch": "JV-288",
-  "combo": "ANT-WAR-S",
+  "branch": "JV-287",
+  "combo": "ANT-WAR-M",
   "repository": "java-j16-285-288",
   "language": "java",
   "javaVersion": "16",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-288-domain",
-    "jv-288-pricing",
-    "jv-288-risk",
-    "jv-288-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "16",
   "testCompilerRelease": "16",
