@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V24_MAVEN_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V24_MAVEN_THINJAR_MONO
 
-Grid cell `MVN-THIN-S` of the 24-cell Java grid.
+Grid cell `MVN-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 25 |
 | Build system | Maven |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -129,7 +129,7 @@ Java 24 is **not an LTS release**. It shipped March 2025 and reached end of life
 2025, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-410.jar or target/jv-410-1.0.0.jar`
+Produces: `dist/jv-409.jar or target/jv-409-1.0.0.jar`
 
 ## Run
 
@@ -145,10 +145,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-410-domain/`
-- `jv-410-pricing/`
-- `jv-410-risk/`
-- `jv-410-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders

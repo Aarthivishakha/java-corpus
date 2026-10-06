@@ -1,6 +1,6 @@
 {
-  "branch": "JV-410",
-  "combo": "MVN-THIN-S",
+  "branch": "JV-409",
+  "combo": "MVN-THIN-M",
   "repository": "java-j24-409-413",
   "language": "java",
   "javaVersion": "24",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-410-domain",
-    "jv-410-pricing",
-    "jv-410-risk",
-    "jv-410-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "24",
   "testCompilerRelease": "24",
