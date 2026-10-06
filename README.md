@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V9_GRADLEGROOVYDSL_THINJAR_MONO
+﻿# Testable Java corpus — JV_V9_GRADLEGROOVYDSL_WAR_MICRO
 
-Grid cell `GRG-THIN-M` of the 24-cell Java grid.
+Grid cell `GRG-WAR-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 9 |
 | Host JDK | 11 |
 | Build system | Gradle / Groovy DSL |
-| Packaging | Thin jar |
-| Architecture | Monolith |
+| Packaging | WAR |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ uses private interface methods, `Set.of`, `Optional.or`, `Optional.stream`,
 operator on an anonymous class, so it fails to compile under `--release 8` — the version differentiation is real, not
 declared.
 
-Produces: `dist/jv-133.jar or target/jv-133-1.0.0.jar`
+Produces: `jv-138.war`
 
 ## Run
 
@@ -90,7 +90,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-138-domain/`
+- `jv-138-pricing/`
+- `jv-138-risk/`
+- `jv-138-catalog/`
 
 
 ## Tool test-data folders
