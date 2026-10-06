@@ -1,6 +1,6 @@
 {
-  "branch": "JV-134",
-  "combo": "GRG-THIN-S",
+  "branch": "JV-133",
+  "combo": "GRG-THIN-M",
   "repository": "java-j9-131-135",
   "language": "java",
   "javaVersion": "9",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-134-domain",
-    "jv-134-pricing",
-    "jv-134-risk",
-    "jv-134-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "9",
   "testCompilerRelease": "9",
