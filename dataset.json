@@ -1,6 +1,6 @@
 {
-  "branch": "JV-368",
-  "combo": "GRK-THIN-S",
+  "branch": "JV-367",
+  "combo": "GRK-THIN-M",
   "repository": "java-j22-366-370",
   "language": "java",
   "javaVersion": "22",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-368-domain",
-    "jv-368-pricing",
-    "jv-368-risk",
-    "jv-368-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "22",
   "testCompilerRelease": "22",
