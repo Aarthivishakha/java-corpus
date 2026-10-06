@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V25_MAVEN_WAR_MICRO
+﻿# Testable Java corpus — JV_V25_MAVEN_WAR_MONO
 
-Grid cell `MVN-WAR-S` of the 24-cell Java grid.
+Grid cell `MVN-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 25 |
 | Build system | Maven |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ module import declarations and scoped values (all final in 25), plus Markdown `/
 comments (final in 23), so it fails to compile under `--release 21` — the version differentiation is real, not
 declared.
 
-Produces: `jv-102.war`
+Produces: `jv-101.war`
 
 ## Run
 
@@ -90,10 +90,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-102-domain/`
-- `jv-102-pricing/`
-- `jv-102-risk/`
-- `jv-102-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders

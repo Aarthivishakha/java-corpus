@@ -1,7 +1,7 @@
 {
-  "branch": "JV-102",
-  "combo": "MVN-WAR-S",
-  "repository": "java-j25-102-106",
+  "branch": "JV-101",
+  "combo": "MVN-WAR-M",
+  "repository": "java-j25-097-101",
   "language": "java",
   "javaVersion": "25",
   "hostJdk": "25",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-102-domain",
-    "jv-102-pricing",
-    "jv-102-risk",
-    "jv-102-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "25",
   "testCompilerRelease": "25",
