@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V18_MAVEN_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V18_MAVEN_THINJAR_MONO
 
-Grid cell `MVN-THIN-S` of the 24-cell Java grid.
+Grid cell `MVN-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 21 |
 | Build system | Maven |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -115,7 +115,7 @@ Java 18 is **not an LTS release**. It shipped March 2022 and reached end of life
 2022, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-290.jar or target/jv-290-1.0.0.jar`
+Produces: `dist/jv-289.jar or target/jv-289-1.0.0.jar`
 
 ## Run
 
@@ -131,10 +131,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-290-domain/`
-- `jv-290-pricing/`
-- `jv-290-risk/`
-- `jv-290-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders

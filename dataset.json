@@ -1,6 +1,6 @@
 {
-  "branch": "JV-290",
-  "combo": "MVN-THIN-S",
+  "branch": "JV-289",
+  "combo": "MVN-THIN-M",
   "repository": "java-j18-289-293",
   "language": "java",
   "javaVersion": "18",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-290-domain",
-    "jv-290-pricing",
-    "jv-290-risk",
-    "jv-290-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "18",
   "testCompilerRelease": "18",
