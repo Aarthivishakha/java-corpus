@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V18_GRADLEGROOVYDSL_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V18_GRADLEGROOVYDSL_THINJAR_MONO
 
-Grid cell `GRG-THIN-S` of the 24-cell Java grid.
+Grid cell `GRG-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 21 |
 | Build system | Gradle / Groovy DSL |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -115,7 +115,7 @@ Java 18 is **not an LTS release**. It shipped March 2022 and reached end of life
 2022, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-302.jar or target/jv-302-1.0.0.jar`
+Produces: `dist/jv-301.jar or target/jv-301-1.0.0.jar`
 
 ## Run
 
@@ -131,10 +131,7 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `jv-302-domain/`
-- `jv-302-pricing/`
-- `jv-302-risk/`
-- `jv-302-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders

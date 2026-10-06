@@ -1,6 +1,6 @@
 {
-  "branch": "JV-302",
-  "combo": "GRG-THIN-S",
+  "branch": "JV-301",
+  "combo": "GRG-THIN-M",
   "repository": "java-j18-299-303",
   "language": "java",
   "javaVersion": "18",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-302-domain",
-    "jv-302-pricing",
-    "jv-302-risk",
-    "jv-302-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "18",
   "testCompilerRelease": "18",
