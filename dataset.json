@@ -1,6 +1,6 @@
 {
-  "branch": "JV-104",
-  "combo": "GRK-THIN-S",
+  "branch": "JV-103",
+  "combo": "GRK-THIN-M",
   "repository": "java-j25-102-106",
   "language": "java",
   "javaVersion": "25",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-104-domain",
-    "jv-104-pricing",
-    "jv-104-risk",
-    "jv-104-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "25",
   "testCompilerRelease": "25",
