@@ -4,7 +4,7 @@ metrics: 6
 kind: standalone
 java_version: "22"
 host_jdk: "25"
-build_system: "Gradle / Kotlin DSL"
+build_system: "Maven"
 command: ./tools/diff-cover/run.sh
 exit_codes:
   0: ran
