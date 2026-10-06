@@ -1,6 +1,6 @@
 {
-  "branch": "JV-326",
-  "combo": "GRG-THIN-S",
+  "branch": "JV-325",
+  "combo": "GRG-THIN-M",
   "repository": "java-j19-323-327",
   "language": "java",
   "javaVersion": "19",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-326-domain",
-    "jv-326-pricing",
-    "jv-326-risk",
-    "jv-326-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "19",
   "testCompilerRelease": "19",
