@@ -1,6 +1,6 @@
 {
-  "branch": "JV-272",
-  "combo": "GRK-THIN-S",
+  "branch": "JV-271",
+  "combo": "GRK-THIN-M",
   "repository": "java-j16-270-274",
   "language": "java",
   "javaVersion": "16",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-272-domain",
-    "jv-272-pricing",
-    "jv-272-risk",
-    "jv-272-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "16",
   "testCompilerRelease": "16",
