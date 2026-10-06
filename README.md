@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V18_MAVEN_WAR_MONO
+﻿# Testable Java corpus — JV_V19_ANTIVY_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `MVN-WAR-M` of the 24-cell Java grid.
+Grid cell `ANT-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -17,16 +17,16 @@ only. See `dataset.json` for the machine-readable description of this branch.
 
 | Variable | Value |
 |---|---|
-| Java version | 18 |
+| Java version | 19 |
 | Host JDK | 21 |
-| Build system | Maven |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Ant + Ivy |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
 19 tools are wired on this branch (one `Tool Triggering (Synthetic Data)/<dir>/` folder
-each). **13 of them run on JDK 18 (host JDK 21); 6 do not.**
+each). **13 of them run on JDK 19 (host JDK 21); 6 do not.**
 
 That is the measurement, not a defect. A tool that cannot run exits **3**,
 not 0 -- a skip that looks like a pass is the failure mode this corpus
@@ -65,57 +65,54 @@ when a tool can't run on this family.
 ## Build
 
 ```
-mvn -B clean package
+ant clean package
 ```
 
-Main and test sources both compile at Java 18 (bytecode major version 62), built by
-`javac 21` with `--release 18`.
+Main and test sources both compile at Java 19 (bytecode major version 63), built by
+`javac 21` with `--release 19`.
 
-**Java 18 added no final language syntax at all.** Its JEPs were UTF-8 by default (400), the
-Simple Web Server (408), Javadoc snippets (413), a core-reflection reimplementation (416), the
-Vector API's third incubator (417), an address-resolution SPI (418), FFM's second incubator
-(419) and the deprecation of finalization (421) - none of which change the language - plus a
-*second preview* of pattern matching for `switch` (420), which the preview-off rule excludes.
-Java 18 is therefore the **third API-only family**, after Java 12 and Java 13.
+**Java 19 added no final language syntax either** - the second consecutive family for which
+that is true, and the fourth API-only family overall after Java 12, 13 and 18. Everything
+Java 19 is remembered for was still provisional in it:
 
-| Lock | Kind | File | Since |
-|---|---|---|---|
-| `Math.ceilDiv`, `Math.ceilMod` | attribution-time | `analysis/SlaCalculator.java` | 18 |
-| `Math.divideExact`, `floorDivExact`, `ceilDivExact` | attribution-time | `analysis/SlaCalculator.java` | 18 |
-| `Duration.isPositive` | attribution-time | `analysis/SlaCalculator.java` | 18 |
-| sealed interface + `permits` | parse-time | `model/RouteEvent.java` | **17** |
+| Feature | Status in Java 19 | Final in |
+|---|---|---|
+| virtual threads (JEP 425) | preview | 21 |
+| pattern matching for `switch` (JEP 427) | **third** preview | 21 |
+| record patterns (JEP 405) | preview | 21 |
+| Foreign Function & Memory (JEP 424) | preview | 22 |
+| structured concurrency (JEP 428) | incubator | - |
 
-The `Math` additions are not decorative. `ceilDiv` is the operation capacity planning
-actually needs, and before Java 18 it was written by hand as `(a + b - 1) / b`, which
-overflows silently. The `Exact` variants throw on the one pair of ints where integer division
-overflows - `Integer.MIN_VALUE / -1` - instead of wrapping. The test suite exercises exactly
-that pair.
+Under the preview-off rule all of them belong to a later family. `analysis/DispatchTracker.java`
+carries the whole lock, all of it attribution-time:
 
-### The sealed lock, and why it is in this family
+| API | Replaces | Why it was added |
+|---|---|---|
+| `Thread.threadId()` | `Thread.getId()`, deprecated in the same release | `getId()` is not final and can be overridden to lie; `threadId()` is final |
+| `Future.state()` | `isDone()` + `isCancelled()` + a `get()` in try/catch | non-blocking, no checked exceptions |
+| `Future.resultNow()` | `get()` on a task known to have finished | same |
+| `Future.exceptionNow()` | `get()` in a catch block | same |
+| `Locale.of(...)` | `new Locale(...)`, deprecated in the same release | the constructors returned a fresh instance rather than an interned one |
 
-`model/RouteEvent.java` is a **sealed interface**, which is Java **17**'s lock, not Java 18's.
-It is here because this family sits directly above java16 in the cumulative ladder and Java 17
-is the release in between - so the branch fails at `--release 17` on the Java 18 APIs (7
-errors, all in `SlaCalculator`) and separately at `--release 16` on the sealed type. Both
-directions are checked.
+Fifteen errors at `--release 18`, all in that one file; whole-family and per-file agree,
+because the family has no parse-time lock to halt on.
 
-That also makes java18 the first family built on the corrected ladder: it extends `domain16`,
-which carries every lock added since java11. The existing java17, java21 and java25 families
-still extend java11 directly and are missing those classes - recorded under Next steps, and
-this family is what the rebuilt java17 will have to slot underneath.
+### Two API-only families back to back is the shape of the run-up to 21
 
-**Pattern matching for `switch` is deliberately absent.** It was in its second preview in Java
-18 (JEP 420) and became final in Java 21, so it belongs to the java21 family - and it is what
-java21's `PricingNarrator` already uses. `SlaCalculator.summarise` deliberately switches over a
-plain string tag instead.
+java18 and java19 are the only adjacent pair in the corpus with no final syntax between them.
+That is not a gap in the language's development - it is the opposite. Loom, Amber and Panama
+were all mid-flight, and their features were being previewed rather than shipped: pattern
+matching for `switch` alone was previewed in 17, 18, 19 and 20 before going final in 21. A
+version corpus that ignored preview status would have put virtual threads in java19 and
+produced a family that cannot be distinguished from java21.
 
 Forward-checked at `--release 21` and `25`: clean.
 
-Java 18 is **not an LTS release**. It shipped March 2022 and reached end of life in September
-2022, six months later. It is in this corpus to complete the version axis, not as
+Java 19 is **not an LTS release**. It shipped September 2022 and reached end of life in March
+2023, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-293.war`
+Produces: `jv-334-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -126,12 +123,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-mvn -B test
+ant test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-334-domain/`
+- `jv-334-pricing/`
+- `jv-334-risk/`
+- `jv-334-catalog/`
 
 
 ## Tool test-data folders

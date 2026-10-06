@@ -2,9 +2,9 @@ tool: spotbugs
 block: "Static Vulnerabilities (SAST)"
 metrics: 7
 kind: plugin
-java_version: "18"
+java_version: "19"
 host_jdk: "21"
-build_system: "Maven"
+build_system: "Ant + Ivy"
 command: ./tools/spotbugs/run.sh
 exit_codes:
   0: ran

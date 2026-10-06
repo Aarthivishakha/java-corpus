@@ -1,58 +1,54 @@
 {
-  "branch": "JV-293",
-  "combo": "MVN-WAR-M",
-  "repository": "java-j18-289-293",
+  "branch": "JV-334",
+  "combo": "ANT-SHADE-S",
+  "repository": "java-j19-333-336",
   "language": "java",
-  "javaVersion": "18",
+  "javaVersion": "19",
   "hostJdk": "21",
-  "buildSystem": "Maven",
-  "buildSystemId": "MVN",
-  "packaging": "WAR",
-  "packagingId": "WAR",
-  "architecture": "Monolith",
-  "architectureId": "M",
+  "buildSystem": "Ant + Ivy",
+  "buildSystemId": "ANT",
+  "packaging": "Shaded uber-jar (relocated)",
+  "packagingId": "SHADE",
+  "architecture": "Microservices",
+  "architectureId": "S",
   "modules": [
-    "(single module)"
+    "jv-334-domain",
+    "jv-334-pricing",
+    "jv-334-risk",
+    "jv-334-catalog"
   ],
-  "mainCompilerRelease": "18",
-  "testCompilerRelease": "18",
-  "bytecodeMajorVersion": 62,
+  "mainCompilerRelease": "19",
+  "testCompilerRelease": "19",
+  "bytecodeMajorVersion": 63,
   "testFramework": "JUnit 4.13.2",
   "versionExclusiveFeatures": [
-    "Math.ceilDiv",
-    "Math.ceilMod",
-    "Math.divideExact",
-    "Math.floorDivExact",
-    "Math.ceilDivExact",
-    "Duration.isPositive"
+    "Thread.threadId",
+    "Future.state",
+    "Future.resultNow",
+    "Future.exceptionNow",
+    "Locale.of"
   ],
   "versionLockKind": "api-only",
-  "versionLockNote": "Java 18 added no final language syntax - its only language JEP was a second preview of pattern matching for switch, which the preview-off rule excludes. Third API-only family after Java 12 and Java 13. The sealed interface in model/RouteEvent.java is Java 17's lock, carried because this family sits directly above java16 in the ladder.",
+  "versionLockNote": "Java 19 added no final language syntax - virtual threads, pattern matching for switch (3rd preview), record patterns and FFM were all preview or incubator, final in 21 or 22. Fourth API-only family after Java 12, 13 and 18, and the second in a row.",
   "versionLockLayers": {
     "attributionTime": [
       {
-        "file": "analysis/SlaCalculator.java",
-        "errors": 7,
-        "release": "17"
-      }
-    ],
-    "parseTime": [
-      {
-        "file": "model/RouteEvent.java",
-        "errors": 1,
-        "release": "16",
-        "since": "17"
+        "file": "analysis/DispatchTracker.java",
+        "errors": 15,
+        "release": "18"
       }
     ]
   },
   "previewFeaturesDeliberatelyAbsent": [
-    "pattern matching for switch (2nd preview in 18, final 21)"
+    "virtual threads (preview in 19, final 21)",
+    "pattern matching for switch (3rd preview in 19, final 21)",
+    "record patterns (preview in 19, final 21)",
+    "Foreign Function & Memory (preview in 19, final 22)"
   ],
   "forwardChecked": [
     "21",
     "25"
   ],
-  "hostJdkGroupChanged": "javac 17 cannot reach --release 18, so the host moves to JDK 21 and this family carries java21's pins; CK goes dark here because its bundled Eclipse JDT 3.26.0 stops at Java 16.",
   "inheritedLocks": {
     "12": [
       "Collectors.teeing",
@@ -86,11 +82,19 @@
     ],
     "17": [
       "sealed interfaces"
+    ],
+    "18": [
+      "Math.ceilDiv",
+      "Math.ceilMod",
+      "Math.divideExact",
+      "Math.floorDivExact",
+      "Math.ceilDivExact",
+      "Duration.isPositive"
     ]
   },
   "lts": false,
   "hostJdkDiffersFromLanguageLevel": true,
-  "failsToCompileUnder": "17",
+  "failsToCompileUnder": "18",
   "toolPins": {
     "junit": "4.13.2",
     "jacoco": "0.8.14",
@@ -134,7 +138,20 @@
       "version": "1.30"
     }
   ],
-  "relocations": [],
+  "relocations": [
+    {
+      "from": "org.apache.commons",
+      "to": "com.pramora.testable.shaded.commons"
+    },
+    {
+      "from": "com.fasterxml.jackson",
+      "to": "com.pramora.testable.shaded.jackson"
+    },
+    {
+      "from": "org.yaml.snakeyaml",
+      "to": "com.pramora.testable.shaded.snakeyaml"
+    }
+  ],
   "answerKey": {
     "duplicatePair": [
       "analysis/DuplicateProcessorA.java",
@@ -143,7 +160,7 @@
     "highestCyclomaticComplexity": "service/PricingService.java#priceCents",
     "highestCognitiveComplexity": "analysis/RiskScorer.java#score",
     "taintSource": "util/InputSanitizer.java#sanitize",
-    "testCount": 137
+    "testCount": 154
   },
   "exitCodeContract": {
     "0": "ran",
