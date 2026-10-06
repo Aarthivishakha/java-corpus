@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V14_ANTIVY_SHADEDUBERJARRELOCATED_MICRO
+﻿# Testable Java corpus — JV_V14_ANTIVY_SHADEDUBERJARRELOCATED_MONO
 
-Grid cell `ANT-SHADE-S` of the 24-cell Java grid.
+Grid cell `ANT-SHADE-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 17 |
 | Build system | Ant + Ivy |
 | Packaging | Shaded uber-jar (relocated) |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -107,7 +107,7 @@ Java 14 is **not an LTS release**. It shipped March 2020 and reached end of life
 September 2020, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-238-all.jar (shaded, packages relocated)`
+Produces: `jv-237-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -123,10 +123,7 @@ ant test
 
 ## Workspace projects
 
-- `jv-238-domain/`
-- `jv-238-pricing/`
-- `jv-238-risk/`
-- `jv-238-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
