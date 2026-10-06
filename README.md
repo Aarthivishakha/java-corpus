@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V17_GRADLEGROOVYDSL_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V17_GRADLEGROOVYDSL_THINJAR_MONO
 
-Grid cell `GRG-THIN-S` of the 24-cell Java grid.
+Grid cell `GRG-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 17 |
 | Build system | Gradle / Groovy DSL |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ expressions and `Stream.toList`, so it fails to compile under `--release 11` in 
 places — the version differentiation is real, not
 declared.
 
-Produces: `dist/jv-062.jar or target/jv-062-1.0.0.jar`
+Produces: `dist/jv-061.jar or target/jv-061-1.0.0.jar`
 
 ## Run
 
@@ -90,10 +90,7 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `jv-062-domain/`
-- `jv-062-pricing/`
-- `jv-062-risk/`
-- `jv-062-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
