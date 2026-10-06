@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V24_GRADLEGROOVYDSL_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V24_GRADLEGROOVYDSL_THINJAR_MICRO
 
-Grid cell `GRG-SHADE-M` of the 24-cell Java grid.
+Grid cell `GRG-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 24 |
 | Host JDK | 25 |
 | Build system | Gradle / Groovy DSL |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -129,7 +129,7 @@ Java 24 is **not an LTS release**. It shipped March 2025 and reached end of life
 2025, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-423-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-422.jar or target/jv-422-1.0.0.jar`
 
 ## Run
 
@@ -145,7 +145,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-422-domain/`
+- `jv-422-pricing/`
+- `jv-422-risk/`
+- `jv-422-catalog/`
 
 
 ## Tool test-data folders
