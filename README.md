@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V9_GRADLEKOTLINDSL_WAR_MICRO
+﻿# Testable Java corpus — JV_V9_GRADLEKOTLINDSL_WAR_MONO
 
-Grid cell `GRK-WAR-S` of the 24-cell Java grid.
+Grid cell `GRK-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 11 |
 | Build system | Gradle / Kotlin DSL |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ uses private interface methods, `Set.of`, `Optional.or`, `Optional.stream`,
 operator on an anonymous class, so it fails to compile under `--release 8` — the version differentiation is real, not
 declared.
 
-Produces: `jv-132.war`
+Produces: `jv-131.war`
 
 ## Run
 
@@ -90,10 +90,7 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `jv-132-domain/`
-- `jv-132-pricing/`
-- `jv-132-risk/`
-- `jv-132-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
