@@ -1,6 +1,6 @@
 {
-  "branch": "JV-258",
-  "combo": "GRG-WAR-S",
+  "branch": "JV-257",
+  "combo": "GRG-WAR-M",
   "repository": "java-j15-256-260",
   "language": "java",
   "javaVersion": "15",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-258-domain",
-    "jv-258-pricing",
-    "jv-258-risk",
-    "jv-258-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "15",
   "testCompilerRelease": "15",
