@@ -1,6 +1,6 @@
 {
-  "branch": "JV-362",
-  "combo": "MVN-THIN-S",
+  "branch": "JV-361",
+  "combo": "MVN-THIN-M",
   "repository": "java-j22-361-365",
   "language": "java",
   "javaVersion": "22",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-362-domain",
-    "jv-362-pricing",
-    "jv-362-risk",
-    "jv-362-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "22",
   "testCompilerRelease": "22",

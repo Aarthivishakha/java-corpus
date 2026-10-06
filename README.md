@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V22_MAVEN_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V22_MAVEN_THINJAR_MONO
 
-Grid cell `MVN-THIN-S` of the 24-cell Java grid.
+Grid cell `MVN-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 25 |
 | Build system | Maven |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -127,7 +127,7 @@ Java 22 is **not an LTS release**. It shipped March 2024 and reached end of life
 2024, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-362.jar or target/jv-362-1.0.0.jar`
+Produces: `dist/jv-361.jar or target/jv-361-1.0.0.jar`
 
 ## Run
 
@@ -143,10 +143,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-362-domain/`
-- `jv-362-pricing/`
-- `jv-362-risk/`
-- `jv-362-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
