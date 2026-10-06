@@ -1,6 +1,6 @@
 {
-  "branch": "JV-296",
-  "combo": "GRK-THIN-S",
+  "branch": "JV-295",
+  "combo": "GRK-THIN-M",
   "repository": "java-j18-294-298",
   "language": "java",
   "javaVersion": "18",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-296-domain",
-    "jv-296-pricing",
-    "jv-296-risk",
-    "jv-296-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "18",
   "testCompilerRelease": "18",
