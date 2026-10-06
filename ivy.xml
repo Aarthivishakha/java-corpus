@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0">
-  <info organisation="com.pramora.testable" module="jv-283" revision="1.0.0"/>
+  <info organisation="com.pramora.testable" module="jv-288" revision="1.0.0"/>
 
   <configurations>
     <conf name="compile" description="compile-time dependencies"/>
