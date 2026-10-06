@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V8_MAVEN_WAR_MICRO
+﻿# Testable Java corpus — JV_V8_MAVEN_WAR_MONO
 
-Grid cell `MVN-WAR-S` of the 24-cell Java grid.
+Grid cell `MVN-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 8 |
 | Build system | Maven |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -73,7 +73,7 @@ uses lambdas, method references, streams, `Optional`, `java.time` and default in
 methods, so it fails to compile under `-source 7` — the version differentiation is real,
 not declared.
 
-Produces: `jv-006.war`
+Produces: `jv-005.war`
 
 ## Run
 
@@ -89,10 +89,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-006-domain/`
-- `jv-006-pricing/`
-- `jv-006-risk/`
-- `jv-006-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
