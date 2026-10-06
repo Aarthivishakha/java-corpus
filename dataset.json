@@ -1,6 +1,6 @@
 {
-  "branch": "JV-320",
-  "combo": "GRK-THIN-S",
+  "branch": "JV-319",
+  "combo": "GRK-THIN-M",
   "repository": "java-j19-318-322",
   "language": "java",
   "javaVersion": "19",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-320-domain",
-    "jv-320-pricing",
-    "jv-320-risk",
-    "jv-320-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "19",
   "testCompilerRelease": "19",
