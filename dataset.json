@@ -1,6 +1,6 @@
 {
-  "branch": "JV-084",
-  "combo": "GRK-WAR-S",
+  "branch": "JV-083",
+  "combo": "GRK-WAR-M",
   "repository": "java-j21-083-087",
   "language": "java",
   "javaVersion": "21",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-084-domain",
-    "jv-084-pricing",
-    "jv-084-risk",
-    "jv-084-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "21",
   "testCompilerRelease": "21",

@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V21_GRADLEKOTLINDSL_WAR_MICRO
+﻿# Testable Java corpus — JV_V21_GRADLEKOTLINDSL_WAR_MONO
 
-Grid cell `GRK-WAR-S` of the 24-cell Java grid.
+Grid cell `GRK-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 21 |
 | Build system | Gradle / Kotlin DSL |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ clauses, `null` case labels and the sequenced-collection methods `getFirst`/`get
 `reversed`, so it fails to compile under `--release 17` — the version differentiation is real, not
 declared.
 
-Produces: `jv-084.war`
+Produces: `jv-083.war`
 
 ## Run
 
@@ -90,10 +90,7 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `jv-084-domain/`
-- `jv-084-pricing/`
-- `jv-084-risk/`
-- `jv-084-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
