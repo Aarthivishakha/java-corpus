@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V9_GRADLEKOTLINDSL_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V9_GRADLEKOTLINDSL_THINJAR_MONO
 
-Grid cell `GRK-THIN-S` of the 24-cell Java grid.
+Grid cell `GRK-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 11 |
 | Build system | Gradle / Kotlin DSL |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ uses private interface methods, `Set.of`, `Optional.or`, `Optional.stream`,
 operator on an anonymous class, so it fails to compile under `--release 8` — the version differentiation is real, not
 declared.
 
-Produces: `dist/jv-128.jar or target/jv-128-1.0.0.jar`
+Produces: `dist/jv-127.jar or target/jv-127-1.0.0.jar`
 
 ## Run
 
@@ -90,10 +90,7 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `jv-128-domain/`
-- `jv-128-pricing/`
-- `jv-128-risk/`
-- `jv-128-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
