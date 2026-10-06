@@ -1,7 +1,7 @@
 {
-  "branch": "JV-126",
-  "combo": "MVN-WAR-S",
-  "repository": "java-j9-126-130",
+  "branch": "JV-125",
+  "combo": "MVN-WAR-M",
+  "repository": "java-j9-121-125",
   "language": "java",
   "javaVersion": "9",
   "hostJdk": "11",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-126-domain",
-    "jv-126-pricing",
-    "jv-126-risk",
-    "jv-126-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "9",
   "testCompilerRelease": "9",
