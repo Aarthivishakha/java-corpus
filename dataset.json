@@ -1,6 +1,6 @@
 {
-  "branch": "JV-432",
-  "combo": "ANT-WAR-S",
+  "branch": "JV-431",
+  "combo": "ANT-WAR-M",
   "repository": "java-j24-429-432",
   "language": "java",
   "javaVersion": "24",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-432-domain",
-    "jv-432-pricing",
-    "jv-432-risk",
-    "jv-432-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "24",
   "testCompilerRelease": "24",
