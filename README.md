@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V19_GRADLEGROOVYDSL_THINJAR_MONO
+﻿# Testable Java corpus — JV_V19_GRADLEGROOVYDSL_WAR_MICRO
 
-Grid cell `GRG-THIN-M` of the 24-cell Java grid.
+Grid cell `GRG-WAR-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 19 |
 | Host JDK | 21 |
 | Build system | Gradle / Groovy DSL |
-| Packaging | Thin jar |
-| Architecture | Monolith |
+| Packaging | WAR |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -112,7 +112,7 @@ Java 19 is **not an LTS release**. It shipped September 2022 and reached end of 
 2023, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-325.jar or target/jv-325-1.0.0.jar`
+Produces: `jv-330.war`
 
 ## Run
 
@@ -128,7 +128,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-330-domain/`
+- `jv-330-pricing/`
+- `jv-330-risk/`
+- `jv-330-catalog/`
 
 
 ## Tool test-data folders
