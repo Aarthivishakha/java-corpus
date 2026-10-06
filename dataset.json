@@ -1,7 +1,7 @@
 {
-  "branch": "JV-280",
-  "combo": "GRG-SHADE-S",
-  "repository": "java-j16-280-284",
+  "branch": "JV-279",
+  "combo": "GRG-SHADE-M",
+  "repository": "java-j16-275-279",
   "language": "java",
   "javaVersion": "16",
   "hostJdk": "17",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-280-domain",
-    "jv-280-pricing",
-    "jv-280-risk",
-    "jv-280-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "16",
   "testCompilerRelease": "16",
