@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V23_ANTIVY_THINJAR_MONO
+﻿# Testable Java corpus — JV_V23_ANTIVY_WAR_MICRO
 
-Grid cell `ANT-THIN-M` of the 24-cell Java grid.
+Grid cell `ANT-WAR-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 23 |
 | Host JDK | 25 |
 | Build system | Ant + Ivy |
-| Packaging | Thin jar |
-| Architecture | Monolith |
+| Packaging | WAR |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -131,7 +131,7 @@ Java 23 is **not an LTS release**. It shipped September 2024 and reached end of 
 2025, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-403.jar or target/jv-403-1.0.0.jar`
+Produces: `jv-408.war`
 
 ## Run
 
@@ -147,7 +147,10 @@ ant test
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-408-domain/`
+- `jv-408-pricing/`
+- `jv-408-risk/`
+- `jv-408-catalog/`
 
 
 ## Tool test-data folders
