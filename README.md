@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V8_ANTIVY_WAR_MONO
+﻿# Testable Java corpus — JV_V8_GRADLEGROOVYDSL_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `ANT-WAR-M` of the 24-cell Java grid.
+Grid cell `GRG-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -19,9 +19,9 @@ only. See `dataset.json` for the machine-readable description of this branch.
 |---|---|
 | Java version | 8 |
 | Host JDK | 8 |
-| Build system | Ant + Ivy |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Gradle / Groovy DSL |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -65,7 +65,7 @@ when a tool can't run on this family.
 ## Build
 
 ```
-ant clean package
+./gradlew build
 ```
 
 Main and test sources both compile at Java 8 (bytecode major version 52). The code
@@ -73,7 +73,7 @@ uses lambdas, method references, streams, `Optional`, `java.time` and default in
 methods, so it fails to compile under `-source 7` — the version differentiation is real,
 not declared.
 
-Produces: `jv-023.war`
+Produces: `jv-016-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -84,12 +84,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-ant test
+./gradlew test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-016-domain/`
+- `jv-016-pricing/`
+- `jv-016-risk/`
+- `jv-016-catalog/`
 
 
 ## Tool test-data folders
