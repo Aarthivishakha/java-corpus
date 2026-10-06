@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V20_GRADLEKOTLINDSL_THINJAR_MONO
+﻿# Testable Java corpus — JV_V20_GRADLEKOTLINDSL_WAR_MICRO
 
-Grid cell `GRK-THIN-M` of the 24-cell Java grid.
+Grid cell `GRK-WAR-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 20 |
 | Host JDK | 21 |
 | Build system | Gradle / Kotlin DSL |
-| Packaging | Thin jar |
-| Architecture | Monolith |
+| Packaging | WAR |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -124,7 +124,7 @@ Java 20 is **not an LTS release**. It shipped March 2023 and reached end of life
 2023, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-343.jar or target/jv-343-1.0.0.jar`
+Produces: `jv-348.war`
 
 ## Run
 
@@ -140,7 +140,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-348-domain/`
+- `jv-348-pricing/`
+- `jv-348-risk/`
+- `jv-348-catalog/`
 
 
 ## Tool test-data folders
