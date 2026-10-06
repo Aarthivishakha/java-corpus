@@ -1,6 +1,6 @@
 {
-  "branch": "JV-010",
-  "combo": "GRK-SHADE-S",
+  "branch": "JV-009",
+  "combo": "GRK-SHADE-M",
   "repository": "java-j8-006-010",
   "language": "java",
   "javaVersion": "8",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-010-domain",
-    "jv-010-pricing",
-    "jv-010-risk",
-    "jv-010-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "8",
   "testCompilerRelease": "8",
