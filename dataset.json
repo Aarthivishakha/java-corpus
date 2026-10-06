@@ -1,7 +1,7 @@
 {
-  "branch": "JV-222",
-  "combo": "MVN-WAR-S",
-  "repository": "java-j14-222-226",
+  "branch": "JV-221",
+  "combo": "MVN-WAR-M",
+  "repository": "java-j14-217-221",
   "language": "java",
   "javaVersion": "14",
   "hostJdk": "17",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-222-domain",
-    "jv-222-pricing",
-    "jv-222-risk",
-    "jv-222-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "14",
   "testCompilerRelease": "14",

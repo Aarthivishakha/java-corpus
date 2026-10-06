@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V14_MAVEN_WAR_MICRO
+﻿# Testable Java corpus — JV_V14_MAVEN_WAR_MONO
 
-Grid cell `MVN-WAR-S` of the 24-cell Java grid.
+Grid cell `MVN-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 17 |
 | Build system | Maven |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -107,7 +107,7 @@ Java 14 is **not an LTS release**. It shipped March 2020 and reached end of life
 September 2020, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-222.war`
+Produces: `jv-221.war`
 
 ## Run
 
@@ -123,10 +123,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-222-domain/`
-- `jv-222-pricing/`
-- `jv-222-risk/`
-- `jv-222-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
