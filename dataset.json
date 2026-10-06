@@ -1,7 +1,7 @@
 {
-  "branch": "JV-232",
-  "combo": "GRG-SHADE-S",
-  "repository": "java-j14-232-236",
+  "branch": "JV-231",
+  "combo": "GRG-SHADE-M",
+  "repository": "java-j14-227-231",
   "language": "java",
   "javaVersion": "14",
   "hostJdk": "17",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-232-domain",
-    "jv-232-pricing",
-    "jv-232-risk",
-    "jv-232-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "14",
   "testCompilerRelease": "14",
