@@ -1,18 +1,21 @@
 {
-  "branch": "JV-111",
-  "combo": "GRG-SHADE-M",
+  "branch": "JV-110",
+  "combo": "GRG-THIN-S",
   "repository": "java-j25-107-111",
   "language": "java",
   "javaVersion": "25",
   "hostJdk": "25",
   "buildSystem": "Gradle / Groovy DSL",
   "buildSystemId": "GRG",
-  "packaging": "Shaded uber-jar (relocated)",
-  "packagingId": "SHADE",
-  "architecture": "Monolith",
-  "architectureId": "M",
+  "packaging": "Thin jar",
+  "packagingId": "THIN",
+  "architecture": "Microservices",
+  "architectureId": "S",
   "modules": [
-    "(single module)"
+    "jv-110-domain",
+    "jv-110-pricing",
+    "jv-110-risk",
+    "jv-110-catalog"
   ],
   "mainCompilerRelease": "25",
   "testCompilerRelease": "25",
@@ -69,20 +72,7 @@
       "version": "1.30"
     }
   ],
-  "relocations": [
-    {
-      "from": "org.apache.commons",
-      "to": "com.pramora.testable.shaded.commons"
-    },
-    {
-      "from": "com.fasterxml.jackson",
-      "to": "com.pramora.testable.shaded.jackson"
-    },
-    {
-      "from": "org.yaml.snakeyaml",
-      "to": "com.pramora.testable.shaded.snakeyaml"
-    }
-  ],
+  "relocations": [],
   "answerKey": {
     "duplicatePair": [
       "analysis/DuplicateProcessorA.java",
