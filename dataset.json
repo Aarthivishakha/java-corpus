@@ -1,6 +1,6 @@
 {
-  "branch": "JV-324",
-  "combo": "GRK-WAR-S",
+  "branch": "JV-323",
+  "combo": "GRK-WAR-M",
   "repository": "java-j19-323-327",
   "language": "java",
   "javaVersion": "19",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-324-domain",
-    "jv-324-pricing",
-    "jv-324-risk",
-    "jv-324-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "19",
   "testCompilerRelease": "19",
