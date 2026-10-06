@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V21_MAVEN_WAR_MICRO
+﻿# Testable Java corpus — JV_V21_MAVEN_WAR_MONO
 
-Grid cell `MVN-WAR-S` of the 24-cell Java grid.
+Grid cell `MVN-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 21 |
 | Build system | Maven |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ clauses, `null` case labels and the sequenced-collection methods `getFirst`/`get
 `reversed`, so it fails to compile under `--release 17` — the version differentiation is real, not
 declared.
 
-Produces: `jv-078.war`
+Produces: `jv-077.war`
 
 ## Run
 
@@ -90,10 +90,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-078-domain/`
-- `jv-078-pricing/`
-- `jv-078-risk/`
-- `jv-078-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders

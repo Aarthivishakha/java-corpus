@@ -1,7 +1,7 @@
 {
-  "branch": "JV-078",
-  "combo": "MVN-WAR-S",
-  "repository": "java-j21-078-082",
+  "branch": "JV-077",
+  "combo": "MVN-WAR-M",
+  "repository": "java-j21-073-077",
   "language": "java",
   "javaVersion": "21",
   "hostJdk": "21",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-078-domain",
-    "jv-078-pricing",
-    "jv-078-risk",
-    "jv-078-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "21",
   "testCompilerRelease": "21",
