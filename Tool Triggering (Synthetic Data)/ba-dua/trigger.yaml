@@ -2,9 +2,9 @@ tool: ba-dua
 block: "All Definition Coverage"
 metrics: 4
 kind: degraded
-java_version: "15"
+java_version: "16"
 host_jdk: "17"
-build_system: "Maven"
+build_system: "Ant + Ivy"
 command: ./tools/ba-dua/run.sh
 exit_codes:
   0: ran

@@ -2,9 +2,9 @@ tool: pmd
 block: "Cognitive Complexity"
 metrics: 7
 kind: plugin
-java_version: "15"
+java_version: "16"
 host_jdk: "17"
-build_system: "Maven"
+build_system: "Ant + Ivy"
 command: ./tools/pmd/run.sh
 exit_codes:
   0: ran

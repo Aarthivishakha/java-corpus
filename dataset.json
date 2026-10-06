@@ -1,54 +1,63 @@
 {
-  "branch": "JV-245",
-  "combo": "MVN-WAR-M",
-  "repository": "java-j15-241-245",
+  "branch": "JV-286",
+  "combo": "ANT-SHADE-S",
+  "repository": "java-j16-285-288",
   "language": "java",
-  "javaVersion": "15",
+  "javaVersion": "16",
   "hostJdk": "17",
-  "buildSystem": "Maven",
-  "buildSystemId": "MVN",
-  "packaging": "WAR",
-  "packagingId": "WAR",
-  "architecture": "Monolith",
-  "architectureId": "M",
+  "buildSystem": "Ant + Ivy",
+  "buildSystemId": "ANT",
+  "packaging": "Shaded uber-jar (relocated)",
+  "packagingId": "SHADE",
+  "architecture": "Microservices",
+  "architectureId": "S",
   "modules": [
-    "(single module)"
+    "jv-286-domain",
+    "jv-286-pricing",
+    "jv-286-risk",
+    "jv-286-catalog"
   ],
-  "mainCompilerRelease": "15",
-  "testCompilerRelease": "15",
-  "bytecodeMajorVersion": 59,
+  "mainCompilerRelease": "16",
+  "testCompilerRelease": "16",
+  "bytecodeMajorVersion": 60,
   "testFramework": "JUnit 4.13.2",
   "versionExclusiveFeatures": [
-    "text blocks",
-    "String.formatted",
-    "String.stripIndent",
-    "String.translateEscapes",
-    "CharSequence.isEmpty"
+    "records",
+    "compact canonical constructor",
+    "pattern matching for instanceof",
+    "Stream.toList",
+    "Stream.mapMulti"
   ],
   "versionLockKind": "syntax+api",
-  "versionLockNote": "Text blocks became final in Java 15 (JEP 378) after preview in 13 and 14. javac reports only the 1 text-block error at --release 14 because the parser stops before attribution; the 4 API errors surface only once the text blocks are neutralised in a scratch copy.",
+  "versionLockNote": "Records and pattern matching for instanceof both became final in Java 16 after preview in 14 and second preview in 15. The lock is split one kind per file so that per-file compilation can see all of it: compiling the whole family at --release 15 reports 2 errors, compiling each file separately against the family's own classes reports 5.",
   "versionLockLayers": {
-    "parseTime": {
-      "file": "service/PricingReport.java",
-      "errors": 1
-    },
-    "attributionTime": {
-      "file": "service/PricingReport.java",
-      "errors": 4
-    }
+    "parseTime": [
+      {
+        "file": "model/ShipmentLeg.java",
+        "errors": 1
+      },
+      {
+        "file": "analysis/RouteDescriber.java",
+        "errors": 1
+      }
+    ],
+    "attributionTime": [
+      {
+        "file": "analysis/RoutePlanner.java",
+        "errors": 3
+      }
+    ]
   },
+  "lockErrorsWholeFamily": 2,
+  "lockErrorsPerFile": 5,
   "previewFeaturesDeliberatelyAbsent": [
-    "records (2nd preview in 15, final 16)",
-    "pattern matching for instanceof (2nd preview in 15, final 16)",
-    "sealed types (1st preview in 15, final 17)"
+    "sealed types (2nd preview in 16, final 17)"
   ],
   "forwardChecked": [
-    "16",
     "17",
     "21",
     "25"
   ],
-  "apiHistoryNote": "String.formatted/stripIndent/translateEscapes are absent at --release 12, deprecated-for-removal at 13, preview-disabled at 14 and final from 15. They were rejected as the java13 lock for that reason and belong here.",
   "inheritedLocks": {
     "12": [
       "Collectors.teeing",
@@ -65,11 +74,18 @@
       "switch expressions",
       "yield",
       "java.io.Serial"
+    ],
+    "15": [
+      "text blocks",
+      "String.formatted",
+      "String.stripIndent",
+      "String.translateEscapes",
+      "CharSequence.isEmpty"
     ]
   },
   "lts": false,
   "hostJdkDiffersFromLanguageLevel": true,
-  "failsToCompileUnder": "14",
+  "failsToCompileUnder": "15",
   "toolPins": {
     "junit": "4.13.2",
     "jacoco": "0.8.14",
@@ -113,7 +129,20 @@
       "version": "1.30"
     }
   ],
-  "relocations": [],
+  "relocations": [
+    {
+      "from": "org.apache.commons",
+      "to": "com.pramora.testable.shaded.commons"
+    },
+    {
+      "from": "com.fasterxml.jackson",
+      "to": "com.pramora.testable.shaded.jackson"
+    },
+    {
+      "from": "org.yaml.snakeyaml",
+      "to": "com.pramora.testable.shaded.snakeyaml"
+    }
+  ],
   "answerKey": {
     "duplicatePair": [
       "analysis/DuplicateProcessorA.java",
@@ -122,7 +151,7 @@
     "highestCyclomaticComplexity": "service/PricingService.java#priceCents",
     "highestCognitiveComplexity": "analysis/RiskScorer.java#score",
     "taintSource": "util/InputSanitizer.java#sanitize",
-    "testCount": 97
+    "testCount": 120
   },
   "exitCodeContract": {
     "0": "ran",

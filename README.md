@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V15_MAVEN_WAR_MONO
+﻿# Testable Java corpus — JV_V16_ANTIVY_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `MVN-WAR-M` of the 24-cell Java grid.
+Grid cell `ANT-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -17,16 +17,16 @@ only. See `dataset.json` for the machine-readable description of this branch.
 
 | Variable | Value |
 |---|---|
-| Java version | 15 |
+| Java version | 16 |
 | Host JDK | 17 |
-| Build system | Maven |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Ant + Ivy |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
 19 tools are wired on this branch (one `Tool Triggering (Synthetic Data)/<dir>/` folder
-each). **14 of them run on JDK 15 (host JDK 17); 5 do not.**
+each). **14 of them run on JDK 16 (host JDK 17); 5 do not.**
 
 That is the measurement, not a defect. A tool that cannot run exits **3**,
 not 0 -- a skip that looks like a pass is the failure mode this corpus
@@ -65,66 +65,59 @@ when a tool can't run on this family.
 ## Build
 
 ```
-mvn -B clean package
+ant clean package
 ```
 
-Main and test sources both compile at Java 15 (bytecode major version 59), built by
-`javac 17` with `--release 15`.
+Main and test sources both compile at Java 16 (bytecode major version 60), built by
+`javac 17` with `--release 16`.
 
-**Text blocks land here.** They were preview in Java 13 (JEP 355) and again in Java 14
-(JEP 368), and became final in Java 15 (JEP 378). That is the second three-release preview
-arc in this corpus, after switch expressions (preview 12, preview 13, final 14) - and it is
-the reason the java13 family's lock had to be API-only. `service/PricingReport.java` carries
-the entire Java 15 lock, in both layers:
+**Two more preview arcs land here.** Records (JEP 395) and pattern matching for
+{@code instanceof} (JEP 394) both became final in Java 16 after preview in 14 and a second
+preview in 15 - the third and fourth three-release arcs in this corpus, after switch
+expressions (12, 13, final 14) and text blocks (13, 14, final 15). Four headline features,
+four families that could not use them, and the reason java12 and java13 have API-only locks.
 
-| Lock | Kind | Since |
+The Java 16 lock is deliberately split across three files, one lock kind per file:
+
+| File | Lock | Kind |
 |---|---|---|
-| text blocks | **parse-time** | 15 (final) |
-| `String.formatted` | attribution-time | 15 (final) |
-| `String.stripIndent` | attribution-time | 15 (final) |
-| `String.translateEscapes` | attribution-time | 15 (final) |
-| `CharSequence.isEmpty` | attribution-time | 15 |
+| `model/ShipmentLeg.java` | record declaration + compact canonical constructor | parse-time |
+| `analysis/RouteDescriber.java` | pattern matching for `instanceof` | parse-time |
+| `analysis/RoutePlanner.java` | `Stream.toList`, `Stream.mapMulti` | attribution-time |
 
-`javac --release 14` reports **one** error - the text block - because the parser stops there.
-Neutralise the text blocks in a scratch copy and four more appear.
+### Why the split, and why the lock count depends on how you compile
 
-### The three String methods, and why they belong here and not in java13
+`javac` halts at the first syntax error **in a file**, so an API lock that shares a file with
+a syntax lock can never be reported. Compiling the whole family at `--release 15` gives
+**2 errors**. Compiling each file separately, with the family's own compiled classes on the
+classpath, gives **5**:
 
-`String.formatted`, `stripIndent` and `translateEscapes` were evaluated as the **Java 13**
-family's lock and rejected. This is the family where they are correct. Measured with
-`javac 17` and `javac 25`, reading the exact diagnostic rather than pass/fail:
+```
+ShipmentLeg.java     records are not supported in -source 15
+RouteDescriber.java  pattern matching in instanceof is not supported in -source 15
+RoutePlanner.java    cannot find symbol: method mapMulti(...)
+RoutePlanner.java    cannot find symbol: method toList()
+RoutePlanner.java    cannot find symbol: method toList()
+```
 
-| `--release` | Status |
-|---|---|
-| 12 | absent - `cannot find symbol` |
-| 13 | present, **deprecated for removal** - warning only, compiles |
-| 14 | present, **preview API, disabled by default** - hard error under preview-off |
-| **15** | **final - compiles clean** |
-| 16 / 17 / 21 / 25 | final - compiles clean |
+Same source, same release, two and a half times the locks. The whole-family number is not
+wrong, it just answers a different question - *does this branch build?* rather than *how many
+independent things pin it to this version?* Earlier families measured the second number by
+neutralising the syntax lock in a scratch copy, which needs a hand-written stand-in per
+family and silently under-reports if the stand-in drifts. Per-file compilation needs nothing
+hand-written and cannot drift, so it replaces that step from this family on.
 
-They shipped in JDK 13 as provisional API alongside preview text blocks, were reclassified
-as preview APIs in JDK 14 with JEP 368, and became final in JDK 15. They travel with the
-text blocks they were built for, which is why they land in the same family and the same
-file.
+**Sealed types are deliberately absent.** They were in their second preview in Java 16 and
+became final in Java 17, so they belong to that family - and they are what java17's
+`model/PricingEvent.java` already uses.
 
-Two things follow that the corpus's gates now encode. First, **a version lock has to be
-checked forward as well as backward** - at java13 these pass the backward check and then
-stop compiling one release up. Second, **pass/fail is not enough**: at `--release 13` they
-compile with only a deprecation warning, so a gate reading exit status alone would have
-called them healthy.
+Forward-checked at `--release 17, 21` and `25`: clean.
 
-**Records, pattern matching for `instanceof` and sealed types are deliberately absent** -
-records and `instanceof` patterns were in their second preview in 15 (final in 16) and
-sealed types in their first (final in 17).
-
-Forward-checked at `--release 16, 17, 21` and `25`: clean, so the cumulative ladder holds
-above this family.
-
-Java 15 is **not an LTS release**. It shipped September 2020 and reached end of life in
-March 2021, six months later. It is in this corpus to complete the version axis, not as
+Java 16 is **not an LTS release**. It shipped March 2021 and reached end of life in
+September 2021, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-245.war`
+Produces: `jv-286-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -135,12 +128,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-mvn -B test
+ant test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-286-domain/`
+- `jv-286-pricing/`
+- `jv-286-risk/`
+- `jv-286-catalog/`
 
 
 ## Tool test-data folders
