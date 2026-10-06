@@ -1,6 +1,6 @@
 {
-  "branch": "JV-426",
-  "combo": "GRG-WAR-S",
+  "branch": "JV-425",
+  "combo": "GRG-WAR-M",
   "repository": "java-j24-424-428",
   "language": "java",
   "javaVersion": "24",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-426-domain",
-    "jv-426-pricing",
-    "jv-426-risk",
-    "jv-426-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "24",
   "testCompilerRelease": "24",
