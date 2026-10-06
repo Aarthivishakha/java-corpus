@@ -1,6 +1,6 @@
 {
-  "branch": "JV-336",
-  "combo": "ANT-WAR-S",
+  "branch": "JV-335",
+  "combo": "ANT-WAR-M",
   "repository": "java-j19-333-336",
   "language": "java",
   "javaVersion": "19",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-336-domain",
-    "jv-336-pricing",
-    "jv-336-risk",
-    "jv-336-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "19",
   "testCompilerRelease": "19",
