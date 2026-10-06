@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V9_GRADLEKOTLINDSL_SHADEDUBERJARRELOCATED_MICRO
+﻿# Testable Java corpus — JV_V9_GRADLEKOTLINDSL_SHADEDUBERJARRELOCATED_MONO
 
-Grid cell `GRK-SHADE-S` of the 24-cell Java grid.
+Grid cell `GRK-SHADE-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 11 |
 | Build system | Gradle / Kotlin DSL |
 | Packaging | Shaded uber-jar (relocated) |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ uses private interface methods, `Set.of`, `Optional.or`, `Optional.stream`,
 operator on an anonymous class, so it fails to compile under `--release 8` — the version differentiation is real, not
 declared.
 
-Produces: `jv-130-all.jar (shaded, packages relocated)`
+Produces: `jv-129-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -90,10 +90,7 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `jv-130-domain/`
-- `jv-130-pricing/`
-- `jv-130-risk/`
-- `jv-130-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
