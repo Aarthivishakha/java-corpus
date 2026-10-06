@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V8_GRADLEGROOVYDSL_WAR_MONO
+﻿# Testable Java corpus — JV_V8_GRADLEKOTLINDSL_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `GRG-WAR-M` of the 24-cell Java grid.
+Grid cell `GRK-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -19,9 +19,9 @@ only. See `dataset.json` for the machine-readable description of this branch.
 |---|---|
 | Java version | 8 |
 | Host JDK | 8 |
-| Build system | Gradle / Groovy DSL |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Gradle / Kotlin DSL |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -73,7 +73,7 @@ uses lambdas, method references, streams, `Optional`, `java.time` and default in
 methods, so it fails to compile under `-source 7` — the version differentiation is real,
 not declared.
 
-Produces: `jv-017.war`
+Produces: `jv-010-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -89,7 +89,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-010-domain/`
+- `jv-010-pricing/`
+- `jv-010-risk/`
+- `jv-010-catalog/`
 
 
 ## Tool test-data folders
