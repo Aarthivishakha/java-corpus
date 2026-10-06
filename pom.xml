@@ -5,17 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.pramora.testable</groupId>
-  <artifactId>jv-054-parent</artifactId>
+  <artifactId>jv-053</artifactId>
   <version>1.0.0</version>
-  <packaging>pom</packaging>
-  <name>Testable Java corpus JV-054 (parent)</name>
-
-  <modules>
-    <module>jv-054-domain</module>
-    <module>jv-054-pricing</module>
-    <module>jv-054-risk</module>
-    <module>jv-054-catalog</module>
-  </modules>
+  <packaging>war</packaging>
+  <name>Testable Java corpus JV-053</name>
 
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
@@ -55,10 +48,17 @@
       <artifactId>snakeyaml</artifactId>
       <version>1.30</version>
     </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 
   <build>
-    <pluginManagement><plugins>
+    <finalName>jv-053-1.0.0</finalName>
+    <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -69,8 +69,12 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.5.2</version>
       </plugin>
-    </plugins></pluginManagement>
-    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
+        <configuration><failOnMissingWebXml>false</failOnMissingWebXml></configuration>
+      </plugin>
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>

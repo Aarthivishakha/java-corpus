@@ -1,7 +1,7 @@
 {
-  "branch": "JV-054",
-  "combo": "MVN-WAR-S",
-  "repository": "java-j17-054-058",
+  "branch": "JV-053",
+  "combo": "MVN-WAR-M",
+  "repository": "java-j17-049-053",
   "language": "java",
   "javaVersion": "17",
   "hostJdk": "17",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-054-domain",
-    "jv-054-pricing",
-    "jv-054-risk",
-    "jv-054-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "17",
   "testCompilerRelease": "17",
