@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V8_ANTIVY_THINJAR_MONO
+﻿# Testable Java corpus — JV_V8_ANTIVY_WAR_MICRO
 
-Grid cell `ANT-THIN-M` of the 24-cell Java grid.
+Grid cell `ANT-WAR-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 8 |
 | Host JDK | 8 |
 | Build system | Ant + Ivy |
-| Packaging | Thin jar |
-| Architecture | Monolith |
+| Packaging | WAR |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -73,7 +73,7 @@ uses lambdas, method references, streams, `Optional`, `java.time` and default in
 methods, so it fails to compile under `-source 7` — the version differentiation is real,
 not declared.
 
-Produces: `dist/jv-019.jar or target/jv-019-1.0.0.jar`
+Produces: `jv-024.war`
 
 ## Run
 
@@ -89,7 +89,10 @@ ant test
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-024-domain/`
+- `jv-024-pricing/`
+- `jv-024-risk/`
+- `jv-024-catalog/`
 
 
 ## Tool test-data folders
