@@ -1,6 +1,6 @@
 {
-  "branch": "JV-090",
-  "combo": "GRG-WAR-S",
+  "branch": "JV-089",
+  "combo": "GRG-WAR-M",
   "repository": "java-j21-088-092",
   "language": "java",
   "javaVersion": "21",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-090-domain",
-    "jv-090-pricing",
-    "jv-090-risk",
-    "jv-090-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "21",
   "testCompilerRelease": "21",
