@@ -1,6 +1,6 @@
 {
-  "branch": "JV-374",
-  "combo": "GRG-THIN-S",
+  "branch": "JV-373",
+  "combo": "GRG-THIN-M",
   "repository": "java-j22-371-375",
   "language": "java",
   "javaVersion": "22",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-374-domain",
-    "jv-374-pricing",
-    "jv-374-risk",
-    "jv-374-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "22",
   "testCompilerRelease": "22",
