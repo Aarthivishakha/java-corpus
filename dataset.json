@@ -1,6 +1,6 @@
 {
-  "branch": "JV-340",
-  "combo": "MVN-SHADE-S",
+  "branch": "JV-339",
+  "combo": "MVN-SHADE-M",
   "repository": "java-j20-337-341",
   "language": "java",
   "javaVersion": "20",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-340-domain",
-    "jv-340-pricing",
-    "jv-340-risk",
-    "jv-340-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "20",
   "testCompilerRelease": "20",
