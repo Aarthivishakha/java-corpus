@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V8_MAVEN_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V8_MAVEN_THINJAR_MICRO
 
-Grid cell `MVN-SHADE-M` of the 24-cell Java grid.
+Grid cell `MVN-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 8 |
 | Host JDK | 8 |
 | Build system | Maven |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -73,7 +73,7 @@ uses lambdas, method references, streams, `Optional`, `java.time` and default in
 methods, so it fails to compile under `-source 7` — the version differentiation is real,
 not declared.
 
-Produces: `jv-003-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-002.jar or target/jv-002-1.0.0.jar`
 
 ## Run
 
@@ -89,7 +89,10 @@ mvn -B test
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-002-domain/`
+- `jv-002-pricing/`
+- `jv-002-risk/`
+- `jv-002-catalog/`
 
 
 ## Tool test-data folders
