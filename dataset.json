@@ -1,6 +1,6 @@
 {
-  "branch": "JV-024",
-  "combo": "ANT-WAR-S",
+  "branch": "JV-023",
+  "combo": "ANT-WAR-M",
   "repository": "java-j8-021-024",
   "language": "java",
   "javaVersion": "8",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-024-domain",
-    "jv-024-pricing",
-    "jv-024-risk",
-    "jv-024-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "8",
   "testCompilerRelease": "8",
