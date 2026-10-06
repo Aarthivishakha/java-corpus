@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V19_ANTIVY_THINJAR_MONO
+﻿# Testable Java corpus — JV_V19_ANTIVY_WAR_MICRO
 
-Grid cell `ANT-THIN-M` of the 24-cell Java grid.
+Grid cell `ANT-WAR-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 19 |
 | Host JDK | 21 |
 | Build system | Ant + Ivy |
-| Packaging | Thin jar |
-| Architecture | Monolith |
+| Packaging | WAR |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -112,7 +112,7 @@ Java 19 is **not an LTS release**. It shipped September 2022 and reached end of 
 2023, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-331.jar or target/jv-331-1.0.0.jar`
+Produces: `jv-336.war`
 
 ## Run
 
@@ -128,7 +128,10 @@ ant test
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-336-domain/`
+- `jv-336-pricing/`
+- `jv-336-risk/`
+- `jv-336-catalog/`
 
 
 ## Tool test-data folders
