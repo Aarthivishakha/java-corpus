@@ -1,6 +1,6 @@
 {
-  "branch": "JV-274",
-  "combo": "GRK-SHADE-S",
+  "branch": "JV-273",
+  "combo": "GRK-SHADE-M",
   "repository": "java-j16-270-274",
   "language": "java",
   "javaVersion": "16",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-274-domain",
-    "jv-274-pricing",
-    "jv-274-risk",
-    "jv-274-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "16",
   "testCompilerRelease": "16",
