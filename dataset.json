@@ -1,6 +1,6 @@
 {
-  "branch": "JV-298",
-  "combo": "GRK-SHADE-S",
+  "branch": "JV-297",
+  "combo": "GRK-SHADE-M",
   "repository": "java-j18-294-298",
   "language": "java",
   "javaVersion": "18",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-298-domain",
-    "jv-298-pricing",
-    "jv-298-risk",
-    "jv-298-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "18",
   "testCompilerRelease": "18",
