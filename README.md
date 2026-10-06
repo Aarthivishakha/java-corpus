@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V8_ANTIVY_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V8_ANTIVY_THINJAR_MICRO
 
-Grid cell `ANT-SHADE-M` of the 24-cell Java grid.
+Grid cell `ANT-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 8 |
 | Host JDK | 8 |
 | Build system | Ant + Ivy |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -73,7 +73,7 @@ uses lambdas, method references, streams, `Optional`, `java.time` and default in
 methods, so it fails to compile under `-source 7` — the version differentiation is real,
 not declared.
 
-Produces: `jv-021-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-020.jar or target/jv-020-1.0.0.jar`
 
 ## Run
 
@@ -89,7 +89,10 @@ ant test
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-020-domain/`
+- `jv-020-pricing/`
+- `jv-020-risk/`
+- `jv-020-catalog/`
 
 
 ## Tool test-data folders
