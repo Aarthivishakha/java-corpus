@@ -1,62 +1,34 @@
 {
-  "branch": "JV-341",
-  "combo": "MVN-WAR-M",
-  "repository": "java-j20-337-341",
+  "branch": "JV-094",
+  "combo": "ANT-SHADE-S",
+  "repository": "java-j21-093-096",
   "language": "java",
-  "javaVersion": "20",
+  "javaVersion": "21",
   "hostJdk": "21",
-  "buildSystem": "Maven",
-  "buildSystemId": "MVN",
-  "packaging": "WAR",
-  "packagingId": "WAR",
-  "architecture": "Monolith",
-  "architectureId": "M",
+  "buildSystem": "Ant + Ivy",
+  "buildSystemId": "ANT",
+  "packaging": "Shaded uber-jar (relocated)",
+  "packagingId": "SHADE",
+  "architecture": "Microservices",
+  "architectureId": "S",
   "modules": [
-    "(single module)"
+    "jv-094-domain",
+    "jv-094-pricing",
+    "jv-094-risk",
+    "jv-094-catalog"
   ],
-  "mainCompilerRelease": "20",
-  "testCompilerRelease": "20",
-  "bytecodeMajorVersion": 64,
+  "mainCompilerRelease": "21",
+  "testCompilerRelease": "21",
+  "bytecodeMajorVersion": 65,
   "testFramework": "JUnit 4.13.2",
   "versionExclusiveFeatures": [
-    "Float.floatToFloat16",
-    "Float.float16ToFloat",
-    "URL.of(URI,URLStreamHandler)",
-    "Class.accessFlags",
-    "Field.accessFlags",
-    "java.lang.reflect.AccessFlag",
-    "ClassDesc.ofInternalName"
+    "pattern matching for switch",
+    "record deconstruction patterns",
+    "guarded patterns (when)",
+    "null case labels",
+    "sequenced collections (List.getFirst/getLast/reversed)"
   ],
-  "versionLockKind": "api-only",
-  "versionLockNote": "Java 20 added no final language syntax and almost no final API - every language feature it carried was preview or incubator. The locks were found by diffing javac's own ct.sym release signatures between 19 and 20, not from a feature list. Third consecutive API-only family.",
-  "versionLockLayers": {
-    "attributionTime": [
-      {
-        "file": "analysis/TypeAudit.java",
-        "errors": 18,
-        "release": "19"
-      },
-      {
-        "file": "util/CompactMetrics.java",
-        "errors": 3,
-        "release": "19"
-      }
-    ]
-  },
-  "previewFeaturesDeliberatelyAbsent": [
-    "virtual threads (2nd preview in 20, final 21)",
-    "pattern matching for switch (4th preview in 20, final 21)",
-    "record patterns (2nd preview in 20, final 21)",
-    "Foreign Function & Memory (2nd preview in 20, final 22)",
-    "scoped values (incubator in 20, final 25)"
-  ],
-  "forwardChecked": [
-    "21",
-    "25"
-  ],
-  "lts": false,
-  "hostJdkDiffersFromLanguageLevel": true,
-  "failsToCompileUnder": "19",
+  "failsToCompileUnder": "17",
   "toolPins": {
     "junit": "4.13.2",
     "jacoco": "0.8.14",
@@ -100,7 +72,20 @@
       "version": "1.30"
     }
   ],
-  "relocations": [],
+  "relocations": [
+    {
+      "from": "org.apache.commons",
+      "to": "com.pramora.testable.shaded.commons"
+    },
+    {
+      "from": "com.fasterxml.jackson",
+      "to": "com.pramora.testable.shaded.jackson"
+    },
+    {
+      "from": "org.yaml.snakeyaml",
+      "to": "com.pramora.testable.shaded.snakeyaml"
+    }
+  ],
   "answerKey": {
     "duplicatePair": [
       "analysis/DuplicateProcessorA.java",
@@ -109,7 +94,7 @@
     "highestCyclomaticComplexity": "service/PricingService.java#priceCents",
     "highestCognitiveComplexity": "analysis/RiskScorer.java#score",
     "taintSource": "util/InputSanitizer.java#sanitize",
-    "testCount": 178
+    "testCount": 41
   },
   "exitCodeContract": {
     "0": "ran",

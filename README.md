@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V20_MAVEN_WAR_MONO
+﻿# Testable Java corpus — JV_V21_ANTIVY_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `MVN-WAR-M` of the 24-cell Java grid.
+Grid cell `ANT-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -17,16 +17,16 @@ only. See `dataset.json` for the machine-readable description of this branch.
 
 | Variable | Value |
 |---|---|
-| Java version | 20 |
+| Java version | 21 |
 | Host JDK | 21 |
-| Build system | Maven |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Ant + Ivy |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
 19 tools are wired on this branch (one `Tool Triggering (Synthetic Data)/<dir>/` folder
-each). **13 of them run on JDK 20 (host JDK 21); 6 do not.**
+each). **13 of them run on JDK 21 (host JDK 21); 6 do not.**
 
 That is the measurement, not a defect. A tool that cannot run exits **3**,
 not 0 -- a skip that looks like a pass is the failure mode this corpus
@@ -65,66 +65,16 @@ when a tool can't run on this family.
 ## Build
 
 ```
-mvn -B clean package
+ant clean package
 ```
 
-Main and test sources both compile at Java 20 (bytecode major version 64), built by
-`javac 21` with `--release 20`.
+Main and test sources both compile at Java 21 (bytecode major version 65). The code
+uses pattern matching for `switch`, record deconstruction patterns, guarded `when`
+clauses, `null` case labels and the sequenced-collection methods `getFirst`/`getLast`/
+`reversed`, so it fails to compile under `--release 17` — the version differentiation is real, not
+declared.
 
-**Java 20 is the emptiest release in this corpus.** It added no final language syntax, and
-almost no final API either. Every language feature it carried was preview or incubator:
-
-| Feature | Status in Java 20 | Final in |
-|---|---|---|
-| virtual threads (JEP 436) | 2nd preview | 21 |
-| pattern matching for `switch` (JEP 433) | **fourth** preview | 21 |
-| record patterns (JEP 432) | 2nd preview | 21 |
-| Foreign Function & Memory (JEP 434) | 2nd preview | 22 |
-| scoped values (JEP 429) | incubator | 25 |
-| structured concurrency (JEP 437) | 2nd incubator | - |
-
-That makes java20 the **third consecutive API-only family**, after Java 18 and Java 19.
-
-### Finding the lock required diffing the compiler, not reading a feature list
-
-Java 20's final API surface is small enough that no feature list names it. The locks below
-were found by extracting `ct.sym` - the table of historical API signatures `javac` uses to
-implement `--release` - and diffing the `java.base` member signatures between release 19 and
-release 20 directly. That turned up 151 classes whose signature changed and 35 with added
-members, most of them the *preview* `java.lang.foreign` API, which is excluded.
-
-Four survive as final, non-preview and monotonic through 25:
-
-| API | File | What it replaces |
-|---|---|---|
-| `Float.floatToFloat16`, `Float.float16ToFloat` | `util/CompactMetrics.java` | hand-written binary16 bit manipulation |
-| `URL.of(URI, URLStreamHandler)` | `util/CompactMetrics.java` | the `URL` constructors, all deprecated in Java 20 |
-| `Class.accessFlags()`, `Field.accessFlags()`, and the `AccessFlag` enum | `analysis/TypeAudit.java` | `getModifiers()`, an `int` bitmask |
-| `ClassDesc.ofInternalName` | `analysis/TypeAudit.java` | building a descriptor from the source-form name |
-
-`AccessFlag` is the one worth understanding. `getModifiers()` returns a bitmask in which the
-same bit means different things depending on where it appears - `0x0080` is `TRANSIENT` on a
-field and `VARARGS` on a method - and an `int` cannot tell you which. `AccessFlag` carries its
-own valid locations, so it can, and `TypeAudit.fieldFlags` asserts exactly that.
-
-21 errors at `--release 19`: 18 in `TypeAudit`, 3 in `CompactMetrics`. Whole-family and
-per-file counts agree, because neither file carries a parse-time lock to halt on.
-
-### Three API-only families in a row, and what it means for the axis
-
-java18, java19 and java20 are three consecutive families with no final syntax between them.
-Pattern matching for `switch` alone was previewed in **17, 18, 19 and 20** before going final
-in 21. The corpus's preview-off rule is what makes those three families distinguishable at
-all: without it, virtual threads and pattern `switch` would appear identically in java19,
-java20 and java21, and three families would collapse into one.
-
-Forward-checked at `--release 21` and `25`: clean.
-
-Java 20 is **not an LTS release**. It shipped March 2023 and reached end of life in September
-2023, six months later. It is in this corpus to complete the version axis, not as
-a recommendation.
-
-Produces: `jv-341.war`
+Produces: `jv-094-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -135,12 +85,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-mvn -B test
+ant test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-094-domain/`
+- `jv-094-pricing/`
+- `jv-094-risk/`
+- `jv-094-catalog/`
 
 
 ## Tool test-data folders

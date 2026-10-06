@@ -2,9 +2,9 @@ tool: grype
 block: "Dependency Risk (SCA) - alternative"
 metrics: 8
 kind: standalone
-java_version: "20"
+java_version: "21"
 host_jdk: "21"
-build_system: "Maven"
+build_system: "Ant + Ivy"
 command: ./tools/grype/run.sh
 exit_codes:
   0: ran

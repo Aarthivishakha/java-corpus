@@ -2,9 +2,9 @@ tool: lizard
 block: "Cyclomatic Complexity - alternative"
 metrics: 3
 kind: standalone
-java_version: "20"
+java_version: "21"
 host_jdk: "21"
-build_system: "Maven"
+build_system: "Ant + Ivy"
 command: ./tools/lizard/run.sh
 exit_codes:
   0: ran
