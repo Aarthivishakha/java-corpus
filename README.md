@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V13_MAVEN_WAR_MONO
+﻿# Testable Java corpus — JV_V14_ANTIVY_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `MVN-WAR-M` of the 24-cell Java grid.
+Grid cell `ANT-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -17,16 +17,16 @@ only. See `dataset.json` for the machine-readable description of this branch.
 
 | Variable | Value |
 |---|---|
-| Java version | 13 |
+| Java version | 14 |
 | Host JDK | 17 |
-| Build system | Maven |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Ant + Ivy |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
 19 tools are wired on this branch (one `Tool Triggering (Synthetic Data)/<dir>/` folder
-each). **14 of them run on JDK 13 (host JDK 17); 5 do not.**
+each). **14 of them run on JDK 14 (host JDK 17); 5 do not.**
 
 That is the measurement, not a defect. A tool that cannot run exits **3**,
 not 0 -- a skip that looks like a pass is the failure mode this corpus
@@ -65,63 +65,49 @@ when a tool can't run on this family.
 ## Build
 
 ```
-mvn -B clean package
+ant clean package
 ```
 
-Main and test sources both compile at Java 13 (bytecode major version 57), built by
-`javac 17` with `--release 13`.
+Main and test sources both compile at Java 14 (bytecode major version 58), built by
+`javac 17` with `--release 14`.
 
-**The Java 13 lock is an API lock, not a syntax lock — the second family in a row.** Java
-13's two headline language changes were both *preview*: text blocks (JEP 355, preview in
-13, final in 15) and switch expressions (still preview in 13, final in 14). Under the
-corpus rule that preview features stay off, Java 13 contributes **no final syntax at all**.
-`javac 17 --release 13` says so directly: *"text blocks are not supported in -source 13"*.
+**Syntax is back.** Java 12 and Java 13 both contributed no final language syntax, because
+their headline feature was held in preview through two cycles. That feature lands here:
+**switch expressions became final in Java 14** (JEP 361), after preview in 12 (JEP 325) and
+again in 13 (JEP 354). java14 closes the arc the two families before it opened, and it is
+the first family since java11 to carry both kinds of lock at once:
 
-The lock is carried by three APIs that shipped final in Java 13, across two files:
+| Lock | Kind | Where | Since |
+|---|---|---|---|
+| switch expressions, arrow rules, multiple case labels, `yield` | **parse-time** | `analysis/OrderClassifier.java` | 14 (final) |
+| `java.io.Serial` | **attribution-time** | `model/PricingSnapshot.java` | 14 |
 
-| API | Where | JDK issue |
-|---|---|---|
-| `ByteBuffer.get(int, byte[])` / `put(int, byte[])` | `util/OrderCodec.java` | JDK-5029431 |
-| `CharBuffer.get(int, char[])` | `util/OrderCodec.java` | JDK-5029431 |
-| `FileSystems.newFileSystem(Path, Map)` | `util/PriceListArchive.java` | JDK-8218875 |
+The distinction is measured, not asserted. `javac --release 13` reports only **three** errors
+on the branch, all in `OrderClassifier` - *"switch expressions are not supported in
+-source 13"*, *"switch rules..."*, *"multiple case labels..."* - because the parser stops
+there and never reaches attribution. Delete that one file from a scratch copy and
+`--release 13` reports **four more**, all `cannot find symbol: class Serial`. Seven locks
+total, in two layers.
 
-The absolute bulk transfers are a real API, not a curiosity: before Java 13, a bulk read at
-a known offset meant mutating the buffer's position, which is why the absolute forms were
-added. `OrderCodec.peekSku` reads the same record twice and still decodes it, which is only
-safe because of them.
+`@Serial` is a real API, not a decorative one: serialization's hook methods are matched by
+name and signature at runtime with no interface to implement, so a misspelled `readObject`
+silently does nothing. The annotation is what turns that into a compile error.
 
-The branch fails to compile under `--release 12` in exactly five places, and the Java 17
-family's own lock files still fail under `--release 13` (*sealed classes*, *text
-blocks*, *pattern matching in instanceof*, *switch expressions* — all "not supported in
--source 13"). The differentiation holds in both directions.
+**Records, pattern matching for `instanceof` and text blocks are deliberately absent.** All
+three were still preview in Java 14 - final in 16, 16 and 15 - so under the preview-off rule
+they belong to later families, exactly as pattern-matching `switch` was held back from
+java17 to java21.
 
-### A rejected lock worth recording: `String.formatted` is not monotonic
+Forward-checked as well as backward: the branch compiles clean at `--release 15, 16, 17, 21`
+and `25`, so the cumulative ladder holds above it. That check entered the corpus after the
+Java 13 family turned up `String.formatted` - an API that passes the backward check and then
+disappears one release later.
 
-`String.formatted`, `String.stripIndent` and `String.translateEscapes` look like ideal Java
-13 locks — they compile at `--release 13` and fail at `--release 12`. They are **not used
-here**, because they do not survive the next release. Measured with `javac 17`/`javac 25`:
+Java 14 is **not an LTS release**. It shipped March 2020 and reached end of life in
+September 2020, six months later. It is in this corpus to complete the version axis, not as
+a recommendation.
 
-| `--release` | 12 | 13 | 14 | 15 | 17 | 21 | 25 |
-|---|---|---|---|---|---|---|---|
-| `String.formatted` | absent | **present** | **absent** | present | present | present | present |
-
-They shipped in JDK 13 alongside preview text blocks, carried
-`@Deprecated(forRemoval=true)`, were **removed in JDK 14**, and returned final in JDK 15.
-At `--release 13` javac accepts them but warns *"has been deprecated and marked for
-removal"*.
-
-This corpus's ladder is cumulative — each family keeps the one below it and adds to it — so
-a lock that vanishes one release later would break that property and make any future java14
-family inconsistent with java13. The three buffer and filesystem APIs above are monotonic
-from 13 through 25 and were chosen for that reason. **A version lock has to be checked
-forward as well as backward**, and this is the first case in the corpus where an API that
-passes the backward check fails the forward one.
-
-Java 13 is **not an LTS release**. It shipped September 2019 and reached end of life in
-March 2020, six months later. It is in this corpus to complete the version axis, not as a
-recommendation.
-
-Produces: `jv-197.war`
+Produces: `jv-238-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -132,12 +118,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-mvn -B test
+ant test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-238-domain/`
+- `jv-238-pricing/`
+- `jv-238-risk/`
+- `jv-238-catalog/`
 
 
 ## Tool test-data folders

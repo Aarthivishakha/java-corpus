@@ -1,36 +1,56 @@
 {
-  "branch": "JV-197",
-  "combo": "MVN-WAR-M",
-  "repository": "java-j13-193-197",
+  "branch": "JV-238",
+  "combo": "ANT-SHADE-S",
+  "repository": "java-j14-237-240",
   "language": "java",
-  "javaVersion": "13",
+  "javaVersion": "14",
   "hostJdk": "17",
-  "buildSystem": "Maven",
-  "buildSystemId": "MVN",
-  "packaging": "WAR",
-  "packagingId": "WAR",
-  "architecture": "Monolith",
-  "architectureId": "M",
+  "buildSystem": "Ant + Ivy",
+  "buildSystemId": "ANT",
+  "packaging": "Shaded uber-jar (relocated)",
+  "packagingId": "SHADE",
+  "architecture": "Microservices",
+  "architectureId": "S",
   "modules": [
-    "(single module)"
+    "jv-238-domain",
+    "jv-238-pricing",
+    "jv-238-risk",
+    "jv-238-catalog"
   ],
-  "mainCompilerRelease": "13",
-  "testCompilerRelease": "13",
-  "bytecodeMajorVersion": 57,
+  "mainCompilerRelease": "14",
+  "testCompilerRelease": "14",
+  "bytecodeMajorVersion": 58,
   "testFramework": "JUnit 4.13.2",
   "versionExclusiveFeatures": [
-    "ByteBuffer.get(int,byte[])",
-    "ByteBuffer.put(int,byte[])",
-    "CharBuffer.get(int,char[])",
-    "FileSystems.newFileSystem(Path,Map)"
+    "switch expressions",
+    "switch arrow rules",
+    "multiple case labels",
+    "yield",
+    "java.io.Serial"
   ],
-  "versionLockKind": "api-only",
-  "versionLockNote": "Java 13's text blocks and switch expressions were both preview features (final in 15 and 14 respectively); with preview features off there is no Java-13-final syntax, so the lock is carried entirely by Java 13 APIs.",
-  "rejectedLocks": [
-    {
-      "api": "String.formatted / stripIndent / translateEscapes",
-      "reason": "not monotonic - present at --release 13, absent at 14, present again from 15. Shipped in JDK 13 as deprecated-for-removal alongside preview text blocks, removed in JDK 14, re-added final in JDK 15. A cumulative version ladder cannot use a lock that disappears one release later."
+  "versionLockKind": "syntax+api",
+  "versionLockNote": "Switch expressions became final in Java 14 (JEP 361) after preview in 12 and 13, so this is the first family since java11 with both a parse-time and an attribution-time lock. javac reports only the 3 syntax errors at --release 13 because the parser stops before attribution; the 4 java.io.Serial errors surface only once the syntax lock is neutralised in a scratch copy.",
+  "versionLockLayers": {
+    "parseTime": {
+      "file": "analysis/OrderClassifier.java",
+      "errors": 3
+    },
+    "attributionTime": {
+      "file": "model/PricingSnapshot.java",
+      "errors": 4
     }
+  },
+  "previewFeaturesDeliberatelyAbsent": [
+    "records (final 16)",
+    "pattern matching for instanceof (final 16)",
+    "text blocks (final 15)"
+  ],
+  "forwardChecked": [
+    "15",
+    "16",
+    "17",
+    "21",
+    "25"
   ],
   "inheritedLocks": {
     "12": [
@@ -38,11 +58,16 @@
       "String.transform",
       "String.indent",
       "NumberFormat.getCompactNumberInstance"
+    ],
+    "13": [
+      "ByteBuffer.get(int,byte[])",
+      "CharBuffer.get(int,char[])",
+      "FileSystems.newFileSystem(Path,Map)"
     ]
   },
   "lts": false,
   "hostJdkDiffersFromLanguageLevel": true,
-  "failsToCompileUnder": "12",
+  "failsToCompileUnder": "13",
   "toolPins": {
     "junit": "4.13.2",
     "jacoco": "0.8.14",
@@ -86,7 +111,20 @@
       "version": "1.30"
     }
   ],
-  "relocations": [],
+  "relocations": [
+    {
+      "from": "org.apache.commons",
+      "to": "com.pramora.testable.shaded.commons"
+    },
+    {
+      "from": "com.fasterxml.jackson",
+      "to": "com.pramora.testable.shaded.jackson"
+    },
+    {
+      "from": "org.yaml.snakeyaml",
+      "to": "com.pramora.testable.shaded.snakeyaml"
+    }
+  ],
   "answerKey": {
     "duplicatePair": [
       "analysis/DuplicateProcessorA.java",
@@ -95,7 +133,7 @@
     "highestCyclomaticComplexity": "service/PricingService.java#priceCents",
     "highestCognitiveComplexity": "analysis/RiskScorer.java#score",
     "taintSource": "util/InputSanitizer.java#sanitize",
-    "testCount": 63
+    "testCount": 86
   },
   "exitCodeContract": {
     "0": "ran",

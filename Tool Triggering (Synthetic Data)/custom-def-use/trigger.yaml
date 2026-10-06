@@ -2,9 +2,9 @@ tool: custom-def-use
 block: "Data Flow Testing - NOT A TOOL"
 metrics: 16
 kind: absent
-java_version: "13"
+java_version: "14"
 host_jdk: "17"
-build_system: "Maven"
+build_system: "Ant + Ivy"
 command: ./tools/custom-def-use/run.sh
 exit_codes:
   0: ran
