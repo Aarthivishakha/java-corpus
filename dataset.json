@@ -1,18 +1,21 @@
 {
-  "branch": "JV-141",
-  "combo": "ANT-SHADE-M",
-  "repository": "java-j9-141-144",
+  "branch": "JV-140",
+  "combo": "ANT-THIN-S",
+  "repository": "java-j9-136-140",
   "language": "java",
   "javaVersion": "9",
   "hostJdk": "11",
   "buildSystem": "Ant + Ivy",
   "buildSystemId": "ANT",
-  "packaging": "Shaded uber-jar (relocated)",
-  "packagingId": "SHADE",
-  "architecture": "Monolith",
-  "architectureId": "M",
+  "packaging": "Thin jar",
+  "packagingId": "THIN",
+  "architecture": "Microservices",
+  "architectureId": "S",
   "modules": [
-    "(single module)"
+    "jv-140-domain",
+    "jv-140-pricing",
+    "jv-140-risk",
+    "jv-140-catalog"
   ],
   "mainCompilerRelease": "9",
   "testCompilerRelease": "9",
@@ -71,20 +74,7 @@
       "version": "1.30"
     }
   ],
-  "relocations": [
-    {
-      "from": "org.apache.commons",
-      "to": "com.pramora.testable.shaded.commons"
-    },
-    {
-      "from": "com.fasterxml.jackson",
-      "to": "com.pramora.testable.shaded.jackson"
-    },
-    {
-      "from": "org.yaml.snakeyaml",
-      "to": "com.pramora.testable.shaded.snakeyaml"
-    }
-  ],
+  "relocations": [],
   "answerKey": {
     "duplicatePair": [
       "analysis/DuplicateProcessorA.java",
