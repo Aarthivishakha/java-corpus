@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V23_MAVEN_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V23_MAVEN_THINJAR_MICRO
 
-Grid cell `MVN-SHADE-M` of the 24-cell Java grid.
+Grid cell `MVN-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 23 |
 | Host JDK | 25 |
 | Build system | Maven |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -131,7 +131,7 @@ Java 23 is **not an LTS release**. It shipped September 2024 and reached end of 
 2025, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-387-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-386.jar or target/jv-386-1.0.0.jar`
 
 ## Run
 
@@ -147,7 +147,10 @@ mvn -B test
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-386-domain/`
+- `jv-386-pricing/`
+- `jv-386-risk/`
+- `jv-386-catalog/`
 
 
 ## Tool test-data folders
