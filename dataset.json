@@ -1,6 +1,6 @@
 {
-  "branch": "JV-140",
-  "combo": "ANT-THIN-S",
+  "branch": "JV-139",
+  "combo": "ANT-THIN-M",
   "repository": "java-j9-136-140",
   "language": "java",
   "javaVersion": "9",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-140-domain",
-    "jv-140-pricing",
-    "jv-140-risk",
-    "jv-140-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "9",
   "testCompilerRelease": "9",
