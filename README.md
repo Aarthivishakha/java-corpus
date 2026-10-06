@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V14_ANTIVY_THINJAR_MONO
+﻿# Testable Java corpus — JV_V14_ANTIVY_WAR_MICRO
 
-Grid cell `ANT-THIN-M` of the 24-cell Java grid.
+Grid cell `ANT-WAR-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 14 |
 | Host JDK | 17 |
 | Build system | Ant + Ivy |
-| Packaging | Thin jar |
-| Architecture | Monolith |
+| Packaging | WAR |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -107,7 +107,7 @@ Java 14 is **not an LTS release**. It shipped March 2020 and reached end of life
 September 2020, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `dist/jv-235.jar or target/jv-235-1.0.0.jar`
+Produces: `jv-240.war`
 
 ## Run
 
@@ -123,7 +123,10 @@ ant test
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-240-domain/`
+- `jv-240-pricing/`
+- `jv-240-risk/`
+- `jv-240-catalog/`
 
 
 ## Tool test-data folders
