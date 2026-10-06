@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V23_GRADLEGROOVYDSL_SHADEDUBERJARRELOCATED_MONO
+﻿# Testable Java corpus — JV_V23_GRADLEGROOVYDSL_THINJAR_MICRO
 
-Grid cell `GRG-SHADE-M` of the 24-cell Java grid.
+Grid cell `GRG-THIN-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 23 |
 | Host JDK | 25 |
 | Build system | Gradle / Groovy DSL |
-| Packaging | Shaded uber-jar (relocated) |
-| Architecture | Monolith |
+| Packaging | Thin jar |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -131,7 +131,7 @@ Java 23 is **not an LTS release**. It shipped September 2024 and reached end of 
 2025, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-399-all.jar (shaded, packages relocated)`
+Produces: `dist/jv-398.jar or target/jv-398-1.0.0.jar`
 
 ## Run
 
@@ -147,7 +147,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-398-domain/`
+- `jv-398-pricing/`
+- `jv-398-risk/`
+- `jv-398-catalog/`
 
 
 ## Tool test-data folders
