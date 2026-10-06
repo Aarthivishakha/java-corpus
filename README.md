@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V17_GRADLEKOTLINDSL_THINJAR_MONO
+﻿# Testable Java corpus — JV_V17_GRADLEKOTLINDSL_WAR_MICRO
 
-Grid cell `GRK-THIN-M` of the 24-cell Java grid.
+Grid cell `GRK-WAR-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 17 |
 | Host JDK | 17 |
 | Build system | Gradle / Kotlin DSL |
-| Packaging | Thin jar |
-| Architecture | Monolith |
+| Packaging | WAR |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ expressions and `Stream.toList`, so it fails to compile under `--release 11` in 
 places — the version differentiation is real, not
 declared.
 
-Produces: `dist/jv-055.jar or target/jv-055-1.0.0.jar`
+Produces: `jv-060.war`
 
 ## Run
 
@@ -90,7 +90,10 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-060-domain/`
+- `jv-060-pricing/`
+- `jv-060-risk/`
+- `jv-060-catalog/`
 
 
 ## Tool test-data folders
