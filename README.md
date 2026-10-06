@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V25_ANTIVY_WAR_MICRO
+﻿# Testable Java corpus — JV_V25_ANTIVY_WAR_MONO
 
-Grid cell `ANT-WAR-S` of the 24-cell Java grid.
+Grid cell `ANT-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 25 |
 | Build system | Ant + Ivy |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ module import declarations and scoped values (all final in 25), plus Markdown `/
 comments (final in 23), so it fails to compile under `--release 21` — the version differentiation is real, not
 declared.
 
-Produces: `jv-120.war`
+Produces: `jv-119.war`
 
 ## Run
 
@@ -90,10 +90,7 @@ ant test
 
 ## Workspace projects
 
-- `jv-120-domain/`
-- `jv-120-pricing/`
-- `jv-120-risk/`
-- `jv-120-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders

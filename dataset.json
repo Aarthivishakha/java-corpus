@@ -1,6 +1,6 @@
 {
-  "branch": "JV-120",
-  "combo": "ANT-WAR-S",
+  "branch": "JV-119",
+  "combo": "ANT-WAR-M",
   "repository": "java-j25-117-120",
   "language": "java",
   "javaVersion": "25",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-120-domain",
-    "jv-120-pricing",
-    "jv-120-risk",
-    "jv-120-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "25",
   "testCompilerRelease": "25",
