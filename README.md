@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V20_GRADLEKOTLINDSL_WAR_MONO
+﻿# Testable Java corpus — JV_V20_MAVEN_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `GRK-WAR-M` of the 24-cell Java grid.
+Grid cell `MVN-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -19,9 +19,9 @@ only. See `dataset.json` for the machine-readable description of this branch.
 |---|---|
 | Java version | 20 |
 | Host JDK | 21 |
-| Build system | Gradle / Kotlin DSL |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Maven |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -65,7 +65,7 @@ when a tool can't run on this family.
 ## Build
 
 ```
-./gradlew build
+mvn -B clean package
 ```
 
 Main and test sources both compile at Java 20 (bytecode major version 64), built by
@@ -124,7 +124,7 @@ Java 20 is **not an LTS release**. It shipped March 2023 and reached end of life
 2023, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-347.war`
+Produces: `jv-340-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -135,12 +135,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-./gradlew test
+mvn -B test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-340-domain/`
+- `jv-340-pricing/`
+- `jv-340-risk/`
+- `jv-340-catalog/`
 
 
 ## Tool test-data folders
