@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V23_MAVEN_WAR_MONO
+﻿# Testable Java corpus — JV_V24_ANTIVY_SHADEDUBERJARRELOCATED_MICRO
 
-Grid cell `MVN-WAR-M` of the 24-cell Java grid.
+Grid cell `ANT-SHADE-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -17,16 +17,16 @@ only. See `dataset.json` for the machine-readable description of this branch.
 
 | Variable | Value |
 |---|---|
-| Java version | 23 |
+| Java version | 24 |
 | Host JDK | 25 |
-| Build system | Maven |
-| Packaging | WAR |
-| Architecture | Monolith |
+| Build system | Ant + Ivy |
+| Packaging | Shaded uber-jar (relocated) |
+| Architecture | Microservices |
 
 ## Supported tools
 
 19 tools are wired on this branch (one `Tool Triggering (Synthetic Data)/<dir>/` folder
-each). **13 of them run on JDK 23 (host JDK 25); 6 do not.**
+each). **13 of them run on JDK 24 (host JDK 25); 6 do not.**
 
 That is the measurement, not a defect. A tool that cannot run exits **3**,
 not 0 -- a skip that looks like a pass is the failure mode this corpus
@@ -65,73 +65,71 @@ when a tool can't run on this family.
 ## Build
 
 ```
-mvn -B clean package
+ant clean package
 ```
 
-Main and test sources both compile at Java 23 (bytecode major version 67), built by
-`javac 25` with `--release 23`.
+Main and test sources both compile at Java 24 (bytecode major version 68), built by
+`javac 25` with `--release 24`.
 
-**Java 23 added no final language syntax.** Its one language JEP was **Markdown documentation
-comments** (JEP 467) - and `///` is lexically an ordinary line comment, so it compiles
-unchanged all the way back to Java 8 and locks nothing. Verified rather than assumed: a file
-using `///` compiles clean at `--release 21, 22, 23` and `25` alike. Everything else Java 23
-carried was preview or incubator:
+**Java 24 added no final language syntax** - every language JEP it carried was a preview:
+primitive types in patterns (2nd), module import declarations (2nd), flexible constructor
+bodies (3rd), implicitly declared classes (4th), structured concurrency (4th) and scoped
+values (4th). Java 24 is the **sixth** API-only family, after 12, 13, 18, 19, 20 and 23.
 
-| Feature | Status in Java 23 | Final in |
+What it did finalise is substantial - two APIs that had previewed in 22 and 23:
+
+| Lock | File | Since |
 |---|---|---|
-| primitive types in patterns (JEP 455) | preview | - |
-| module import declarations (JEP 476) | preview | 25 |
-| implicitly declared classes (JEP 477) | 3rd preview | 25 |
-| flexible constructor bodies (JEP 482) | 2nd preview | 25 |
-| stream gatherers (JEP 473) | 2nd preview | 24 |
-| Class-File API (JEP 466) | 2nd preview | 24 |
-| structured concurrency (JEP 480) | 3rd preview | - |
-| scoped values (JEP 481) | 3rd preview | 25 |
+| stream gatherers: `Stream.gather`, `Gatherers.windowFixed`/`windowSliding`/`scan`/`fold` | `analysis/LegGatherer.java` | 24 |
+| the Class-File API: `java.lang.classfile` | `util/ClassFileProbe.java` | 24 |
+| `Reader.of(CharSequence)` | `util/ClassFileProbe.java` | 24 |
 
-So java23 is API-only - the **fifth** such family, after 12, 13, 18, 19 and 20.
+26 errors at `--release 23`: 11 in `LegGatherer`, 15 in `ClassFileProbe`. Whole-family and
+per-file agree - no parse-time lock to halt on.
 
-### The ct.sym diff again, and what it found
+### Gatherers reopened a closed part of the stream API
 
-As at java20, no feature list names Java 23's final API additions, so the lock was found by
-diffing `javac`'s `ct.sym` release signatures between 22 and 23 (`M` and `N` in `javac 25`'s
-table). That turned up 45 changed `java.base` classes and 23 with added public members. Most
-were `java.lang.classfile` - the **preview** Class-File API - and correctly excluded. Four
-families of addition survive as final and monotonic through 25, all in
-`util/StrictFormats.java`:
+Before Java 24 the intermediate stage of a stream was fixed: `map`, `filter`, `flatMap`,
+`mapMulti` and nothing else. A `Collector` could be written by anyone, but an *intermediate*
+operation could not, so anything with a window or a running total had to leave the stream, be
+done in a loop, and come back. `Gatherers.scan` is the clearest case - stateful and
+intermediate, expressible by neither `map` nor a `Collector`. `LegGatherer.runningUnits`
+returns one running total per leg in a single pass, and the test asserts that its last element
+equals what `Gatherers.fold` produces independently.
 
-| API | What it changes |
-|---|---|
-| `NumberFormat.setStrict` / `isStrict` | parsing stops guessing |
-| `Instant.until(Instant)` | a `Duration` directly, without `Duration.between` |
-| `Inet4Address.ofPosixLiteral` | one documented parser for the POSIX address forms |
-| `MemorySegment.maxByteAlignment` | on the FFM API this corpus introduced at java22 |
+### The Class-File API is directly relevant to this corpus's own findings
 
-Seven errors at `--release 22`, all in that one file; whole-family and per-file agree, because
-there is no parse-time lock to halt on.
+Every tool in the roster that reads bytecode ships its own copy of a parser, each pinned to a
+different version, each needing an update before it can read the next release's class files.
+That is precisely the ceiling this corpus keeps measuring: **PIT stops at Java 25 because its
+bundled ASM 9.10.1 does, and CK stops at Java 16 because its bundled Eclipse JDT 3.26.0 does.**
+A parser maintained inside the JDK cannot fall behind the JDK, which is the whole argument for
+JEP 484 - and this family is where the corpus can measure the difference rather than assert it.
 
-### Two of these close real defect classes
+`ClassFileProbe` reads a class file's declared major version, name, superclass and members,
+and writes one too. The test parses this family's own compiled classes and asserts major
+version 68, which is a nice closing of the loop: the branch uses the Java 24 API to confirm
+the Java 24 bytecode level it was compiled at.
 
-**Strict parsing.** `NumberFormat.parse` has always stopped at the first character it cannot
-use and returned what it had, so `"12abc"` parses to `12` and `"1,2,3"` to `123`. For a value
-arriving from outside the system that is a silent-corruption bug, not a convenience. Java 23
-added `setStrict(true)` to make both a `ParseException`. The test asserts the difference
-directly: the same input, one lenient parse returning `12`, one strict parse rejecting.
+One incidental finding the test records: the API counts **every declared field**, statics
+included, so `ShipmentLeg` reports 5 fields - its 3 record components plus 2 constants - not
+the 3 a reader might expect from the record header.
 
-**POSIX address literals.** `0177.0.0.1`, `0x7f.0.0.1`, `127.1` and `2130706433` all denote
-127.0.0.1, because `inet_addr` accepts octal, hex and shortened forms. A filter that
-blocklists the string `"127.0.0.1"` stops none of them, and before Java 23 the JDK's own
-parsers disagreed about which forms they accepted. `Inet4Address.ofPosixLiteral` is one method
-with documented semantics, which is what lets a caller normalise first and compare afterwards.
-The test asserts all four forms normalise to the same string - the corpus's SAST fixtures now
-have a real, non-synthetic example of a normalisation bypass.
+### Fourth and fifth instances of the preview-API diagnostic
 
-Forward-checked at `--release 24` and `25`: clean.
+At `--release 23` neither lock fails with *"cannot find symbol"*. Both fail with **"is a
+preview API and is disabled by default"** - `Gatherers` and `ClassFile` alike, because both
+existed in Java 23 as preview. With `String.formatted` at release 14, `ScopedValue` at 21 and
+FFM at 21, that is five independent instances across the corpus. The rule is settled: **a
+version lock is often a policy error rather than a missing symbol.**
 
-Java 23 is **not an LTS release**. It shipped September 2024 and reached end of life in March
+Forward-checked at `--release 25`: clean.
+
+Java 24 is **not an LTS release**. It shipped March 2025 and reached end of life in September
 2025, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-389.war`
+Produces: `jv-430-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -142,12 +140,15 @@ java -jar <artifact> O-1234
 ## Test
 
 ```
-mvn -B test
+ant test
 ```
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-430-domain/`
+- `jv-430-pricing/`
+- `jv-430-risk/`
+- `jv-430-catalog/`
 
 
 ## Tool test-data folders
