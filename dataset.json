@@ -1,6 +1,6 @@
 {
-  "branch": "JV-310",
-  "combo": "ANT-SHADE-S",
+  "branch": "JV-309",
+  "combo": "ANT-SHADE-M",
   "repository": "java-j18-309-312",
   "language": "java",
   "javaVersion": "18",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "Shaded uber-jar (relocated)",
   "packagingId": "SHADE",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-310-domain",
-    "jv-310-pricing",
-    "jv-310-risk",
-    "jv-310-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "18",
   "testCompilerRelease": "18",

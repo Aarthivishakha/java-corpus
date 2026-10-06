@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V18_ANTIVY_SHADEDUBERJARRELOCATED_MICRO
+﻿# Testable Java corpus — JV_V18_ANTIVY_SHADEDUBERJARRELOCATED_MONO
 
-Grid cell `ANT-SHADE-S` of the 24-cell Java grid.
+Grid cell `ANT-SHADE-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 21 |
 | Build system | Ant + Ivy |
 | Packaging | Shaded uber-jar (relocated) |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -115,7 +115,7 @@ Java 18 is **not an LTS release**. It shipped March 2022 and reached end of life
 2022, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-310-all.jar (shaded, packages relocated)`
+Produces: `jv-309-all.jar (shaded, packages relocated)`
 
 ## Run
 
@@ -131,10 +131,7 @@ ant test
 
 ## Workspace projects
 
-- `jv-310-domain/`
-- `jv-310-pricing/`
-- `jv-310-risk/`
-- `jv-310-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
