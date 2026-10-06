@@ -1,6 +1,6 @@
 {
-  "branch": "JV-372",
-  "combo": "GRK-WAR-S",
+  "branch": "JV-371",
+  "combo": "GRK-WAR-M",
   "repository": "java-j22-371-375",
   "language": "java",
   "javaVersion": "22",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-372-domain",
-    "jv-372-pricing",
-    "jv-372-risk",
-    "jv-372-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "22",
   "testCompilerRelease": "22",
