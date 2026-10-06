@@ -1,6 +1,6 @@
 {
-  "branch": "JV-092",
-  "combo": "ANT-THIN-S",
+  "branch": "JV-091",
+  "combo": "ANT-THIN-M",
   "repository": "java-j21-088-092",
   "language": "java",
   "javaVersion": "21",
@@ -9,13 +9,10 @@
   "buildSystemId": "ANT",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-092-domain",
-    "jv-092-pricing",
-    "jv-092-risk",
-    "jv-092-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "21",
   "testCompilerRelease": "21",
