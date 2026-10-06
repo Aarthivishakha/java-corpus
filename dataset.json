@@ -1,6 +1,6 @@
 {
-  "branch": "JV-050",
-  "combo": "MVN-THIN-S",
+  "branch": "JV-049",
+  "combo": "MVN-THIN-M",
   "repository": "java-j17-049-053",
   "language": "java",
   "javaVersion": "17",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-050-domain",
-    "jv-050-pricing",
-    "jv-050-risk",
-    "jv-050-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "17",
   "testCompilerRelease": "17",
