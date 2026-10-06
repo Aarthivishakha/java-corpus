@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V24_MAVEN_WAR_MICRO
+﻿# Testable Java corpus — JV_V24_MAVEN_WAR_MONO
 
-Grid cell `MVN-WAR-S` of the 24-cell Java grid.
+Grid cell `MVN-WAR-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 25 |
 | Build system | Maven |
 | Packaging | WAR |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -129,7 +129,7 @@ Java 24 is **not an LTS release**. It shipped March 2025 and reached end of life
 2025, six months later. It is in this corpus to complete the version axis, not as
 a recommendation.
 
-Produces: `jv-414.war`
+Produces: `jv-413.war`
 
 ## Run
 
@@ -145,10 +145,7 @@ mvn -B test
 
 ## Workspace projects
 
-- `jv-414-domain/`
-- `jv-414-pricing/`
-- `jv-414-risk/`
-- `jv-414-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders

@@ -1,7 +1,7 @@
 {
-  "branch": "JV-414",
-  "combo": "MVN-WAR-S",
-  "repository": "java-j24-414-418",
+  "branch": "JV-413",
+  "combo": "MVN-WAR-M",
+  "repository": "java-j24-409-413",
   "language": "java",
   "javaVersion": "24",
   "hostJdk": "25",
@@ -9,13 +9,10 @@
   "buildSystemId": "MVN",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-414-domain",
-    "jv-414-pricing",
-    "jv-414-risk",
-    "jv-414-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "24",
   "testCompilerRelease": "24",
