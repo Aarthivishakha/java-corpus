@@ -1,6 +1,6 @@
 {
-  "branch": "JV-008",
-  "combo": "GRK-THIN-S",
+  "branch": "JV-007",
+  "combo": "GRK-THIN-M",
   "repository": "java-j8-006-010",
   "language": "java",
   "javaVersion": "8",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRK",
   "packaging": "Thin jar",
   "packagingId": "THIN",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-008-domain",
-    "jv-008-pricing",
-    "jv-008-risk",
-    "jv-008-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "8",
   "testCompilerRelease": "8",
