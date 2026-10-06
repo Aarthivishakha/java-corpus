@@ -1,0 +1,5 @@
+rootProject.name = 'jv-376-parent'
+include ':jv-376-domain'
+include ':jv-376-pricing'
+include ':jv-376-risk'
+include ':jv-376-catalog'
