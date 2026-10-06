@@ -1,6 +1,6 @@
 {
-  "branch": "JV-378",
-  "combo": "GRG-WAR-S",
+  "branch": "JV-377",
+  "combo": "GRG-WAR-M",
   "repository": "java-j22-376-380",
   "language": "java",
   "javaVersion": "22",
@@ -9,13 +9,10 @@
   "buildSystemId": "GRG",
   "packaging": "WAR",
   "packagingId": "WAR",
-  "architecture": "Microservices",
-  "architectureId": "S",
+  "architecture": "Monolith",
+  "architectureId": "M",
   "modules": [
-    "jv-378-domain",
-    "jv-378-pricing",
-    "jv-378-risk",
-    "jv-378-catalog"
+    "(single module)"
   ],
   "mainCompilerRelease": "22",
   "testCompilerRelease": "22",
