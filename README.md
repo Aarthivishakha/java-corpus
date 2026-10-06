@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V21_GRADLEKOTLINDSL_THINJAR_MICRO
+﻿# Testable Java corpus — JV_V21_GRADLEKOTLINDSL_THINJAR_MONO
 
-Grid cell `GRK-THIN-S` of the 24-cell Java grid.
+Grid cell `GRK-THIN-M` of the 24-cell Java grid.
 
 ## Project type
 
@@ -21,7 +21,7 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Host JDK | 21 |
 | Build system | Gradle / Kotlin DSL |
 | Packaging | Thin jar |
-| Architecture | Microservices |
+| Architecture | Monolith |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ clauses, `null` case labels and the sequenced-collection methods `getFirst`/`get
 `reversed`, so it fails to compile under `--release 17` — the version differentiation is real, not
 declared.
 
-Produces: `dist/jv-080.jar or target/jv-080-1.0.0.jar`
+Produces: `dist/jv-079.jar or target/jv-079-1.0.0.jar`
 
 ## Run
 
@@ -90,10 +90,7 @@ java -jar <artifact> O-1234
 
 ## Workspace projects
 
-- `jv-080-domain/`
-- `jv-080-pricing/`
-- `jv-080-risk/`
-- `jv-080-catalog/`
+- `src/main/java/` (single module)
 
 
 ## Tool test-data folders
