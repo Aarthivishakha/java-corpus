@@ -1,6 +1,6 @@
-﻿# Testable Java corpus — JV_V17_MAVEN_THINJAR_MONO
+﻿# Testable Java corpus — JV_V17_MAVEN_WAR_MICRO
 
-Grid cell `MVN-THIN-M` of the 24-cell Java grid.
+Grid cell `MVN-WAR-S` of the 24-cell Java grid.
 
 ## Project type
 
@@ -20,8 +20,8 @@ only. See `dataset.json` for the machine-readable description of this branch.
 | Java version | 17 |
 | Host JDK | 17 |
 | Build system | Maven |
-| Packaging | Thin jar |
-| Architecture | Monolith |
+| Packaging | WAR |
+| Architecture | Microservices |
 
 ## Supported tools
 
@@ -74,7 +74,7 @@ expressions and `Stream.toList`, so it fails to compile under `--release 11` in 
 places — the version differentiation is real, not
 declared.
 
-Produces: `dist/jv-049.jar or target/jv-049-1.0.0.jar`
+Produces: `jv-054.war`
 
 ## Run
 
@@ -90,7 +90,10 @@ mvn -B test
 
 ## Workspace projects
 
-- `src/main/java/` (single module)
+- `jv-054-domain/`
+- `jv-054-pricing/`
+- `jv-054-risk/`
+- `jv-054-catalog/`
 
 
 ## Tool test-data folders
