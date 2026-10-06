@@ -1,65 +1,34 @@
 {
-  "branch": "JV-413",
-  "combo": "MVN-WAR-M",
-  "repository": "java-j24-409-413",
+  "branch": "JV-118",
+  "combo": "ANT-SHADE-S",
+  "repository": "java-j25-117-120",
   "language": "java",
-  "javaVersion": "24",
+  "javaVersion": "25",
   "hostJdk": "25",
-  "buildSystem": "Maven",
-  "buildSystemId": "MVN",
-  "packaging": "WAR",
-  "packagingId": "WAR",
-  "architecture": "Monolith",
-  "architectureId": "M",
+  "buildSystem": "Ant + Ivy",
+  "buildSystemId": "ANT",
+  "packaging": "Shaded uber-jar (relocated)",
+  "packagingId": "SHADE",
+  "architecture": "Microservices",
+  "architectureId": "S",
   "modules": [
-    "(single module)"
+    "jv-118-domain",
+    "jv-118-pricing",
+    "jv-118-risk",
+    "jv-118-catalog"
   ],
-  "mainCompilerRelease": "24",
-  "testCompilerRelease": "24",
-  "bytecodeMajorVersion": 68,
+  "mainCompilerRelease": "25",
+  "testCompilerRelease": "25",
+  "bytecodeMajorVersion": 69,
   "testFramework": "JUnit 4.13.2",
   "versionExclusiveFeatures": [
-    "Stream.gather",
-    "Gatherers.windowFixed",
-    "Gatherers.windowSliding",
-    "Gatherers.scan",
-    "Gatherers.fold",
-    "java.lang.classfile (Class-File API)",
-    "Reader.of(CharSequence)"
+    "stream gatherers (Stream.gather)",
+    "flexible constructor bodies",
+    "module import declarations",
+    "scoped values",
+    "markdown documentation comments"
   ],
-  "versionLockKind": "api-only",
-  "versionLockNote": "Java 24 added no final language syntax - every language JEP was a preview. Sixth API-only family. Both locks fail at --release 23 as PREVIEW APIs rather than missing symbols, the fourth and fifth such instances in the corpus.",
-  "versionLockLayers": {
-    "attributionTime": [
-      {
-        "file": "analysis/LegGatherer.java",
-        "errors": 11,
-        "release": "23",
-        "diagnostic": "preview API disabled"
-      },
-      {
-        "file": "util/ClassFileProbe.java",
-        "errors": 15,
-        "release": "23",
-        "diagnostic": "preview API disabled"
-      }
-    ]
-  },
-  "previewFeaturesDeliberatelyAbsent": [
-    "primitive types in patterns (2nd preview in 24)",
-    "module import declarations (2nd preview in 24, final 25)",
-    "flexible constructor bodies (3rd preview in 24, final 25)",
-    "implicitly declared classes (4th preview in 24, final 25)",
-    "structured concurrency (4th preview in 24)",
-    "scoped values (4th preview in 24, final 25)"
-  ],
-  "forwardChecked": [
-    "25"
-  ],
-  "corpusRelevance": "The Class-File API is the JDK's answer to exactly the ceiling this corpus measures: PIT stops at Java 25 because its bundled ASM does, CK at Java 16 because its bundled Eclipse JDT does. A parser inside the JDK cannot fall behind the JDK.",
-  "lts": false,
-  "hostJdkDiffersFromLanguageLevel": true,
-  "failsToCompileUnder": "23",
+  "failsToCompileUnder": "21",
   "toolPins": {
     "junit": "4.13.2",
     "jacoco": "0.8.14",
@@ -103,7 +72,20 @@
       "version": "1.30"
     }
   ],
-  "relocations": [],
+  "relocations": [
+    {
+      "from": "org.apache.commons",
+      "to": "com.pramora.testable.shaded.commons"
+    },
+    {
+      "from": "com.fasterxml.jackson",
+      "to": "com.pramora.testable.shaded.jackson"
+    },
+    {
+      "from": "org.yaml.snakeyaml",
+      "to": "com.pramora.testable.shaded.snakeyaml"
+    }
+  ],
   "answerKey": {
     "duplicatePair": [
       "analysis/DuplicateProcessorA.java",
@@ -112,7 +94,7 @@
     "highestCyclomaticComplexity": "service/PricingService.java#priceCents",
     "highestCognitiveComplexity": "analysis/RiskScorer.java#score",
     "taintSource": "util/InputSanitizer.java#sanitize",
-    "testCount": 240
+    "testCount": 51
   },
   "exitCodeContract": {
     "0": "ran",
